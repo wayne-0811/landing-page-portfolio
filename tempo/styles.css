@@ -6,6 +6,10 @@
    One bright accent (acid lime) used sparingly.
    ============================================================ */
 
+/* Ensure the HTML `hidden` attribute always wins, even if a cascade
+   rule sets display on the same element (fixes FAQ accordion in some browsers). */
+[hidden] { display: none !important; }
+
 /* ---------- Design tokens ---------- */
 :root {
   --bg: #0b0b0c;          /* near-black page background */
