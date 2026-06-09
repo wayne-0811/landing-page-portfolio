@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEMPO — Remote Running Coaching</title>
+  <meta
+    name="description"
+    content="Personal remote running coaching for runners who keep hitting the same wall. A plan built around your life, your body, and the finish line you're chasing."
+  />
+
+  <!-- Google Fonts: Space Grotesk (display) + Inter (body). Preconnect for speed. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============================== NAV ============================== -->
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a href="#top" class="wordmark" aria-label="TEMPO home">
+        TEMP<span class="wordmark-accent">O</span>
+      </a>
+
+      <!-- Mobile nav toggle (vanilla JS in main.js) -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-expanded="false"
+        aria-controls="navMenu"
+        aria-label="Open menu"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <!-- Booking link: swap "#book" for your Calendly / scheduling URL -->
+        <a href="#book" class="btn btn-primary nav-cta">Book a free call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <!-- Hero image: PLACEHOLDER — swap for real client photo.
+           Unsplash: runner on a track at dusk. -->
+      <img
+        class="hero-bg"
+        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=70"
+        alt="A runner training on an outdoor track at dusk"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content reveal">
+        <p class="eyebrow">Remote running coaching</p>
+        <h1 id="hero-heading" class="hero-title">
+          Stop running more.<br />Start running <span class="accent-text">smarter.</span>
+        </h1>
+        <p class="hero-subhead">
+          Personal coaching for runners who keep hitting the same wall. A plan built
+          around your life, your body, and the finish line you're actually chasing.
+        </p>
+        <div class="hero-actions">
+          <!-- Swap "#book" for your booking link -->
+          <a href="#book" class="btn btn-primary">Book a free call</a>
+          <a href="#how" class="btn btn-ghost">See how it works</a>
+        </div>
+        <p class="social-proof">★ 4.9 average · 600+ runners coached</p>
+      </div>
+    </section>
+
+    <!-- ============================== STATS ============================== -->
+    <section class="stats" aria-label="By the numbers">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-num">87%</span>
+          <span class="stat-label">hit a new personal best within one season</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num">600+</span>
+          <span class="stat-label">runners coached, from first-timers to Boston qualifiers</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num">150+</span>
+          <span class="stat-label">marathons and ultras finished under a TEMPO plan</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROBLEM ============================== -->
+    <section class="section problem" aria-labelledby="problem-heading">
+      <div class="container narrow reveal">
+        <p class="eyebrow">The wall</p>
+        <h2 id="problem-heading" class="section-title">More miles isn't the answer.</h2>
+        <p class="lead">
+          Most runners who stall aren't lazy — they're guessing. Random long runs, no
+          recovery plan, a watch full of data and no idea what it means. You don't need
+          to train harder. You need a plan that knows what it's doing.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== HOW IT WORKS ============================== -->
+    <section class="section how" id="how" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-heading" class="section-title">A real coach, not a template.</h2>
+        </div>
+
+        <ol class="how-grid">
+          <li class="how-card reveal">
+            <span class="how-num">01</span>
+            <h3 class="how-card-title">We talk.</h3>
+            <p>
+              A free 30-minute call. Your history, your goals, your schedule, your
+              injuries. No pressure, no script.
+            </p>
+          </li>
+          <li class="how-card reveal">
+            <span class="how-num">02</span>
+            <h3 class="how-card-title">You get a plan.</h3>
+            <p>
+              A week-by-week training plan built for your life — not a PDF template.
+              Delivered in the app, adjusted as you go.
+            </p>
+          </li>
+          <li class="how-card reveal">
+            <span class="how-num">03</span>
+            <h3 class="how-card-title">We adjust, every week.</h3>
+            <p>
+              A weekly check-in on what worked and what didn't. Bad week? We adapt.
+              That's the whole point of having a coach.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== WHAT'S INCLUDED ============================== -->
+    <section class="section included" aria-labelledby="included-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What's included</p>
+          <h2 id="included-heading" class="section-title">Everything you need to crush your next race.</h2>
+        </div>
+
+        <div class="included-grid">
+          <article class="value-card reveal">
+            <h3 class="value-title">Plans built around your week</h3>
+            <p>Travel, shift work, kids — the plan bends to your life instead of breaking you.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3 class="value-title">Form and pacing that hold up</h3>
+            <p>Video form reviews and pacing targets so race day doesn't fall apart at mile 20.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3 class="value-title">A real person, not an algorithm</h3>
+            <p>Direct access to your coach between sessions. You're never guessing alone.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3 class="value-title">Built to prevent injury</h3>
+            <p>Recovery and load management baked in, so you reach the start line healthy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== MEET THE COACH ============================== -->
+    <section class="section coach" aria-labelledby="coach-heading">
+      <div class="container coach-grid">
+        <div class="coach-photo-wrap reveal">
+          <!-- Coach portrait: PLACEHOLDER — swap for real photo of Dani Voss.
+               Unsplash: athletic person outdoors. -->
+          <img
+            class="coach-photo"
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=70"
+            alt="Portrait of running coach Dani Voss outdoors"
+            loading="lazy"
+          />
+        </div>
+        <div class="coach-text reveal">
+          <p class="eyebrow">Your coach</p>
+          <h2 id="coach-heading" class="section-title">
+            Twelve years on the road. One job: get you there.
+          </h2>
+          <p class="lead">
+            I'm Dani Voss. I've coached first-time marathoners, parents squeezing
+            training into 5am, and runners chasing a Boston qualifier they'd almost
+            given up on. I don't sell magic. I build plans that fit real lives and hold
+            up under pressure — and I'm in your corner every week until you cross the line.
+          </p>
+          <ul class="credentials">
+            <li>RRCA Certified</li>
+            <li>UESCA Endurance</li>
+            <li>12 yrs coaching</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTS / TESTIMONIALS ============================== -->
+    <section class="section results" id="results" aria-labelledby="results-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Results</p>
+          <h2 id="results-heading" class="section-title">Results that feel real.</h2>
+        </div>
+
+        <div class="results-grid">
+          <figure class="testimonial reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              "First marathon done at 41 — and I actually enjoyed the last 10K. The
+              pacing plan was everything."
+            </blockquote>
+            <figcaption>
+              <span class="t-name">Marcus R.</span>
+              <span class="t-role">First-time marathoner</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              "Knocked 14 minutes off my half. I'd been stuck at the same time for three
+              years before this."
+            </blockquote>
+            <figcaption>
+              <span class="t-name">Priya N.</span>
+              <span class="t-role">Recreational runner</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial reveal">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              "Dani caught an overtraining spiral I couldn't see. Reaching the start line
+              healthy was the real win."
+            </blockquote>
+            <figcaption>
+              <span class="t-name">Theo A.</span>
+              <span class="t-role">Trail runner</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PRICING ============================== -->
+    <section class="section pricing" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-heading" class="section-title">Plans built for your goals.</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <article class="price-card reveal">
+            <h3 class="price-name">Starter</h3>
+            <p class="price"><span class="price-amt">$79</span><span class="price-per">/mo</span></p>
+            <p class="price-desc">For runners who want structure without the guesswork.</p>
+            <ul class="price-features">
+              <li>Weekly training plan in the app</li>
+              <li>Goal-based schedule</li>
+              <li>Progress tracking</li>
+              <li>Monthly plan adjustments</li>
+            </ul>
+            <!-- Swap "#book" for your booking / checkout link -->
+            <a href="#book" class="btn btn-outline price-cta">Get started</a>
+          </article>
+
+          <!-- Performance (highlighted) -->
+          <article class="price-card price-card--featured reveal">
+            <span class="price-badge">Most popular</span>
+            <h3 class="price-name">Performance</h3>
+            <p class="price"><span class="price-amt">$129</span><span class="price-per">/mo</span></p>
+            <p class="price-desc">For runners preparing for a race or a real PR.</p>
+            <ul class="price-features">
+              <li>Everything in Starter</li>
+              <li>Weekly 1:1 check-ins</li>
+              <li>Video form reviews</li>
+              <li>Pacing and race-day strategy</li>
+              <li>Direct messaging with your coach</li>
+            </ul>
+            <a href="#book" class="btn btn-primary price-cta">Get started</a>
+          </article>
+
+          <!-- Elite -->
+          <article class="price-card reveal">
+            <h3 class="price-name">Elite</h3>
+            <p class="price"><span class="price-amt">$189</span><span class="price-per">/mo</span></p>
+            <p class="price-desc">Full-attention coaching for a peak season.</p>
+            <ul class="price-features">
+              <li>Everything in Performance</li>
+              <li>Twice-weekly check-ins</li>
+              <li>Race-week and taper planning</li>
+              <li>Priority response</li>
+              <li>Nutrition and fueling guidance</li>
+            </ul>
+            <a href="#book" class="btn btn-outline price-cta">Get started</a>
+          </article>
+        </div>
+
+        <p class="pricing-note reveal">No contracts. Pause or cancel any time.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-heading" class="section-title">What runners usually ask.</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <h3 class="faq-q-wrap">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq-a1">
+                <span>I'm slow / I'm a beginner. Is this for me?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-a1" role="region" hidden>
+              <p>Especially for you. Most clients start in the middle of the pack. The plan meets you where you are.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-q-wrap">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq-a2">
+                <span>How is this different from a training app?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-a2" role="region" hidden>
+              <p>An app gives everyone the same plan. You get a plan built for your life, adjusted every week by a real coach who knows your name.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-q-wrap">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq-a3">
+                <span>What if I get injured or have a bad week?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-a3" role="region" hidden>
+              <p>We adapt. That flexibility is the entire reason to have a coach instead of a static plan.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-q-wrap">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq-a4">
+                <span>Do I need a specific watch or gear?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-a4" role="region" hidden>
+              <p>Any GPS watch or phone app works. We'll use whatever you already have.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-q-wrap">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq-a5">
+                <span>How soon will I see results?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-a" id="faq-a5" role="region" hidden>
+              <p>Most runners feel the difference in pacing and confidence within 3–4 weeks. PRs come over a full training block.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL CTA ============================== -->
+    <section class="cta-band" id="book" aria-labelledby="cta-heading">
+      <div class="container cta-inner reveal">
+        <h2 id="cta-heading" class="cta-title">Your next race starts with one call.</h2>
+        <p class="cta-sub">Free, 30 minutes, no pressure. Let's figure out if we're a fit.</p>
+        <!-- Swap "#book" for your booking link (e.g. Calendly) -->
+        <a href="#book" class="btn btn-primary btn-lg">Book a free call</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="wordmark">TEMP<span class="wordmark-accent">O</span></a>
+        <p class="footer-tagline">Remote running coaching.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <!-- PLACEHOLDER contact details — swap for real email + social -->
+          <li><a href="mailto:hello@tempo.run">hello@tempo.run</a></li>
+          <li><a href="#" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 TEMPO. All rights reserved.</p>
+      <!-- PLACEHOLDER — swap [your name] for your credit -->
+      <p class="footer-credit">Designed by [your name]</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
