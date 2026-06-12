@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============ SEO META ============ -->
+  <title>Full Menu | Hearth & Honey Café — Heartwarming Comfort Food, Breakfast & Coffee</title>
+  <meta name="description" content="Explore the full Hearth & Honey menu — made-from-scratch breakfasts, all-day comfort plates, fresh-baked treats, and slow-brewed local coffee. Reserve your table today." />
+  <meta name="keywords" content="cafe menu, breakfast menu, brunch menu, comfort food menu, coffee menu, homemade pastries, vegetarian cafe" />
+  <meta name="author" content="Hearth & Honey Café" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Full Menu | Hearth & Honey Café" />
+  <meta property="og:description" content="Made-from-scratch breakfasts, all-day comfort plates, fresh bakes, and slow-brewed coffee. Every plate feels like home." />
+  <meta property="og:type" content="restaurant.menu" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Structured Data: Menu -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Hearth & Honey Café Menu",
+    "hasMenuSection": [
+      { "@type": "MenuSection", "name": "All-Day Breakfast" },
+      { "@type": "MenuSection", "name": "Comfort Plates" },
+      { "@type": "MenuSection", "name": "Fresh from the Bakery" },
+      { "@type": "MenuSection", "name": "Coffee & Warm Drinks" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #faf4ea;
+      --cream-deep: #f3e9d7;
+      --terracotta: #c8623f;
+      --terracotta-deep: #a84e2f;
+      --honey: #e0a458;
+      --sage: #7a8b6f;
+      --bark: #3a2c22;
+      --bark-soft: #6b5848;
+      --ink: #2b211a;
+      --radius: 18px;
+      --shadow: 0 18px 40px -22px rgba(58, 44, 34, 0.45);
+      --shadow-soft: 0 10px 30px -18px rgba(58, 44, 34, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.1; color: var(--bark); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.74rem; font-weight: 700; color: var(--terracotta); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--terracotta); color: #fff;
+      padding: 14px 28px; border-radius: 999px;
+      font-weight: 700; font-size: 0.98rem; border: none; cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn:hover { background: var(--terracotta-deep); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--bark); border: 1.5px solid rgba(58,44,34,0.25); box-shadow: none; }
+    .btn-ghost:hover { background: rgba(58,44,34,0.06); border-color: var(--bark); }
+
+    /* ============ NAV ============ */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 244, 234, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(58,44,34,0.08);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+    .logo { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.35rem; color: var(--bark); display: flex; align-items: center; gap: 10px; }
+    .logo-mark { width: 34px; height: 34px; background: var(--terracotta); border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 1.05rem; }
+    .nav-links { display: flex; gap: 30px; align-items: center; font-weight: 600; font-size: 0.95rem; }
+    .nav-links a.link { color: var(--bark-soft); transition: color 0.2s; }
+    .nav-links a.link:hover, .nav-links a.link.active { color: var(--terracotta); }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: transparent; border: none; cursor: pointer; padding: 0; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--bark); border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============ PAGE HERO ============ */
+    .menu-hero {
+      position: relative;
+      text-align: center;
+      padding: 92px 24px 88px;
+      background:
+        linear-gradient(rgba(40,30,22,0.62), rgba(40,30,22,0.62)),
+        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: var(--cream);
+    }
+    .menu-hero .eyebrow { color: var(--honey); }
+    .menu-hero h1 { color: #fff; font-size: clamp(2.6rem, 5vw, 4rem); margin: 16px 0 18px; }
+    .menu-hero p { color: rgba(250,244,234,0.92); max-width: 36em; margin: 0 auto 28px; font-size: 1.12rem; }
+
+    /* ============ CATEGORY NAV ============ */
+    .cat-nav {
+      position: sticky; top: 74px; z-index: 40;
+      background: rgba(243,233,215,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(58,44,34,0.1);
+    }
+    .cat-nav-inner { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 16px 24px; }
+    .cat-nav a {
+      font-weight: 700; font-size: 0.86rem; letter-spacing: 0.03em;
+      color: var(--bark-soft); padding: 8px 18px; border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cat-nav a:hover { background: rgba(200,98,63,0.12); color: var(--terracotta-deep); }
+
+    /* ============ MENU SECTIONS ============ */
+    section.menu-section { padding: 76px 0 8px; scroll-margin-top: 150px; }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+    .sec-head h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+    .sec-head .eyebrow { display: block; margin-bottom: 8px; }
+    .sec-head p { color: var(--bark-soft); max-width: 30em; font-size: 1rem; }
+
+    .items { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 48px; }
+    .item {
+      display: flex; gap: 16px; align-items: baseline;
+      padding: 18px 0; border-bottom: 1px dashed rgba(58,44,34,0.16);
+    }
+    .item-body { flex: 1; }
+    .item-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.18rem; color: var(--bark); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .item-desc { color: var(--bark-soft); font-size: 0.94rem; margin-top: 3px; }
+    .item-dots { flex: 1; border-bottom: 1.5px dotted rgba(58,44,34,0.22); transform: translateY(-4px); min-width: 18px; }
+    .item-price { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.12rem; color: var(--terracotta-deep); white-space: nowrap; }
+    .tag {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 3px 8px; border-radius: 999px; background: var(--cream-deep); color: var(--terracotta-deep);
+    }
+    .tag.v { background: rgba(122,139,111,0.18); color: #5e6f54; }
+    .tag.gf { background: rgba(224,164,88,0.22); color: #9a6a26; }
+
+    /* feature banner inside a section */
+    .feature {
+      margin-top: 46px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft); background: #fff;
+    }
+    .feature img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+    .feature-text { padding: 38px; display: flex; flex-direction: column; justify-content: center; }
+    .feature-text h3 { font-size: 1.6rem; margin: 10px 0 12px; }
+    .feature-text p { color: var(--bark-soft); margin-bottom: 18px; }
+
+    /* ============ DIETARY LEGEND ============ */
+    .legend { background: var(--cream-deep); margin-top: 70px; }
+    .legend-inner { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; padding: 28px 24px; font-size: 0.9rem; color: var(--bark-soft); }
+    .legend-inner span { display: inline-flex; align-items: center; gap: 8px; }
+
+    /* ============ CTA ============ */
+    .menu-cta-band { background: var(--bark); color: var(--cream); text-align: center; padding: 80px 24px; }
+    .menu-cta-band h2 { color: #fff; font-size: clamp(1.9rem, 3.2vw, 2.7rem); margin-bottom: 14px; }
+    .menu-cta-band p { color: rgba(250,244,234,0.78); max-width: 32em; margin: 0 auto 28px; font-size: 1.06rem; }
+    .menu-cta-band .note { font-size: 0.88rem; margin-top: 16px; color: rgba(250,244,234,0.6); }
+
+    /* ============ FOOTER ============ */
+    footer.site { background: var(--bark); color: rgba(250,244,234,0.8); padding: 64px 0 30px; border-top: 1px solid rgba(250,244,234,0.1); }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+    footer.site .logo { color: var(--cream); margin-bottom: 16px; }
+    footer.site h4 { color: var(--cream); font-family: 'Fraunces', serif; font-size: 1.1rem; margin-bottom: 16px; }
+    footer.site a, footer.site p { color: rgba(250,244,234,0.72); font-size: 0.95rem; display: block; margin-bottom: 9px; }
+    footer.site a:hover { color: var(--honey); }
+    .foot-bottom { border-top: 1px solid rgba(250,244,234,0.14); padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; color: rgba(250,244,234,0.6); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 920px) {
+      .items { grid-template-columns: 1fr; gap: 0 0; }
+      .feature { grid-template-columns: 1fr; }
+      .feature img { min-height: 220px; }
+      .nav-inner { position: relative; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: var(--cream); border-bottom: 1px solid rgba(58,44,34,0.1);
+        padding: 0 24px; box-shadow: var(--shadow-soft);
+        max-height: 0; overflow: hidden; opacity: 0; pointer-events: none;
+        transition: max-height 0.32s ease, opacity 0.2s ease, padding 0.32s ease;
+      }
+      header.nav.open .nav-links { max-height: 420px; opacity: 1; pointer-events: auto; padding: 8px 24px 20px; }
+      .nav-links a.link { padding: 15px 4px; border-bottom: 1px solid rgba(58,44,34,0.08); font-size: 1.05rem; }
+      .nav-links a.btn { margin-top: 16px; justify-content: center; }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .cat-nav { top: 74px; }
+    }
+    @media (max-width: 540px) {
+      .foot-grid { grid-template-columns: 1fr; }
+      section.menu-section { padding: 56px 0 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="logo"><span class="logo-mark">☕</span> Hearth &amp; Honey</a>
+      <nav class="nav-links">
+        <a class="link" href="index.html#story">Our Story</a>
+        <a class="link active" href="menu.html">Menu</a>
+        <a class="link" href="index.html#why">Why Us</a>
+        <a class="link" href="index.html#reviews">Reviews</a>
+        <a class="btn" href="index.html#book">Reserve a Table</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MENU HERO ============ -->
+  <section class="menu-hero">
+    <span class="eyebrow">Everything we lovingly make</span>
+    <h1>Our Full Menu</h1>
+    <p>Made from scratch every morning, with ingredients from farms we know by name. Come hungry — and leave feeling like you just had a meal at a friend's house.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="index.html#book" class="btn">Reserve a Table →</a>
+      <a href="menu.pdf" download class="btn btn-ghost" style="background:rgba(250,244,234,0.12); color:#fff; border-color:rgba(250,244,234,0.5);">⬇ Download Menu (PDF)</a>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY NAV ============ -->
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <a href="#breakfast">All-Day Breakfast</a>
+      <a href="#plates">Comfort Plates</a>
+      <a href="#bakery">From the Bakery</a>
+      <a href="#coffee">Coffee &amp; Warm Drinks</a>
+      <a href="#cold">Cold &amp; Fresh</a>
+      <a href="#littles">For the Littles</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- ============ BREAKFAST ============ -->
+    <section class="menu-section" id="breakfast">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Served all day, just like home</span>
+          <h2>All-Day Breakfast</h2>
+        </div>
+        <p>Because some mornings start at noon — and that's exactly how it should be.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Honey-Butter Buttermilk Stack <span class="tag">Most Loved</span></div>
+            <div class="item-desc">Pillowy pancakes, warm honey butter, seasonal berries, a dusting of cinnamon.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$12</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Garden Sourdough &amp; Egg <span class="tag v">Veg</span></div>
+            <div class="item-desc">Thick-cut sourdough, smashed avocado, soft-poached farm egg, chili honey.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$11</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">The Big Hearth Breakfast</div>
+            <div class="item-desc">Two eggs your way, smoked bacon or maple sausage, roast tomato, sautéed greens, sourdough toast.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$15</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Slow-Baked Granola Bowl <span class="tag v">Veg</span></div>
+            <div class="item-desc">House granola, thick yogurt, poached pear, toasted almonds, a drizzle of raw honey.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$10</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Farmhouse Veggie Scramble <span class="tag v">Veg</span></div>
+            <div class="item-desc">Soft-scrambled eggs, spinach, roasted peppers, melted cheddar, herbed potatoes.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$13</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Cinnamon French Toast</div>
+            <div class="item-desc">Brioche soaked in vanilla custard, griddled golden, mascarpone, warm berry compote.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$13</span>
+        </div>
+      </div>
+
+      <div class="feature">
+        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80" alt="Stack of fluffy buttermilk pancakes with berries and syrup" loading="lazy" />
+        <div class="feature-text">
+          <span class="eyebrow">The one everyone talks about</span>
+          <h3>Honey-Butter Buttermilk Stack</h3>
+          <p>The breakfast people drive across town for. Whipped honey butter melts into every fluffy layer — order it once and you'll understand.</p>
+          <a href="index.html#book" class="btn btn-ghost">Save a table for breakfast →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMFORT PLATES ============ -->
+    <section class="menu-section" id="plates">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Lunch &amp; all-afternoon</span>
+          <h2>Comfort Plates</h2>
+        </div>
+        <p>Generous, soul-warming, and made the slow way. The kind of food that makes you sit back and sigh.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Three-Cheese Melt <span class="tag">Crowd Pleaser</span></div>
+            <div class="item-desc">Sharp cheddar, gruyère &amp; mozzarella on buttery griddled sourdough.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$10</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Soup of the Day &amp; Crust <span class="tag v">Veg</span></div>
+            <div class="item-desc">A slow-simmered seasonal pot, warm crusty bread, good butter.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$9</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Roast Chicken &amp; Herb Sandwich</div>
+            <div class="item-desc">Slow-roasted chicken, lemon-herb mayo, crisp greens, tomato on ciabatta.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$13</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Harvest Grain Bowl <span class="tag v">Veg</span> <span class="tag gf">GF</span></div>
+            <div class="item-desc">Roasted squash, quinoa, chickpeas, kale, feta, toasted seeds, tahini dressing.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$14</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Mac &amp; Three Cheese <span class="tag v">Veg</span></div>
+            <div class="item-desc">Baked until golden, crunchy herb-crumb top. Pure nostalgia in a dish.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$12</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Hearth Quiche &amp; Side Salad <span class="tag v">Veg</span></div>
+            <div class="item-desc">Buttery short-crust quiche of the day, dressed leaves, pickled shallots.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$12</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BAKERY ============ -->
+    <section class="menu-section" id="bakery">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Baked fresh, all morning long</span>
+          <h2>From the Bakery</h2>
+        </div>
+        <p>Small batches, out of the oven in waves. When they're gone, they're gone — so come early.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Grandma's Cinnamon Rolls <span class="tag">Baked Daily</span></div>
+            <div class="item-desc">Gooey, hand-rolled, frosted while still warm.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$6</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Butter Croissant <span class="tag v">Veg</span></div>
+            <div class="item-desc">Laminated over three days, shatteringly flaky.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Blueberry Streusel Muffin <span class="tag v">Veg</span></div>
+            <div class="item-desc">Bursting with berries, crunchy brown-sugar top.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Banana Walnut Loaf <span class="tag v">Veg</span></div>
+            <div class="item-desc">Moist, lightly spiced, served warm with butter.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Sea-Salt Chocolate Cookie <span class="tag v">Veg</span></div>
+            <div class="item-desc">Crisp edges, molten middle, flaky salt finish.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$3.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Lemon &amp; Almond Cake <span class="tag gf">GF</span></div>
+            <div class="item-desc">Bright, tender, dusted with icing sugar.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5.50</span>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <span class="eyebrow">Gone by 11am, usually</span>
+          <h3>Grandma's Cinnamon Rolls</h3>
+          <p>Hand-rolled from her original recipe and frosted while they're still warm from the oven. We bake them in small batches all morning — so the early birds win.</p>
+          <a href="index.html#book" class="btn btn-ghost">Reserve &amp; beat the crowd →</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=800&q=80" alt="Warm cinnamon rolls with icing fresh from the oven" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- ============ COFFEE ============ -->
+    <section class="menu-section" id="coffee">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Roasted just down the road</span>
+          <h2>Coffee &amp; Warm Drinks</h2>
+        </div>
+        <p>Slow-roasted beans from a family roastery, pulled with care. Oat, almond &amp; soy always available.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">The Hearth Latte <span class="tag">Signature</span></div>
+            <div class="item-desc">Double shot, a whisper of vanilla &amp; raw honey.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Flat White</div>
+            <div class="item-desc">Velvety microfoam, strong and smooth.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Filter / Pour-Over</div>
+            <div class="item-desc">Single-origin, rotating seasonally. Ask us what's brewing.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Cappuccino</div>
+            <div class="item-desc">Equal parts espresso, steamed milk &amp; foam.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Spiced Golden Chai</div>
+            <div class="item-desc">House-spiced, frothed with your milk of choice.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Honey-Vanilla Hot Chocolate</div>
+            <div class="item-desc">Real melted chocolate, marshmallows on request.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Loose-Leaf Tea Pot</div>
+            <div class="item-desc">English breakfast, earl grey, peppermint, chamomile.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$4</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Matcha Latte <span class="tag v">Veg</span></div>
+            <div class="item-desc">Ceremonial-grade, smooth and grassy-sweet.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5.50</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLD & FRESH ============ -->
+    <section class="menu-section" id="cold">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Cool things down</span>
+          <h2>Cold &amp; Fresh</h2>
+        </div>
+        <p>Made to order, never from a carton. Pull up a seat on the patio.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Iced Honey Latte</div>
+            <div class="item-desc">Our signature, over ice with raw honey.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5.50</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Cold Brew</div>
+            <div class="item-desc">Steeped 18 hours, smooth and bold.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Berry Sunrise Smoothie <span class="tag v">Veg</span> <span class="tag gf">GF</span></div>
+            <div class="item-desc">Mixed berries, banana, yogurt, a touch of honey.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$7</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Fresh Orange Juice <span class="tag v">Veg</span> <span class="tag gf">GF</span></div>
+            <div class="item-desc">Squeezed this morning, nothing added.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOR THE LITTLES ============ -->
+    <section class="menu-section" id="littles">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Made for small hands</span>
+          <h2>For the Littles</h2>
+        </div>
+        <p>Because everyone deserves a warm welcome — and a little treat. Ages 10 &amp; under.</p>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Mini Pancake Trio <span class="tag v">Veg</span></div>
+            <div class="item-desc">Three little pancakes, maple syrup, fresh fruit.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$6</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Egg &amp; Soldiers <span class="tag v">Veg</span></div>
+            <div class="item-desc">Soft-boiled egg with buttered sourdough strips.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Little Cheese Toastie <span class="tag v">Veg</span></div>
+            <div class="item-desc">Melty cheddar on griddled bread, cut into triangles.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$5</span>
+        </div>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Babyccino <span class="tag v">Veg</span></div>
+            <div class="item-desc">Frothy warm milk, cocoa dusting, tiny marshmallow.</div>
+          </div>
+          <span class="item-dots"></span><span class="item-price">$2.50</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ DIETARY LEGEND ============ -->
+  <div class="legend">
+    <div class="legend-inner">
+      <span><span class="tag v">Veg</span> Vegetarian</span>
+      <span><span class="tag gf">GF</span> Gluten-free</span>
+      <span>🌱 Vegan options available — just ask</span>
+      <span>Got an allergy? Tell us — we'll take care of you.</span>
+    </div>
+  </div>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="menu-cta-band">
+    <span class="eyebrow" style="color:var(--honey)">Hungry yet?</span>
+    <h2 style="margin-top:14px">Save your table before the morning rush</h2>
+    <p>Weekends fill up fast — especially when the cinnamon rolls are baking. Reserve a spot and we'll have it warm and waiting.</p>
+    <a href="index.html#book" class="btn">Reserve a Table →</a>
+    <p class="note">No deposit needed · Free to cancel · We'll text to confirm</p>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><span class="logo-mark">☕</span> Hearth &amp; Honey</div>
+          <p>A cozy neighborhood café serving heartwarming comfort food and slow-brewed coffee since 2014. Made from scratch, served with love.</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <p>84 Maple Lane<br/>Riverside, OR 97000</p>
+          <a href="#">Get Directions →</a>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon–Fri: 7am – 8pm</p>
+          <p>Sat–Sun: 8am – 9pm</p>
+        </div>
+        <div>
+          <h4>Get in Touch</h4>
+          <a href="tel:+15550147">(555) 012-0147</a>
+          <a href="mailto:hello@hearthandhoney.cafe">hello@hearthandhoney.cafe</a>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Hearth &amp; Honey Café. All rights reserved. · Designed by Wai Wai Phua</span>
+        <span>Made with warmth in Riverside · <a href="#" style="display:inline">Privacy</a> · <a href="#" style="display:inline">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile hamburger menu
+    (function () {
+      const nav = document.querySelector('header.nav');
+      const toggle = document.querySelector('.nav-toggle');
+      toggle.addEventListener('click', function () {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('.nav-links a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

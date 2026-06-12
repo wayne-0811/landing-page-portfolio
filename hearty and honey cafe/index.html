@@ -1,1 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- ============ SEO META ============ -->
+  <title>Hearth & Honey Café | Cozy Neighborhood Café & Heartwarming Comfort Menu</title>
+  <meta name="description" content="Hearth & Honey is a cozy neighborhood café serving heartwarming, made-from-scratch comfort food, slow-brewed coffee, and warm hospitality. Book your table or order ahead today." />
+  <meta name="keywords" content="cozy cafe near me, comfort food cafe, breakfast cafe, brunch, neighborhood coffee shop, homemade cafe menu, book a table" />
+  <meta name="author" content="Hearth & Honey Café" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hearth & Honey Café | Heartwarming Comfort Food & Cozy Coffee" />
+  <meta property="og:description" content="A warm corner of the neighborhood where every plate feels like home. Slow-brewed coffee, made-from-scratch comfort menus, and a table saved just for you." />
+  <meta property="og:type" content="restaurant.cafe" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Structured Data for local SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Hearth & Honey Café",
+    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
+    "servesCuisine": ["Comfort Food", "Breakfast", "Brunch", "Coffee"],
+    "priceRange": "$$",
+    "telephone": "+1-555-0147",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "84 Maple Lane",
+      "addressLocality": "Riverside",
+      "addressRegion": "OR",
+      "postalCode": "97000"
+    },
+    "openingHours": "Mo-Fr 07:00-20:00, Sa-Su 08:00-21:00"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #faf4ea;
+      --cream-deep: #f3e9d7;
+      --terracotta: #c8623f;
+      --terracotta-deep: #a84e2f;
+      --honey: #e0a458;
+      --sage: #7a8b6f;
+      --bark: #3a2c22;
+      --bark-soft: #6b5848;
+      --ink: #2b211a;
+      --radius: 18px;
+      --shadow: 0 18px 40px -22px rgba(58, 44, 34, 0.45);
+      --shadow-soft: 0 10px 30px -18px rgba(58, 44, 34, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito Sans', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--bark);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--terracotta);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terracotta);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn:hover { background: var(--terracotta-deep); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--bark);
+      border: 1.5px solid rgba(58,44,34,0.25);
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: rgba(58,44,34,0.06); border-color: var(--bark); }
+
+    /* ============ NAV ============ */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 244, 234, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(58,44,34,0.08);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--bark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      color: #fff; font-size: 1.05rem;
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; font-weight: 600; font-size: 0.95rem; }
+    .nav-links a.link { color: var(--bark-soft); transition: color 0.2s; }
+    .nav-links a.link:hover { color: var(--terracotta); }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: transparent; border: none; cursor: pointer; padding: 0; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--bark); border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============ HERO ============ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 80px 0 70px;
+    }
+    .hero h1 { font-size: clamp(2.6rem, 5vw, 4.1rem); margin: 18px 0 22px; }
+    .hero h1 em { font-style: italic; color: var(--terracotta); }
+    .hero p.lead { font-size: 1.18rem; color: var(--bark-soft); max-width: 30em; }
+    .hero-cta { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+    .hero-trust {
+      margin-top: 34px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.92rem;
+      color: var(--bark-soft);
+    }
+    .stars { color: var(--honey); font-size: 1.05rem; letter-spacing: 2px; }
+    .hero-media {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4 / 5;
+    }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-badge {
+      position: absolute;
+      left: 18px; bottom: 18px;
+      background: rgba(250,244,234,0.95);
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--bark);
+      box-shadow: var(--shadow-soft);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-badge .dot { width: 9px; height: 9px; background: var(--sage); border-radius: 50%; }
+
+    /* ============ MARQUEE STRIP ============ */
+    .strip {
+      background: var(--bark);
+      color: var(--cream);
+      padding: 16px 0;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .strip span { padding: 0 22px; opacity: 0.92; }
+    .strip span::before { content: "✦"; margin-right: 22px; color: var(--honey); font-style: normal; }
+
+    /* ============ SECTION BASE ============ */
+    section { padding: 88px 0; }
+    .section-head { text-align: center; max-width: 40em; margin: 0 auto 54px; }
+    .section-head h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); margin: 14px 0 16px; }
+    .section-head p { color: var(--bark-soft); font-size: 1.08rem; }
+
+    /* ============ STORY ============ */
+    .story { background: var(--cream-deep); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .story-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .story-imgs img { width: 100%; border-radius: 16px; object-fit: cover; box-shadow: var(--shadow-soft); }
+    .story-imgs img:first-child { aspect-ratio: 3/4; margin-top: 28px; }
+    .story-imgs img:last-child { aspect-ratio: 3/4; }
+    .story-text h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: 20px; }
+    .story-text p { color: var(--bark-soft); margin-bottom: 16px; font-size: 1.06rem; }
+    .signature { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.3rem; color: var(--terracotta); margin-top: 10px; }
+
+    /* ============ MENU ============ */
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .menu-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex; flex-direction: column;
+    }
+    .menu-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .menu-card .img-box { aspect-ratio: 4/3; overflow: hidden; }
+    .menu-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .menu-card:hover img { transform: scale(1.06); }
+    .menu-body { padding: 24px 24px 28px; display: flex; flex-direction: column; flex: 1; }
+    .menu-tag {
+      align-self: flex-start;
+      background: var(--cream-deep);
+      color: var(--terracotta-deep);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .menu-body h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .menu-body p { color: var(--bark-soft); font-size: 0.97rem; flex: 1; }
+    .menu-price { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; color: var(--bark); margin-top: 16px; }
+
+    .menu-cta { text-align: center; margin-top: 48px; }
+
+    /* ============ WHY US ============ */
+    .why { background: var(--bark); color: var(--cream); }
+    .why .section-head h2 { color: var(--cream); }
+    .why .section-head p { color: rgba(250,244,234,0.72); }
+    .why .eyebrow { color: var(--honey); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .why-item { text-align: center; padding: 10px; }
+    .why-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 20px;
+      background: rgba(224,164,88,0.16);
+      border: 1.5px solid rgba(224,164,88,0.4);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 1.7rem;
+    }
+    .why-item h3 { color: var(--cream); font-size: 1.3rem; margin-bottom: 10px; }
+    .why-item p { color: rgba(250,244,234,0.72); font-size: 0.98rem; }
+
+    /* ============ TESTIMONIALS ============ */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .testi-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      box-shadow: var(--shadow-soft);
+    }
+    .testi-card .stars { margin-bottom: 14px; display: block; }
+    .testi-card blockquote { font-size: 1.05rem; color: var(--ink); margin-bottom: 22px; font-family: 'Fraunces', serif; }
+    .testi-person { display: flex; align-items: center; gap: 12px; }
+    .testi-person img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+    .testi-person strong { display: block; font-size: 0.95rem; }
+    .testi-person span { font-size: 0.85rem; color: var(--bark-soft); }
+
+    /* ============ BOOKING / CTA ============ */
+    .booking { background: var(--cream-deep); }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; }
+    .booking-media { border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); position: relative; }
+    .booking-media img { width: 100%; height: 100%; object-fit: cover; }
+    .booking-info {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      background: rgba(250,244,234,0.95);
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+    .booking-info strong { font-family: 'Fraunces', serif; display:block; margin-bottom: 4px; }
+    .booking-info span { font-size: 0.9rem; color: var(--bark-soft); }
+
+    .form-card { background: #fff; border-radius: 22px; padding: 40px; box-shadow: var(--shadow-soft); }
+    .form-card h2 { font-size: 2rem; margin-bottom: 8px; }
+    .form-card > p { color: var(--bark-soft); margin-bottom: 26px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bark-soft); margin-bottom: 7px; }
+    .field input, .field select {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid rgba(58,44,34,0.18);
+      border-radius: 11px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--cream);
+      color: var(--ink);
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus, .field select:focus {
+      outline: none;
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(200,98,63,0.14);
+    }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-card .btn { width: 100%; justify-content: center; margin-top: 8px; font-size: 1.05rem; padding: 16px; }
+    .form-note { text-align: center; font-size: 0.85rem; color: var(--bark-soft); margin-top: 14px; }
+    .form-success {
+      display: none;
+      background: rgba(122,139,111,0.14);
+      border: 1.5px solid var(--sage);
+      color: var(--bark);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    /* ============ NEWSLETTER ============ */
+    .news {
+      background: var(--terracotta);
+      color: #fff;
+      text-align: center;
+    }
+    .news h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 14px; }
+    .news p { color: rgba(255,255,255,0.9); max-width: 34em; margin: 0 auto 28px; font-size: 1.05rem; }
+    .news-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }
+    .news-form input {
+      flex: 1; min-width: 220px;
+      padding: 15px 18px;
+      border: none; border-radius: 999px;
+      font-family: inherit; font-size: 1rem;
+    }
+    .news-form input:focus { outline: 3px solid rgba(255,255,255,0.4); }
+    .news-form .btn { background: var(--bark); }
+    .news-form .btn:hover { background: var(--ink); }
+
+    /* ============ FOOTER ============ */
+    footer.site {
+      background: var(--bark);
+      color: rgba(250,244,234,0.8);
+      padding: 64px 0 30px;
+    }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+    footer.site .logo { color: var(--cream); margin-bottom: 16px; }
+    footer.site h4 { color: var(--cream); font-family: 'Fraunces', serif; font-size: 1.1rem; margin-bottom: 16px; }
+    footer.site a, footer.site p { color: rgba(250,244,234,0.72); font-size: 0.95rem; display: block; margin-bottom: 9px; }
+    footer.site a:hover { color: var(--honey); }
+    .foot-bottom {
+      border-top: 1px solid rgba(250,244,234,0.14);
+      padding-top: 22px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 0.88rem; color: rgba(250,244,234,0.6);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 0; }
+      .hero-media { aspect-ratio: 16/11; }
+      .story-grid, .booking-grid { grid-template-columns: 1fr; gap: 40px; }
+      .menu-grid, .why-grid, .testi-grid { grid-template-columns: 1fr; }
+      .nav-inner { position: relative; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: var(--cream); border-bottom: 1px solid rgba(58,44,34,0.1);
+        padding: 0 24px; box-shadow: var(--shadow-soft);
+        max-height: 0; overflow: hidden; opacity: 0; pointer-events: none;
+        transition: max-height 0.32s ease, opacity 0.2s ease, padding 0.32s ease;
+      }
+      header.nav.open .nav-links { max-height: 420px; opacity: 1; pointer-events: auto; padding: 8px 24px 20px; }
+      .nav-links a.link { padding: 15px 4px; border-bottom: 1px solid rgba(58,44,34,0.08); font-size: 1.05rem; }
+      .nav-links a.btn { margin-top: 16px; justify-content: center; }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .booking-media { aspect-ratio: 16/11; }
+    }
+    @media (max-width: 540px) {
+      .field-row { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="logo"><span class="logo-mark">☕</span> Hearth &amp; Honey</a>
+      <nav class="nav-links">
+        <a class="link" href="#story">Our Story</a>
+        <a class="link" href="menu.html">Menu</a>
+        <a class="link" href="#why">Why Us</a>
+        <a class="link" href="#reviews">Reviews</a>
+        <a class="btn" href="#book">Reserve a Table</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero wrap">
+      <div class="hero-text">
+        <span class="eyebrow">Your cozy corner of the neighborhood</span>
+        <h1>Comfort food that <em>tastes like home</em> — made fresh, served warm.</h1>
+        <p class="lead">Slow-brewed coffee, from-scratch breakfasts, and a table that feels like it was saved just for you. At Hearth &amp; Honey, every plate is a little hug on a busy day.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn">Reserve Your Table →</a>
+          <a href="menu.html" class="btn btn-ghost">See the Menu</a>
+        </div>
+        <div class="hero-trust">
+          <span class="stars">★★★★★</span>
+          <span><strong>4.9 / 5</strong> from 1,200+ happy regulars · Loved by locals since 2014</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80" alt="Warm latte and pastry on a cozy wooden café table" loading="eager" />
+        <div class="hero-badge"><span class="dot"></span> Open now · Fresh bakes out at 8am</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ STRIP ============ -->
+  <div class="strip">
+    <span>Made from scratch daily</span>
+    <span>Locally roasted coffee</span>
+    <span>Free Wi-Fi &amp; comfy seats</span>
+    <span>Dog-friendly patio</span>
+  </div>
+
+  <!-- ============ STORY ============ -->
+  <section class="story" id="story">
+    <div class="wrap story-grid">
+      <div class="story-imgs">
+        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=600&q=80" alt="Café owner pouring coffee with a smile" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Cozy café interior with warm lighting and plants" loading="lazy" />
+      </div>
+      <div class="story-text">
+        <span class="eyebrow">Our Story</span>
+        <h2>We didn't set out to build a café. We set out to build a feeling.</h2>
+        <p>It started in our grandmother's kitchen — the smell of cinnamon, the hiss of a kettle, the way a good meal could turn a hard day around. Hearth &amp; Honey is our way of sharing that with you.</p>
+        <p>Everything on our menu is made by hand, in small batches, with ingredients from farms we actually know by name. No shortcuts, no fuss — just real food made by people who'd happily sit down and eat it with you.</p>
+        <p>Pull up a chair. Stay a while. You're always welcome here.</p>
+        <p class="signature">— Louise &amp; Mateo, your hosts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Heartwarming Favorites</span>
+        <h2>A menu built for slow mornings and good company</h2>
+        <p>These are the dishes our regulars keep coming back for — comforting, generous, and made fresh every single day.</p>
+      </div>
+      <div class="menu-grid">
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Stack of fluffy buttermilk pancakes with maple syrup and berries" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Most Loved</span>
+            <h3>Honey-Butter Buttermilk Stack</h3>
+            <p>Pillowy pancakes drenched in warm honey butter, topped with seasonal berries and a dusting of cinnamon. The breakfast people drive across town for.</p>
+            <div class="menu-price">$12</div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80" alt="Rustic avocado toast with poached egg on sourdough" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Farm Fresh</span>
+            <h3>Garden Sourdough &amp; Egg</h3>
+            <p>Thick-cut sourdough, smashed avocado, a soft-poached farm egg, and a drizzle of chili honey. Wholesome, hearty, and quietly addictive.</p>
+            <div class="menu-price">$11</div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Creamy latte with leaf latte art in a ceramic cup" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Roasted Local</span>
+            <h3>The Hearth Latte</h3>
+            <p>Our signature double-shot latte with a whisper of vanilla and raw honey. Slow-roasted beans from a family roastery just down the road.</p>
+            <div class="menu-price">$5</div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80" alt="Warm cinnamon rolls with icing fresh from the oven" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Baked Daily</span>
+            <h3>Grandma's Cinnamon Rolls</h3>
+            <p>Gooey, hand-rolled, and frosted while still warm. We bake them in small batches all morning — when they're gone, they're gone.</p>
+            <div class="menu-price">$6</div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80" alt="Bowl of hearty homemade soup with crusty bread" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Soul Food</span>
+            <h3>Soup of the Day &amp; Crust</h3>
+            <p>A rotating pot of something nourishing — simmered slow, served with warm crusty bread and good butter. Pure comfort in a bowl.</p>
+            <div class="menu-price">$9</div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80" alt="Toasted grilled cheese sandwich cut in half" loading="lazy" /></div>
+          <div class="menu-body">
+            <span class="menu-tag">Crowd Pleaser</span>
+            <h3>Three-Cheese Melt</h3>
+            <p>Sharp cheddar, gruyère, and mozzarella between buttery griddled sourdough. The grown-up grilled cheese your inner kid deserves.</p>
+            <div class="menu-price">$10</div>
+          </div>
+        </article>
+
+      </div>
+      <div class="menu-cta">
+        <a href="menu.html" class="btn">View the full menu →</a>
+        <a href="#book" class="btn btn-ghost" style="margin-left:12px">Reserve a table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why Neighbors Choose Us</span>
+        <h2>More than a café. A second living room.</h2>
+        <p>We sweat the small stuff so you can relax. Here's what keeps people coming back, morning after morning.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🍳</div>
+          <h3>Made From Scratch</h3>
+          <p>No freezers, no pre-mixes. Every dish is cooked to order with ingredients we'd serve our own family.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🤗</div>
+          <h3>Warm Welcome, Always</h3>
+          <p>We learn your name, your order, and your story. You're a regular here from the very first visit.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🌿</div>
+          <h3>Locally Sourced</h3>
+          <p>Coffee roasted down the road, produce from nearby farms. Good for you, good for the neighborhood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Loved by the neighborhood</span>
+        <h2>The kind of place you tell your friends about</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"I came in for a coffee and stayed three hours. It feels like someone's home — the good kind, where you never want to leave. Those cinnamon rolls are dangerous."</blockquote>
+          <div class="testi-person">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" alt="Portrait of Amara T." loading="lazy" />
+            <div><strong>Amara T.</strong><span>Regular since 2019</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Best breakfast in town, hands down. The pancakes are unreal and the staff actually remember how I take my latte. This is my happy place."</blockquote>
+          <div class="testi-person">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Portrait of James R." loading="lazy" />
+            <div><strong>James R.</strong><span>Local resident</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"We have our Sunday family brunch here every week. Warm, welcoming, and the food tastes like it's made with love. Couldn't recommend it more."</blockquote>
+          <div class="testi-person">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Portrait of Priya K." loading="lazy" />
+            <div><strong>Priya K.</strong><span>Sunday brunch regular</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING ============ -->
+  <section class="booking" id="book">
+    <div class="wrap booking-grid">
+      <div class="booking-media">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Cozy café seating area with warm sunlight and plants" loading="lazy" />
+        <div class="booking-info">
+          <strong>Hearth &amp; Honey Café</strong>
+          <span>84 Maple Lane, Riverside · Mon–Fri 7am–8pm · Sat–Sun 8am–9pm</span>
+        </div>
+      </div>
+      <div class="form-card">
+        <h2>Save your table</h2>
+        <p>Tell us when you're coming and we'll have your spot ready — warm drink optional but encouraged.</p>
+        <form id="bookingForm" novalidate>
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Jordan Smith" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 012-3456" required />
+            </div>
+            <div class="field">
+              <label for="guests">Guests</label>
+              <select id="guests" name="guests" required>
+                <option value="">Choose…</option>
+                <option>1 guest</option>
+                <option>2 guests</option>
+                <option>3–4 guests</option>
+                <option>5–6 guests</option>
+                <option>7+ guests</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" required />
+            </div>
+          </div>
+          <button type="submit" class="btn">Reserve My Table →</button>
+          <p class="form-note">No deposit needed · Free to cancel · We'll text to confirm</p>
+          <div class="form-success" id="formSuccess">🎉 Your table is requested! We'll text you a confirmation shortly. See you soon!</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="news">
+    <div class="wrap">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.85)">Join the family</span>
+      <h2>Get first dibs on specials &amp; a free pastry on us</h2>
+      <p>Join 5,000+ neighbors on our list. We'll send the occasional treat — new menu drops, cozy events, and a free bake to welcome you. No spam, just good things.</p>
+      <form class="news-form" id="newsForm" novalidate>
+        <input type="email" id="newsEmail" placeholder="your@email.com" aria-label="Email address" required />
+        <button type="submit" class="btn">Claim My Free Pastry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><span class="logo-mark">☕</span> Hearth &amp; Honey</div>
+          <p>A cozy neighborhood café serving heartwarming comfort food and slow-brewed coffee since 2014. Made from scratch, served with love.</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <p>84 Maple Lane<br/>Riverside, OR 97000</p>
+          <a href="#">Get Directions →</a>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon–Fri: 7am – 8pm</p>
+          <p>Sat–Sun: 8am – 9pm</p>
+        </div>
+        <div>
+          <h4>Get in Touch</h4>
+          <a href="tel:+15550147">(555) 012-0147</a>
+          <a href="mailto:hello@hearthandhoney.cafe">hello@hearthandhoney.cafe</a>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Hearth &amp; Honey Café. All rights reserved. · Designed by Wai Wai Phua</span>
+        <span>Made with warmth in Riverside · <a href="#" style="display:inline">Privacy</a> · <a href="#" style="display:inline">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile hamburger menu
+    (function () {
+      const nav = document.querySelector('header.nav');
+      const toggle = document.querySelector('.nav-toggle');
+      toggle.addEventListener('click', function () {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('.nav-links a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Booking form — friendly inline confirmation
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+      document.getElementById('formSuccess').style.display = 'block';
+      this.querySelector('button').textContent = 'Table Requested ✓';
+      this.reset();
+    });
+
+    // Newsletter form
+    document.getElementById('newsForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+      const btn = this.querySelector('button');
+      btn.textContent = 'Welcome to the family! 🎉';
+      this.querySelector('input').value = '';
+    });
+
+    // Set min date on booking to today
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+  </script>
+
+</body>
+</html>
