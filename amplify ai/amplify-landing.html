@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amplify AI — Create Content That Actually Converts</title>
+<meta name="description" content="Amplify AI helps growing businesses produce on-brand content 10x faster. Plan, write, and optimize blogs, emails, and social posts that rank on Google and turn readers into customers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0f172a;
+    --green-800:#1e293b;
+    --green-700:#334155;
+    --green-600:#4f46e5;
+    --green-500:#6366f1;
+    --green-400:#818cf8;
+    --lime:#4f46e5;
+    --lime-soft:#6366f1;
+    --accent-light:#a5b4fc;
+    --cream:#f5f6fa;
+    --cream-2:#e9ebf2;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --white:#ffffff;
+    --radius:22px;
+    --shadow:0 18px 50px -20px rgba(15,23,42,.3);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Playfair Display',serif;font-style:italic;font-weight:600}
+  .accent{color:var(--green-500)}
+  .accent-lime{color:var(--accent-light)}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    border:none;cursor:pointer;font-weight:600;font-size:15px;
+    padding:14px 26px;border-radius:999px;transition:.2s ease;
+    font-family:inherit;
+  }
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:var(--green-700);transform:translateY(-2px)}
+  .btn-lime{background:var(--lime);color:#fff}
+  .btn-lime:hover{background:var(--lime-soft);transform:translateY(-2px)}
+  .btn-light{background:#fff;color:var(--ink);border:1px solid rgba(0,0,0,.08)}
+  .btn-light:hover{background:var(--cream-2)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--green-600);background:rgba(46,158,99,.1);
+    padding:7px 16px;border-radius:999px;margin-bottom:20px;
+  }
+  .eyebrow.on-dark{color:var(--accent-light);background:rgba(99,102,241,.18)}
+  h1,h2,h3{line-height:1.12;letter-spacing:-.02em}
+  .section{padding:90px 0}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(244,241,233,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.05)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+  .logo-mark{width:32px;height:32px;border-radius:9px;background:var(--green-600);display:grid;place-items:center;color:var(--lime);font-weight:800}
+  .nav-links{display:flex;gap:32px;font-size:15px;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-cta .login{font-weight:600;font-size:15px}
+
+  /* HERO */
+  .hero{text-align:center;padding:70px 0 40px}
+  .hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;margin-bottom:22px}
+  .hero p.sub{font-size:19px;color:var(--muted);max-width:620px;margin:0 auto 32px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .trust-line{font-size:14px;color:var(--muted);display:flex;gap:18px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .trust-line .dot{width:5px;height:5px;border-radius:50%;background:var(--green-400)}
+  .hero-visual{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:18px;margin-top:56px;align-items:stretch}
+  .hv-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;background:#fff}
+  .hv-card img{width:100%;height:100%;object-fit:cover}
+  .hv-card.tall{min-height:340px}
+  .hv-stat{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);padding:12px 16px;border-radius:14px;box-shadow:0 8px 20px -10px rgba(0,0,0,.3)}
+  .hv-stat .num{font-size:26px;font-weight:800;line-height:1}
+  .hv-stat .lbl{font-size:12px;color:var(--muted);font-weight:500}
+  .hv-mid{background:var(--green-800);color:#fff;padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+  .hv-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:13px 16px;border-radius:13px;font-size:14.5px;font-weight:500}
+  .hv-check{width:22px;height:22px;border-radius:6px;background:var(--lime);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
+
+  /* GROWTH (dark) */
+  .dark{background:var(--green-900);color:#fff}
+  .growth h2{font-size:clamp(30px,4.5vw,46px);font-weight:800;margin-bottom:14px}
+  .growth .lead{color:rgba(255,255,255,.7);max-width:520px;font-size:17px}
+  .growth-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:14px}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 40px}
+  .pill{font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:9px 18px;border-radius:999px;display:flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit;transition:.2s}
+  .pill:hover{background:rgba(255,255,255,.12)}
+  .pill.active{background:var(--lime);color:#fff;border-color:var(--lime)}
+  .pill.active:hover{background:var(--lime-soft)}
+  .pill:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}
+  .growth-grid .g-card .pad h3,.growth-grid .g-card .pad p,#g-rows,#g-metric,#g-metric-lbl{transition:opacity .2s ease}
+  .growth-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+  .g-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden}
+  .g-card.media img{width:100%;height:230px;object-fit:cover}
+  .g-card .pad{padding:22px}
+  .g-card h3{font-size:18px;margin-bottom:6px}
+  .g-card .metric{font-size:40px;font-weight:800;color:var(--accent-light);margin:4px 0}
+  .g-sub{color:rgba(255,255,255,.6);font-size:14px}
+  .g-bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:20px}
+  .quote-card{background:var(--green-700);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+  .quote-card .q{font-size:17px;font-weight:500;margin-bottom:18px}
+  .quote-card .who{display:flex;align-items:center;gap:12px}
+  .quote-card .who img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  .quote-card .who .n{font-weight:700;font-size:14px}
+  .quote-card .who .r{font-size:12.5px;color:rgba(255,255,255,.6)}
+
+  /* FEATURES */
+  .features{text-align:center}
+  .features h2{font-size:clamp(30px,4.5vw,46px);font-weight:800;margin-bottom:14px}
+  .features .lead{color:var(--muted);max-width:560px;margin:0 auto 50px;font-size:17px}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:46px}
+  .feat-card{border-radius:var(--radius);overflow:hidden;text-align:left;min-height:260px;position:relative;box-shadow:var(--shadow)}
+  .feat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .feat-card .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.1),rgba(15,23,42,.88))}
+  .feat-card .veil.indigo{background:linear-gradient(180deg,rgba(79,70,229,.25),rgba(67,56,202,.92))}
+  .feat-card .ftxt{position:absolute;bottom:0;left:0;padding:26px;color:#fff}
+  .feat-card .ftxt h3{font-size:21px;margin-bottom:6px}
+  .feat-card .ftxt p{font-size:14.5px;color:rgba(255,255,255,.8);max-width:90%}
+  .feat-card.solid{background:var(--green-800);color:#fff}
+  .feat-card.lime{background:linear-gradient(150deg,var(--green-600),#6d28d9)}
+  .feat-card.lime .ftxt{color:#fff}
+  .feat-card.lime .ftxt p{color:rgba(255,255,255,.82)}
+  .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px;text-align:left;border-top:1px solid rgba(0,0,0,.08);padding-top:40px}
+  .mini h4{font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+  .mini .ico{width:30px;height:30px;border-radius:8px;background:rgba(46,158,99,.12);color:var(--green-600);display:grid;place-items:center;font-size:15px}
+  .mini p{font-size:14px;color:var(--muted)}
+
+  /* TESTIMONIAL band */
+  .band{position:relative;background:linear-gradient(135deg,#1e1b4b,var(--green-900));color:#fff;text-align:center;overflow:hidden}
+  .band::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover;opacity:.14}
+  .band-inner{position:relative;padding:88px 0}
+  .avatars{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin-bottom:30px}
+  .avatars img{border-radius:18px;object-fit:cover;box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+  .avatars .a-sm{width:62px;height:62px}
+  .avatars .a-md{width:80px;height:88px}
+  .avatars .a-lg{width:104px;height:120px;border:3px solid var(--lime)}
+  .band-quote{font-size:clamp(22px,3.2vw,32px);font-weight:600;max-width:760px;margin:0 auto 8px;line-height:1.3}
+  .band .name{margin-top:22px;font-weight:700}
+  .band .role{font-size:14px;color:rgba(255,255,255,.7)}
+
+  /* PRICING */
+  .pricing{text-align:center}
+  .pricing .rated{font-size:clamp(28px,4vw,42px);font-weight:800}
+  .pricing .rated .serif{font-weight:600}
+  .pricing .stars{color:var(--green-500);font-size:20px;letter-spacing:3px;margin-bottom:8px}
+  .pricing .lead{color:var(--muted);max-width:480px;margin:10px auto 48px}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+  .price-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:var(--radius);padding:30px}
+  .price-card.featured{background:var(--green-900);color:#fff;border-color:var(--green-900);transform:scale(1.03);box-shadow:var(--shadow)}
+  .price-card .tier{font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .badge{font-size:11px;font-weight:700;background:var(--lime);color:#fff;padding:4px 11px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em}
+  .price-card .price{font-size:42px;font-weight:800;margin:16px 0 2px}
+  .price-card .price span{font-size:16px;font-weight:500;color:var(--muted)}
+  .price-card.featured .price span{color:rgba(255,255,255,.6)}
+  .price-card .desc{font-size:14px;color:var(--muted);min-height:42px}
+  .price-card.featured .desc{color:rgba(255,255,255,.7)}
+  .price-card .btn{width:100%;justify-content:center;margin:22px 0}
+  .price-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .price-list li{font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
+  .price-list li .tick{color:var(--green-500);font-weight:800;flex-shrink:0}
+  .price-card.featured .price-list li .tick{color:var(--accent-light)}
+
+  /* LOGOS */
+  .logos{text-align:center;padding:40px 0 10px}
+  .logos p{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:26px}
+  .logo-row{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;opacity:.55}
+  .logo-row span{font-weight:800;font-size:21px;color:var(--green-800);display:flex;align-items:center;gap:8px}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto}
+  .faq h2{text-align:center;font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:40px}
+  .faq-item{border-bottom:1px solid rgba(0,0,0,.1)}
+  .faq-q{width:100%;background:none;border:none;cursor:pointer;font-family:inherit;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:22px 4px;font-size:17px;font-weight:600;text-align:left;color:var(--ink)}
+  .faq-q .ic{font-size:22px;color:var(--green-500);transition:.25s;flex-shrink:0}
+  .faq-item.open .faq-q .ic{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--muted);font-size:15.5px}
+  .faq-a p{padding:0 4px 22px}
+
+  /* CTA */
+  .cta-band{position:relative;background:var(--green-900);color:#fff;text-align:center;overflow:hidden}
+  .cta-band .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(129,140,248,.3) 1.5px,transparent 1.5px);background-size:26px 26px;opacity:.4}
+  .cta-inner{position:relative;padding:96px 0}
+  .cta-inner h2{font-size:clamp(30px,4.5vw,50px);font-weight:800;margin-bottom:16px}
+  .cta-inner p{color:rgba(255,255,255,.75);max-width:480px;margin:0 auto 28px;font-size:17px}
+  .cta-pic{max-width:560px;margin:36px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .cta-pic img{width:100%;height:200px;object-fit:cover}
+
+  /* FOOTER */
+  footer{background:var(--green-900);color:rgba(255,255,255,.7);padding:60px 0 30px;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:40px}
+  .foot-grid h5{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+  .foot-grid a{display:block;font-size:14.5px;margin-bottom:10px}
+  .foot-grid a:hover{color:var(--lime)}
+  .foot-brand .logo{color:#fff;margin-bottom:14px}
+  .foot-brand p{font-size:14px;max-width:260px}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;font-size:13.5px;flex-wrap:wrap;gap:10px}
+  .foot-bottom .credit{color:#fff;font-weight:600}
+  .foot-bottom .credit .accent{color:var(--accent-light)}
+
+  /* EMAIL CAPTURE FORM */
+  .capture{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+  .capture input{
+    flex:1;min-width:200px;border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:15px;
+    padding:15px 20px;border-radius:999px;outline:none;transition:.2s;
+  }
+  .capture input::placeholder{color:rgba(255,255,255,.55)}
+  .capture input:focus{border-color:var(--accent-light);background:rgba(255,255,255,.12)}
+  .capture .btn{flex-shrink:0}
+  .form-note{font-size:13px;color:rgba(255,255,255,.55);margin-top:14px}
+  .form-success{
+    display:none;max-width:480px;margin:0 auto;background:rgba(129,140,248,.15);
+    border:1px solid rgba(129,140,248,.4);color:#fff;font-weight:500;
+    padding:16px 24px;border-radius:16px;font-size:15.5px;
+  }
+  .form-success.show{display:block}
+
+  /* STICKY MOBILE CTA BAR */
+  .mobile-cta{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+    border-top:1px solid rgba(0,0,0,.08);box-shadow:0 -8px 24px -12px rgba(15,23,42,.25);
+    padding:12px 18px;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .mobile-cta .mc-text{line-height:1.25}
+  .mobile-cta .mc-text strong{display:block;font-size:14.5px;font-weight:700}
+  .mobile-cta .mc-text span{font-size:12.5px;color:var(--muted)}
+  .mobile-cta .btn{padding:12px 22px;font-size:14.5px;white-space:nowrap}
+
+  @media(max-width:880px){
+    .hero-visual{grid-template-columns:1fr}
+    .growth-grid,.g-bottom,.feat-grid,.price-grid,.mini-grid,.foot-grid{grid-template-columns:1fr}
+    .price-card.featured{transform:none}
+    .nav-links{display:none}
+    .mini-grid{gap:28px}
+    .mobile-cta{display:flex}
+    body{padding-bottom:74px}
+    footer{margin-bottom:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#"><span class="logo-mark">A</span>Amplify<span class="accent">AI</span></a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="#">Log in</a>
+      <a class="btn btn-dark" href="#pricing">Start free</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="wrap hero">
+  <span class="eyebrow">✦ AI content engine for growing teams</span>
+  <h1>Create Content That<br>Actually <span class="serif accent">Converts</span></h1>
+  <p class="sub">Amplify AI plans, writes, and optimizes every blog, email, and social post your brand needs — on-brand, SEO-ready, and shipped 10x faster than your team can do alone.</p>
+  <div class="hero-cta">
+    <a class="btn btn-lime" href="#pricing">Start free — no card needed</a>
+    <a class="btn btn-light" href="#features">See how it works →</a>
+  </div>
+  <p class="trust-line">
+    <span>★★★★★ 4.9/5 from 700+ marketers</span>
+    <span class="dot"></span>
+    <span>Free 14-day trial</span>
+    <span class="dot"></span>
+    <span>Cancel anytime</span>
+  </p>
+
+  <div class="hero-visual">
+    <div class="hv-card tall">
+      <div class="hv-stat"><div class="num">+312%</div><div class="lbl">organic traffic in 90 days</div></div>
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Marketing team collaborating">
+    </div>
+    <div class="hv-card hv-mid">
+      <div style="font-weight:700;font-size:15px;margin-bottom:4px">Your content, on autopilot</div>
+      <div class="hv-row"><span class="hv-check">✓</span> Generate a month of posts in minutes</div>
+      <div class="hv-row"><span class="hv-check">✓</span> SEO keywords baked into every draft</div>
+      <div class="hv-row"><span class="hv-check">✓</span> Stays perfectly on-brand, every time</div>
+      <div class="hv-row"><span class="hv-check">✓</span> Repurpose one idea into 10 channels</div>
+    </div>
+    <div class="hv-card tall">
+      <div class="hv-stat"><div class="num">8.5 hrs</div><div class="lbl">saved per week, per writer</div></div>
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Analytics dashboard">
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH / RESULTS -->
+<section class="dark section" id="results">
+  <div class="wrap growth">
+    <div class="growth-head">
+      <div>
+        <span class="eyebrow on-dark">Proven results</span>
+        <h2>Growth You Can<br>Actually <span class="serif accent-lime">Measure</span></h2>
+      </div>
+      <p class="lead">See Amplify help businesses publish more, rank higher, and turn readers into revenue — without hiring a bigger team.</p>
+    </div>
+
+    <div class="pills" role="tablist">
+      <button type="button" class="pill active" data-tab="velocity" role="tab">● Content velocity</button>
+      <button type="button" class="pill" data-tab="organic" role="tab">↗ Organic growth</button>
+      <button type="button" class="pill" data-tab="time" role="tab">◷ Time saved</button>
+    </div>
+
+    <div class="growth-grid">
+      <div class="g-card media">
+        <img id="g-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Growth analytics chart" style="transition:opacity .25s ease">
+        <div class="pad">
+          <h3 id="g-lead-title">From blank page to published in under 10 minutes</h3>
+          <p class="g-sub" id="g-lead-text">Teams using Amplify ship 4x more content per month while keeping a consistent brand voice across every channel.</p>
+        </div>
+      </div>
+      <div class="g-card">
+        <div class="pad">
+          <h3 id="g-stat-title">Summer Campaign '26</h3>
+          <p class="g-sub" id="g-stat-sub" style="margin-bottom:18px">One brief. Twelve assets. Zero overtime.</p>
+          <div id="g-rows">
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)"><span class="g-sub">Emails generated</span><strong>48</strong></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)"><span class="g-sub">Avg. open rate</span><strong class="accent-lime">42%</strong></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)"><span class="g-sub">Click-through</span><strong class="accent-lime">9.1%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-bottom">
+      <div class="g-card">
+        <div class="pad" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+          <div>
+            <h3 id="g-bottom-title">Automating success with Amplify</h3>
+            <p class="g-sub" id="g-bottom-text" style="max-width:340px">By streamlining content and automating delivery, lean teams now produce enterprise-level output — and the results compound every month.</p>
+          </div>
+          <div style="text-align:right">
+            <div class="metric" id="g-metric">7x</div>
+            <div class="g-sub" id="g-metric-lbl">faster than before</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <p class="q">"We replaced three freelancers and a content tool with Amplify. Our blog traffic tripled in a quarter."</p>
+        <div class="who">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="John Miller">
+          <div><div class="n">John Miller</div><div class="r">Head of Marketing, Northbeam</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="wrap section features" id="features">
+  <span class="eyebrow">✦ Everything in one workspace</span>
+  <h2>Powerful Content <span class="serif accent">Tools</span><br>Built for Real Marketers</h2>
+  <p class="lead">From the first idea to the final published post, Amplify gives your team an AI co-writer that knows your brand, your audience, and what Google rewards.</p>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="AI writing assistant">
+      <div class="veil"></div>
+      <div class="ftxt">
+        <h3>AI Content Studio</h3>
+        <p>Turn a one-line idea into a finished, on-brand blog, ad, or landing page draft in seconds.</p>
+      </div>
+    </div>
+    <div class="feat-card">
+      <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=900&q=80" alt="SEO analytics dashboard">
+      <div class="veil"></div>
+      <div class="ftxt">
+        <span class="badge" style="margin-bottom:14px;display:inline-block">SEO built in</span>
+        <h3>Rank-Ready Optimization</h3>
+        <p>Every draft comes scored for SEO, with the right keywords, headings, and meta copy to climb search results.</p>
+      </div>
+    </div>
+    <div class="feat-card">
+      <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=900&q=80" alt="Content repurposed across social channels">
+      <div class="veil indigo"></div>
+      <div class="ftxt">
+        <h3>Repurpose in One Click</h3>
+        <p>Spin a single blog into a newsletter, a LinkedIn post, an X thread, and 5 captions — instantly.</p>
+      </div>
+    </div>
+    <div class="feat-card">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="Team collaborating in real time">
+      <div class="veil"></div>
+      <div class="ftxt">
+        <h3>Collaborate in Real Time</h3>
+        <p>Brief, review, and approve content together — your whole team in one shared workflow.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-grid">
+    <div class="mini"><h4><span class="ico">✍</span> On-Brand Voice</h4><p>Train Amplify once on your tone and it writes like your best copywriter — every single time.</p></div>
+    <div class="mini"><h4><span class="ico">◷</span> Content Calendar</h4><p>Plan, schedule, and auto-publish a full month of content from a single dashboard.</p></div>
+    <div class="mini"><h4><span class="ico">⚡</span> 60+ Templates</h4><p>Proven, high-converting frameworks for emails, ads, blogs, and product pages.</p></div>
+    <div class="mini"><h4><span class="ico">🔍</span> Keyword Research</h4><p>Discover what your audience is searching for and target it before competitors do.</p></div>
+    <div class="mini"><h4><span class="ico">📊</span> Performance Insights</h4><p>See which content drives traffic and leads, then double down on what works.</p></div>
+    <div class="mini"><h4><span class="ico">🌐</span> 30+ Languages</h4><p>Reach new markets with fluent, localized content that still sounds like you.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL BAND -->
+<section class="band">
+  <div class="wrap band-inner">
+    <span class="eyebrow on-dark">Loved by content teams</span>
+    <div class="avatars">
+      <img class="a-sm" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=120&q=80" alt="">
+      <img class="a-md" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="">
+      <img class="a-lg" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80" alt="Daniel Carter">
+      <img class="a-md" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="">
+      <img class="a-sm" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" alt="">
+    </div>
+    <p class="band-quote">"What I love most about Amplify is how it just <em>gets</em> our brand. It's like having a senior content team that never sleeps — and our output has never looked better."</p>
+    <div class="name">Daniel Carter</div>
+    <div class="role">Growth Lead, Lumen Studio</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="wrap section pricing" id="pricing">
+  <div class="stars">★★★★★</div>
+  <div class="rated">Rated 4.9 <span class="serif">from 700 reviews</span></div>
+  <p class="lead">Start free. Upgrade when you're ready to scale. No contracts, no surprises.</p>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="tier">Starter</div>
+      <div class="price">$0<span>/month</span></div>
+      <p class="desc">For solo creators testing the waters and exploring what AI content can do.</p>
+      <a class="btn btn-light" href="#">Start for free</a>
+      <ul class="price-list">
+        <li><span class="tick">✓</span> 15,000 AI words / month</li>
+        <li><span class="tick">✓</span> 25+ content templates</li>
+        <li><span class="tick">✓</span> Basic SEO suggestions</li>
+        <li><span class="tick">✓</span> 1 brand voice</li>
+        <li><span class="tick">✓</span> Email support</li>
+      </ul>
+    </div>
+
+    <div class="price-card featured">
+      <div class="tier">Professional <span class="badge">Most popular</span></div>
+      <div class="price">$49<span>/month</span></div>
+      <p class="desc">For growing teams ready to publish more, rank higher, and convert better.</p>
+      <a class="btn btn-lime" href="#">Start 14-day trial</a>
+      <ul class="price-list">
+        <li><span class="tick">✓</span> Unlimited AI words</li>
+        <li><span class="tick">✓</span> Advanced SEO &amp; keyword tools</li>
+        <li><span class="tick">✓</span> Full content calendar &amp; scheduling</li>
+        <li><span class="tick">✓</span> 5 brand voices &amp; team workspace</li>
+        <li><span class="tick">✓</span> Performance analytics</li>
+        <li><span class="tick">✓</span> Priority support</li>
+      </ul>
+    </div>
+
+    <div class="price-card">
+      <div class="tier">Enterprise</div>
+      <div class="price serif" style="font-size:34px">Custom</div>
+      <p class="desc">For organizations that need scale, security, and white-glove onboarding.</p>
+      <a class="btn btn-light" href="#">Talk to sales</a>
+      <ul class="price-list">
+        <li><span class="tick">✓</span> Everything in Professional</li>
+        <li><span class="tick">✓</span> Unlimited brand voices &amp; seats</li>
+        <li><span class="tick">✓</span> Custom AI model training</li>
+        <li><span class="tick">✓</span> SSO &amp; advanced security</li>
+        <li><span class="tick">✓</span> Dedicated success manager</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="wrap logos">
+  <p>Trusted by 2,000+ modern marketing teams worldwide</p>
+  <div class="logo-row">
+    <span>◆ Northbeam</span>
+    <span>✦ Lumen</span>
+    <span>● Brightly</span>
+    <span>▲ Vela</span>
+    <span>◇ Quanta</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="wrap section faq" id="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-q">Is there a free plan available? <span class="ic">+</span></button>
+    <div class="faq-a"><p>Yes. Our Starter plan is free forever and includes 15,000 AI-generated words a month, 25+ templates, and a brand voice — no credit card required. It's the easiest way to see results before you ever pay.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Do I need a credit card to sign up? <span class="ic">+</span></button>
+    <div class="faq-a"><p>Not at all. You can create an account and start generating content in under two minutes. You'll only add payment details if and when you decide to upgrade to a paid plan.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Will the content actually sound like my brand? <span class="ic">+</span></button>
+    <div class="faq-a"><p>Yes — that's the whole point. Train Amplify once on your existing content, tone, and style, and every draft comes out in your voice. Most teams say it sounds like their best in-house writer, only faster.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Can I cancel or change my plan anytime? <span class="ic">+</span></button>
+    <div class="faq-a"><p>Absolutely. There are no contracts or lock-ins. Upgrade, downgrade, or cancel from your dashboard whenever you like — changes take effect immediately.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Does Amplify help my content rank on Google? <span class="ic">+</span></button>
+    <div class="faq-a"><p>It's built for it. Every draft is scored for SEO and comes with the right keywords, headings, and meta descriptions. Teams using Amplify typically see organic traffic climb within the first 90 days.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Is my data secure? <span class="ic">+</span></button>
+    <div class="faq-a"><p>Your content is encrypted in transit and at rest, never used to train public models, and stays 100% yours. Enterprise plans add SSO, advanced access controls, and compliance support.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="dots"></div>
+  <div class="wrap cta-inner">
+    <span class="eyebrow on-dark">Ready when you are</span>
+    <h2>Boost Your Content,<br>One Click at a <span class="serif accent-lime">Time</span></h2>
+    <p>Join thousands of teams creating better content in less time. Drop your email and start free today — your next great post is one prompt away.</p>
+    <form class="capture" id="capture-form" novalidate>
+      <input type="email" id="capture-email" placeholder="Enter your work email" aria-label="Work email" required>
+      <button type="submit" class="btn btn-lime">Start free →</button>
+    </form>
+    <div class="form-success" id="capture-success">✓ You're in! Check your inbox to activate your free Amplify AI workspace.</div>
+    <p class="form-note">No credit card required • Free 14-day trial • Cancel anytime</p>
+    <div class="cta-pic">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80" alt="Marketing team celebrating results">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#"><span class="logo-mark">A</span>Amplify<span class="accent-lime">AI</span></a>
+        <p>The AI content engine that helps growing businesses create, optimize, and scale content that converts.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#results">Results</a>
+        <a href="#">Templates</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <a href="#faq">FAQ</a>
+        <a href="#">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Amplify AI. All rights reserved.</span>
+      <span class="credit">Designed by <span class="accent">Wai Wai Phua</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="mobile-cta">
+  <div class="mc-text">
+    <strong>Start creating for free</strong>
+    <span>No card • 14-day trial</span>
+  </div>
+  <a class="btn btn-lime" href="#pricing">Get started</a>
+</div>
+
+<script>
+  // Email capture
+  var capForm = document.getElementById('capture-form');
+  if(capForm){
+    capForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var input = document.getElementById('capture-email');
+      var val = input.value.trim();
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      if(!ok){
+        input.style.borderColor = '#f87171';
+        input.focus();
+        return;
+      }
+      capForm.style.display = 'none';
+      document.getElementById('capture-success').classList.add('show');
+    });
+    document.getElementById('capture-email').addEventListener('input', function(){
+      this.style.borderColor = '';
+    });
+  }
+
+  // Proven-results tabs
+  var tabData = {
+    velocity:{
+      leadTitle:"From blank page to published in under 10 minutes",
+      leadText:"Teams using Amplify ship 4x more content per month while keeping a consistent brand voice across every channel.",
+      statTitle:"Summer Campaign '26",
+      statSub:"One brief. Twelve assets. Zero overtime.",
+      rows:[["Emails generated","48"],["Avg. open rate","42%"],["Click-through","9.1%"]],
+      bottomTitle:"Automating success with Amplify",
+      bottomText:"By streamlining content and automating delivery, lean teams now produce enterprise-level output — and the results compound every month.",
+      metric:"7x", metricLbl:"faster than before",
+      img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"
+    },
+    organic:{
+      leadTitle:"Content engineered to climb the rankings",
+      leadText:"Every draft ships SEO-ready, helping teams grow organic traffic by triple digits within their first 90 days.",
+      statTitle:"Search Performance",
+      statSub:"Keywords working for you around the clock.",
+      rows:[["Keywords ranked","1,240"],["Avg. position gain","+18"],["Organic traffic","+312%"]],
+      bottomTitle:"Growth that compounds with every post",
+      bottomText:"More indexed pages mean more entry points. Amplify customers see their organic reach snowball month after month.",
+      metric:"3.1x", metricLbl:"more organic traffic",
+      img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80"
+    },
+    time:{
+      leadTitle:"Give every writer back a full day each week",
+      leadText:"By automating first drafts and one-click repurposing, lean teams reclaim hours of busywork without sacrificing quality.",
+      statTitle:"Time Reclaimed",
+      statSub:"Less copy-pasting, more strategy.",
+      rows:[["Hours saved / writer","8.5"],["Faster first drafts","92%"],["Tasks automated","60+"]],
+      bottomTitle:"Do enterprise-level output with a lean team",
+      bottomText:"Stop trading headcount for output. Amplify lets a small team produce what used to take an agency.",
+      metric:"8.5h", metricLbl:"saved per week",
+      img:"https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80"
+    }
+  };
+  function renderRows(rows){
+    return rows.map(function(r){
+      return '<div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)"><span class="g-sub">'+r[0]+'</span><strong class="accent-lime">'+r[1]+'</strong></div>';
+    }).join('');
+  }
+  document.querySelectorAll('.pill').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      document.querySelectorAll('.pill').forEach(function(p){p.classList.remove('active')});
+      pill.classList.add('active');
+      var d = tabData[pill.getAttribute('data-tab')];
+      if(!d) return;
+      document.getElementById('g-lead-title').textContent = d.leadTitle;
+      document.getElementById('g-lead-text').textContent = d.leadText;
+      document.getElementById('g-stat-title').textContent = d.statTitle;
+      document.getElementById('g-stat-sub').textContent = d.statSub;
+      document.getElementById('g-rows').innerHTML = renderRows(d.rows);
+      document.getElementById('g-bottom-title').textContent = d.bottomTitle;
+      document.getElementById('g-bottom-text').textContent = d.bottomText;
+      document.getElementById('g-metric').textContent = d.metric;
+      document.getElementById('g-metric-lbl').textContent = d.metricLbl;
+      var gImg = document.getElementById('g-img');
+      if(d.img && gImg.getAttribute('src') !== d.img){
+        gImg.style.opacity = '0';
+        var next = new Image();
+        next.onload = function(){ gImg.src = d.img; gImg.style.opacity = '1'; };
+        next.src = d.img;
+      }
+    });
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      var ans = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
