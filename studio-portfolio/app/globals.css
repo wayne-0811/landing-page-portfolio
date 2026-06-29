@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                                      */
+/*  Single source of truth. Every component references these tokens    */
+/*  through Tailwind utilities (bg-surface, text-muted, border-line,   */
+/*  text-accent, rounded-card, …) — never a hardcoded hex value.       */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Color: monochrome base + one warm accent */
+  --color-base: #0e0e0e; /* page background          */
+  --color-surface: #1a1a1a; /* cards                    */
+  --color-elevated: #222222; /* card hover / raised      */
+  --color-line: #2a2a2a; /* borders                  */
+  --color-ink: #f4f4f4; /* text primary             */
+  --color-muted: #8c8c8c; /* text muted               */
+  --color-accent: #ff4d2e; /* warm coral-orange        */
+  --color-accent-hover: #e63e20;
+
+  /* Radii */
+  --radius-card: 14px;
+  --radius-button: 10px;
+  /* `rounded-pill` -> full */
+  --radius-pill: 9999px;
+
+  /* Fonts — map Tailwind's font-* utilities onto the next/font CSS
+     variables (--ff-display / --ff-body) set on <html> in layout.tsx. */
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+
+  /* Fluid display sizes (mobile-first, scale up with viewport) */
+  --text-hero: clamp(3.25rem, 1.5rem + 9vw, 7.5rem); /* ~52 -> 120px */
+  --text-hero--line-height: 0.95;
+  --text-display: clamp(2.75rem, 1.6rem + 5.8vw, 4.5rem); /* ~44 -> 72px */
+  --text-display--line-height: 1;
+
+  /* Section rhythm */
+  --spacing-section: clamp(5rem, 3rem + 8vw, 9rem);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base layer                                                         */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* offset anchored sections so the sticky nav doesn't cover headings */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Visible, consistent focus ring across the whole site */
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-base);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable composite utilities                                       */
+/* ------------------------------------------------------------------ */
+@utility eyebrow {
+  display: inline-block;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+}
+
+/* Infinite marquee track */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.group\/marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Scroll-reveal: initial hidden state, cleared when .is-visible is set
+   by the IntersectionObserver in <Reveal>. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion: disable transforms, marquee, smooth scroll        */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+}
