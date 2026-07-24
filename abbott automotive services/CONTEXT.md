@@ -10,7 +10,13 @@ Source of truth for this project. Every build prompt references this file.
 - **Business:** Abbott Automotive Services
 - **Owner:** Oliver Abbott — **goes by "Ollie"** (named in a customer review). Use Ollie.
 - **Address:** Unit 34, Winnington Business Park, Northwich, CW8 4DL
-- **Phone:** 07856 461584 (mobile — tap-to-call and WhatsApp both work)
+- **Phone:** 07856 461584 (mobile — tap-to-call and WhatsApp both work; WhatsApp
+  confirmed on the same number via Facebook Contact info)
+- **Email:** abbottautomotiveservices@gmail.com (confirmed — Facebook Contact info)
+- **Messenger:** Abbott Automotive Services (Facebook Messenger — additional contact channel)
+- **Facebook self-description (his words):** "Vehicle Service, Maintenance and Repair
+  centre in Winnington business park" · "MOT's also available" · listed category
+  "Vehicle repair shop"
 - **Hours (confirmed — Facebook, updated ~6 months ago):**
   - Monday 08:30 – 17:00
   - Tuesday 08:30 – 17:00
@@ -103,7 +109,9 @@ Google description.
 
 **MOT nuance [VERIFY]:** he advertises MOTs, so it goes on the page — but small garages
 often arrange MOTs at a partner test centre rather than testing on site (Road Two
-Automotive openly does exactly this). Worth knowing before he's asked on the phone;
+Automotive openly does exactly this). His Facebook bio phrases it as "MOT's *also*
+available" — the "also" is a soft hint it may be an arranged/add-on service rather than
+on-site testing, but that's not conclusive. Worth knowing before he's asked on the phone;
 doesn't block the mockup.
 
 - **Area:** Northwich and surrounding Cheshire **[VERIFY radius — tied to collection]**
@@ -201,9 +209,12 @@ Tracking the `[VERIFY]` items and how each was resolved.
 | Item | Status | Source | Date |
 |---|---|---|---|
 | Opening hours (full week) | **Confirmed** — Mon–Fri 08:30–17:00, Sat & Sun closed | Facebook Hours panel (screenshot; "updated ~6 months ago") | 2026-07-24 |
+| Email address | **Confirmed** — abbottautomotiveservices@gmail.com | Facebook Contact info (screenshot) | 2026-07-24 |
+| WhatsApp on mobile number | **Confirmed** — +44 7856 461584 | Facebook Contact info (screenshot) | 2026-07-24 |
+| Facebook self-description / category | **Confirmed** — "Vehicle Service, Maintenance and Repair centre…"; cat. "Vehicle repair shop" | Facebook profile header + About (screenshot) | 2026-07-24 |
+| MOT: on-site vs partner test centre | Open — bio says "MOT's *also* available" (soft hint, not conclusive) | Facebook bio (screenshot) | 2026-07-24 |
 | Free collection asterisk conditions (radius / min spend) | Open | — | — |
 | Voice / Instagram caption samples | Open | — | — |
-| MOT: on-site vs partner test centre | Open | — | — |
 | Service-area radius (tied to collection) | Open | — | — |
 | Accreditations (GGS, RAC/AA, IMI) | Open | — | — |
 | Years trading | Open | — | — |
