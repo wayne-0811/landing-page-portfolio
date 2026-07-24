@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abbott Automotive Services — Northwich garage that comes to you</title>
+<meta name="description" content="Independent garage on Winnington Business Park, Northwich. Servicing, MOTs, diagnostics, wheel alignment and oil changes — with free local collection and drop-off. Call Ollie on 07856 461584.">
+
+<!-- Barlow Condensed (display) + IBM Plex Sans (technical body). One request, preconnected. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --navy:#002C49;
+    --navy-mid:#093454;
+    --navy-deep:#001d31;
+    --red:#D80F22;
+    --red-dark:#b60c1c;
+    --white:#FFFFFF;
+    --line:#D8DCE0;
+    --ink:#12222e;
+    --muted:#5a6b76;
+    --paper:#f4f6f7;
+    --plate-yellow:#f9d616;
+
+    --display:"Barlow Condensed",Arial,sans-serif;
+    --body:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+    --wrap:1120px;
+    --gutter:clamp(20px,5vw,56px);
+    --radius:4px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-underline-offset:3px;
+  }
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.02;margin:0;text-transform:uppercase;letter-spacing:.01em}
+  p{margin:0 0 1em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+
+  /* section label: technical numbering motif */
+  .eyebrow{
+    font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--red);margin:0 0 .9rem;display:flex;align-items:center;gap:.7rem;
+  }
+  .eyebrow::before{content:attr(data-n);color:var(--navy);opacity:.45}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    --bg:var(--red);--fg:#fff;
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.03em;text-transform:uppercase;
+    background:var(--bg);color:var(--fg);text-decoration:none;
+    padding:.72rem 1.35rem;border:2px solid var(--bg);border-radius:var(--radius);cursor:pointer;
+    transition:transform .12s ease,background .12s ease,border-color .12s ease;
+  }
+  .btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-1px)}
+  .btn--ghost{--bg:transparent;--fg:var(--navy);border-color:var(--navy)}
+  .btn--ghost:hover{background:var(--navy);--fg:#fff}
+  .btn--wa{--bg:#1faf54;border-color:#1faf54}
+  .btn--wa:hover{background:#179144;border-color:#179144}
+  @media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+  :where(a,button,input,summary):focus-visible{
+    outline:3px solid var(--red);outline-offset:2px;border-radius:2px;
+  }
+
+  .skip{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:.7rem 1rem;z-index:200}
+  .skip:focus{left:8px;top:8px}
+
+  /* ---------- Header ---------- */
+  .site-head{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--line)}
+  .site-head::before{content:"";display:block;height:3px;background:var(--red)}
+  .head-in{display:flex;align-items:center;gap:1rem;min-height:70px}
+  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto}
+  .brand svg{flex:none}
+  .wordmark{display:flex;flex-direction:column;line-height:.86}
+  .wordmark b{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:.03em;color:var(--navy)}
+  .wordmark>span{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.24em;color:var(--navy);text-transform:uppercase}
+  .wordmark>span i{font-style:normal;color:var(--red)}
+
+  .head-nav{display:flex;align-items:center;gap:1.6rem}
+  .head-nav a.navlink{font-family:var(--display);font-weight:500;font-size:1.02rem;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);text-decoration:none}
+  .head-nav a.navlink:hover{color:var(--red)}
+  .head-actions{display:flex;align-items:center;gap:.7rem}
+  .callchip{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--navy);font-family:var(--mono);font-weight:600;font-size:.95rem}
+  .callchip small{display:block;font-family:var(--body);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .callchip svg{color:var(--red)}
+
+  .navtoggle{display:none;background:none;border:2px solid var(--navy);border-radius:var(--radius);padding:.4rem .5rem;cursor:pointer;color:var(--navy)}
+
+  @media (max-width:900px){
+    .head-nav{
+      position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);
+      flex-direction:column;align-items:stretch;gap:0;padding:.5rem var(--gutter) 1rem;
+      box-shadow:0 12px 24px rgba(0,20,35,.08);
+      display:none;
+    }
+    .head-nav[data-open="true"]{display:flex}
+    .head-nav a.navlink{padding:.8rem 0;border-bottom:1px solid var(--line);font-size:1.15rem}
+    .head-nav .head-actions{flex-direction:column;align-items:stretch;padding-top:.8rem}
+    .head-nav .callchip{padding:.4rem 0}
+    .head-nav .btn{justify-content:center}
+    .navtoggle{display:inline-flex}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;color:#fff;overflow:hidden;
+    background:
+      linear-gradient(180deg,rgba(0,29,49,.0),rgba(0,29,49,.35)),
+      radial-gradient(120% 90% at 85% -10%,var(--navy-mid),var(--navy) 55%,var(--navy-deep));
+  }
+  /* faint blueprint grid — workshop, not showroom */
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:42px 42px;
+    -webkit-mask-image:radial-gradient(120% 100% at 70% 0%,#000,transparent 75%);
+            mask-image:radial-gradient(120% 100% at 70% 0%,#000,transparent 75%);
+  }
+  .hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,60px);
+    align-items:center;padding-block:clamp(48px,7vw,92px)}
+  .hero .eyebrow{color:#ff5b68}
+  .hero .eyebrow::before{color:#fff;opacity:.55}
+  .hero h1{font-size:clamp(2.9rem,7vw,5rem);color:#fff}
+  .hero h1 em{font-style:normal;color:var(--plate-yellow)}
+  .hero-lead{font-size:1.16rem;color:#d7e2ea;max-width:34ch;margin:1.1rem 0 1.5rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .hero-note{font-family:var(--mono);font-size:.72rem;color:#9fb4c1;margin-top:1.15rem;max-width:40ch;line-height:1.5}
+  .hero-note b{color:#cfe0eb;font-weight:600}
+
+  /* trust ticks under hero copy */
+  .ticks{list-style:none;margin:1.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem}
+  .ticks li{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:#cfe0eb;display:flex;align-items:center;gap:.5rem}
+  .ticks li::before{content:"";width:8px;height:8px;background:var(--plate-yellow);flex:none;transform:rotate(45deg)}
+
+  /* ---------- Reg-plate enquiry ---------- */
+  .plate-card{
+    background:#fff;color:var(--ink);border-radius:8px;padding:1.35rem 1.35rem 1.5rem;
+    box-shadow:0 24px 48px rgba(0,15,28,.35);border:1px solid rgba(255,255,255,.6);
+  }
+  .plate-card h2{font-size:1.55rem;color:var(--navy);letter-spacing:.01em}
+  .plate-card .sub{font-size:.92rem;color:var(--muted);margin:.35rem 0 1rem}
+  .plate{
+    display:flex;align-items:stretch;background:var(--plate-yellow);border:2px solid #101010;border-radius:7px;
+    overflow:hidden;box-shadow:inset 0 0 0 2px var(--plate-yellow);
+  }
+  .plate .gb{
+    background:#0b3aa5;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:.55rem .5rem;min-width:38px;
+  }
+  .plate .gb .stars{font-size:.6rem;color:var(--plate-yellow);letter-spacing:.05em;line-height:1}
+  .plate .gb b{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.05em}
+  .plate input{
+    flex:1;border:0;background:transparent;color:#0a0a0a;min-width:0;
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(1.7rem,7vw,2.4rem);letter-spacing:.06em;text-align:center;padding:.35rem .4rem;
+  }
+  .plate input::placeholder{color:#111;opacity:.35}
+  .plate input:focus{outline:none}
+  .plate-card .field{margin-top:.9rem}
+  .plate-card label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+  .plate-card input[type="tel"]{
+    width:100%;border:1.5px solid var(--line);border-radius:var(--radius);padding:.75rem .8rem;
+    font-family:var(--body);font-size:1rem;color:var(--ink);
+  }
+  .plate-card input[type="tel"]:focus{border-color:var(--navy);outline:2px solid var(--navy);outline-offset:0}
+  .plate-card .btn{width:100%;justify-content:center;margin-top:1rem;font-size:1.12rem}
+  .plate-fine{font-family:var(--mono);font-size:.66rem;color:var(--muted);margin:.75rem 0 0;line-height:1.55}
+  .plate-fine a{color:var(--navy)}
+
+  @media (max-width:820px){
+    .hero-in{grid-template-columns:1fr}
+    .plate-card{order:2}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding-block:clamp(56px,7vw,96px)}
+  .sec-head{max-width:60ch;margin-bottom:2.4rem}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--navy)}
+  .sec-head p{color:var(--muted);font-size:1.08rem;margin-top:.7rem}
+
+  /* ---------- Services ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .svc{background:#fff;padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;position:relative}
+  .svc .ico{width:40px;height:40px;color:var(--red)}
+  .svc h3{font-size:1.4rem;color:var(--navy)}
+  .svc p{color:var(--muted);font-size:.96rem;margin:0}
+  .svc.svc--wide{grid-column:span 3;background:var(--navy);color:#fff;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;align-items:center;padding:1.9rem 1.7rem}
+  .svc.svc--wide h3{color:#fff;font-size:1.75rem}
+  .svc.svc--wide p{color:#cddbe5}
+  .svc.svc--wide .ico{color:var(--plate-yellow)}
+  .svc-wide-body{display:flex;gap:1rem;align-items:flex-start}
+  .svc.svc--wide .btn{align-self:center;justify-self:end}
+  @media (max-width:820px){
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .svc.svc--wide{grid-column:span 2;grid-template-columns:1fr;gap:1.1rem}
+    .svc.svc--wide .btn{justify-self:start}
+  }
+  @media (max-width:520px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc.svc--wide{grid-column:span 1}
+  }
+
+  /* ---------- Photo placeholder (real photos drop in here) ---------- */
+  .photo{
+    position:relative;background:
+      repeating-linear-gradient(135deg,var(--navy) 0 22px,var(--navy-mid) 22px 44px);
+    border-radius:6px;overflow:hidden;color:#fff;isolation:isolate;
+    display:flex;align-items:flex-end;min-height:220px;
+  }
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .photo::after{content:"";position:absolute;inset:0;background:rgba(0,20,35,.35);z-index:0}
+  .photo .tag{
+    position:relative;z-index:2;margin:0;padding:.7rem .85rem;width:100%;
+    display:flex;align-items:center;gap:.6rem;
+    background:linear-gradient(0deg,rgba(0,17,29,.85),transparent);
+  }
+  .photo .tag svg{color:var(--plate-yellow);flex:none}
+  .photo .tag span{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;line-height:1.35}
+  .photo .tag b{display:block;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.62rem;color:var(--plate-yellow)}
+
+  /* ---------- Work strip ---------- */
+  .work-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,1fr);gap:14px}
+  .work-grid .photo:first-child{grid-row:span 2;min-height:340px}
+  @media (max-width:820px){
+    .work-grid{grid-template-columns:1fr 1fr}
+    .work-grid .photo:first-child{grid-row:span 1;grid-column:span 2}
+  }
+
+  /* ---------- Proof ---------- */
+  .proof{background:var(--navy);color:#fff}
+  .proof .eyebrow{color:#ff5b68}
+  .proof .sec-head h2{color:#fff}
+  .proof-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,48px);align-items:center}
+  .rating{display:flex;flex-direction:column;gap:.4rem}
+  .rating .num{font-family:var(--display);font-weight:700;font-size:4.5rem;line-height:.9;color:#fff}
+  .stars{color:var(--plate-yellow);font-size:1.35rem;letter-spacing:.12em}
+  .rating .meta{font-family:var(--mono);font-size:.85rem;color:#cddbe5}
+  .rating .src{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+  .pill{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;border:1px solid rgba(255,255,255,.28);
+    border-radius:999px;padding:.3rem .7rem;color:#e6eef4}
+  blockquote.review{
+    background:var(--navy-mid);border-left:4px solid var(--red);border-radius:0 6px 6px 0;
+    padding:1.5rem 1.6rem;margin:0;font-size:1.14rem;color:#eef4f8;
+  }
+  blockquote.review .qstars{color:var(--plate-yellow);letter-spacing:.1em;font-size:1rem;margin-bottom:.6rem}
+  blockquote.review footer{margin-top:1rem;font-family:var(--mono);font-size:.78rem;color:#a9bece;font-style:normal}
+  @media (max-width:820px){.proof-grid{grid-template-columns:1fr}}
+
+  /* ---------- Finding us ---------- */
+  .find-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,44px);align-items:stretch}
+  .find-map{
+    position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);min-height:320px;
+    background:
+      linear-gradient(0deg,rgba(0,44,73,.06),rgba(0,44,73,.06)),
+      repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,44,73,.09) 39px 40px),
+      repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,44,73,.09) 39px 40px),
+      var(--paper);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .find-map .pin{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;color:var(--navy)}
+  .find-map .pin svg{color:var(--red);filter:drop-shadow(0 6px 10px rgba(0,20,35,.25))}
+  .find-map .pin b{font-family:var(--display);font-size:1.3rem;text-transform:uppercase}
+  .find-map .pin span{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+  .find-map .maplink{position:absolute;bottom:12px;right:12px}
+  .find-body h3{font-size:1.9rem;color:var(--navy);margin-bottom:.6rem}
+  .addr{font-style:normal;font-size:1.06rem;color:var(--ink);line-height:1.7}
+  .addr b{font-family:var(--display);font-size:1.25rem;letter-spacing:.02em;color:var(--navy);text-transform:uppercase}
+  .find-note{font-family:var(--mono);font-size:.82rem;color:var(--muted);background:var(--paper);
+    border-left:3px solid var(--red);padding:.85rem 1rem;border-radius:0 var(--radius) var(--radius) 0;margin-top:1.2rem}
+  @media (max-width:820px){.find-grid{grid-template-columns:1fr}}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--paper)}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,48px)}
+  .contact h2{color:var(--navy);font-size:clamp(2rem,4.4vw,3rem)}
+  .contact-lead{color:var(--muted);font-size:1.1rem;margin:.7rem 0 1.5rem;max-width:42ch}
+  .contact-actions{display:flex;flex-direction:column;gap:.7rem;max-width:340px}
+  .contact-actions .btn{justify-content:center;font-size:1.14rem;padding:.9rem 1.3rem}
+  .contact-actions .btn--nav{--bg:var(--navy);border-color:var(--navy)}
+  .contact-actions .btn--nav:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
+  .hours{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .hours h3{font-size:1.35rem;color:var(--navy);padding:1.1rem 1.3rem .3rem}
+  .hours dl{margin:0;padding:.4rem 1.3rem 1.2rem}
+  .hours .row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px dashed var(--line);
+    font-size:.98rem}
+  .hours .row:last-child{border-bottom:0}
+  .hours dt{font-weight:500;color:var(--ink)}
+  .hours dd{margin:0;font-family:var(--mono);color:var(--muted)}
+  .hours .row.shut dd{color:var(--red)}
+  .hours .row.today{background:linear-gradient(90deg,rgba(216,15,34,.06),transparent);margin-inline:-1.3rem;padding-inline:1.3rem;font-weight:600}
+  .hours .row.today dt::after{content:" · Today";font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--red);text-transform:uppercase}
+  @media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
+
+  /* ---------- Footer ---------- */
+  .site-foot{background:var(--navy-deep);color:#cddbe5;padding-block:clamp(40px,5vw,64px) 1.5rem}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+  .site-foot .wordmark b{color:#fff}
+  .site-foot .wordmark span{color:#9fb4c1;opacity:1}
+  .foot-tag{font-family:var(--display);font-weight:500;font-size:1.15rem;text-transform:uppercase;color:#fff;letter-spacing:.02em;margin:1rem 0 .3rem}
+  .foot-sub{font-size:.92rem;color:#9fb4c1;max-width:32ch}
+  .site-foot h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#7f97a8;margin:0 0 .9rem}
+  .site-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+  .site-foot a{color:#cddbe5;text-decoration:none;font-size:.98rem}
+  .site-foot a:hover{color:#fff;text-decoration:underline}
+  .foot-bar{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;padding-top:1.3rem;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:#7f97a8;font-family:var(--mono)}
+  @media (max-width:720px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid .foot-brand{grid-column:span 2}}
+
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* scroll reveal (motion-safe only) */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="Abbott Automotive Services — home">
+      <!-- Logo mark: red cog-arc holding a navy car silhouette (placeholder mark; real logo to be supplied by Ollie) -->
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+        <path d="M22 3a19 19 0 0 1 18 13l-4 1.4A15 15 0 0 0 22 7a15 15 0 0 0-14.6 11.4L3.4 17A19 19 0 0 1 22 3Z" fill="#D80F22"/>
+        <path d="M9 30c.7-2 1.8-3.4 3.2-3.6l2.3-4.1c.5-.9 1.5-1.5 2.6-1.5h9.8c1.1 0 2.1.6 2.6 1.5l2.3 4.1c1.4.2 2.5 1.6 3.2 3.6.2.6-.2 1.2-.9 1.2h-1.6a3 3 0 0 1-5.8 0H17.3a3 3 0 0 1-5.8 0H9.9c-.7 0-1.1-.6-.9-1.2Z" fill="#002C49"/>
+        <circle cx="14.4" cy="31" r="1.7" fill="#fff"/><circle cx="29.6" cy="31" r="1.7" fill="#fff"/>
+      </svg>
+      <span class="wordmark">
+        <b>ABBOTT</b>
+        <span><i>Automotive</i> Services</span>
+      </span>
+    </a>
+
+    <nav class="head-nav" id="nav" aria-label="Primary">
+      <a class="navlink" href="#services">Services</a>
+      <a class="navlink" href="#proof">Reviews</a>
+      <a class="navlink" href="#find">Find us</a>
+      <a class="navlink" href="#contact">Contact</a>
+      <div class="head-actions">
+        <a class="callchip" href="tel:+447856461584">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1L6.6 10.8Z" fill="currentColor"/></svg>
+          <span>07856 461584<small>Call or text Ollie</small></span>
+        </a>
+        <a class="btn" href="#enquiry">Get a price</a>
+      </div>
+    </nav>
+
+    <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow" data-n="01">Northwich · Independent garage</p>
+      <h1 id="hero-h">Your car needs work?<br><em>We'll come and get it.</em></h1>
+      <p class="hero-lead">Servicing, MOTs, diagnostics and repairs from a proper workshop on Winnington Business Park — with free local collection and drop-off so you don't lose your day.</p>
+      <ul class="ticks">
+        <li>Quote before we start</li>
+        <li>Kept posted on progress</li>
+        <li>Local &amp; independent</li>
+      </ul>
+      <p class="hero-note"><b>Free local collection &amp; drop-off*.</b> No passing trade out here on the park — so we bring the garage to you. *Ask us to check we cover your postcode; conditions apply.</p>
+    </div>
+
+    <!-- SIGNATURE: reg-plate enquiry. Not a DVLA lookup — reg + number goes straight to Ollie on WhatsApp. -->
+    <form class="plate-card" id="enquiry" aria-labelledby="enq-h" novalidate>
+      <h2 id="enq-h">Get a price</h2>
+      <p class="sub">Pop your reg and number in — Ollie will text you back a price. No call centre, no obligation.</p>
+
+      <div class="plate" role="group" aria-label="Vehicle registration">
+        <span class="gb" aria-hidden="true"><span class="stars">★★★</span><b>GB</b></span>
+        <input id="reg" name="reg" type="text" inputmode="latin" autocomplete="off"
+               placeholder="YOUR REG" maxlength="9" aria-label="Your vehicle registration">
+      </div>
+
+      <div class="field">
+        <label for="phone">Your mobile number</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="07…" aria-describedby="enq-fine">
+      </div>
+
+      <button class="btn btn--wa" type="submit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1 3.6 3.7-1A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3-.8-2.5-1.1-4.1-3.7-4.2-3.9-.1-.2-1-1.3-1-2.5s.6-1.7.8-2c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.2 1.3 1.1 1.7 1.2 2 .9.2-.3.5-.7.7-1 .2-.2.4-.2.6-.1l1.9.9c.5.2.6.3.6.5 0 .1 0 .5-.1.9Z"/></svg>
+        Send to Ollie on WhatsApp
+      </button>
+      <p class="plate-fine" id="enq-fine">
+        Opens WhatsApp with your details ready to send — this isn't a DVLA check, just a quick way to reach Ollie.
+        No WhatsApp? <a href="tel:+447856461584">Call 07856&nbsp;461584</a>.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-n="02">What we do</p>
+      <h2 id="svc-h">One garage, the whole job</h2>
+      <p>Servicing to sensors — in plain English, quoted before we start. If it's not something we do in-house, we'll tell you straight.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13h3l2 5 4-12 2 7h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Diagnostics</h3>
+        <p>Warning light on? We plug in, read the fault properly and explain what it actually means — before anyone talks about replacing parts.</p>
+      </article>
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-5 5a2 2 0 1 0 2.8 2.8l5-5a4 4 0 0 0 5.4-5.4l-2 2-1.9-1.9 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <h3>Servicing &amp; MOTs</h3>
+        <p>Full and interim services, plus MOTs arranged. We'll tell you what needs doing now and what can safely wait.</p>
+      </article>
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8"/><path d="M4 8l4 4-4 4M20 8l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Wheel alignment</h3>
+        <p>Car pulling to one side or wearing tyres unevenly? We set the geometry back to where it should be.</p>
+      </article>
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h6l4 4v3M7 4v16h10v-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 11c1.6 0 2 1.4 2 2.5S18.6 16 17 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 9h3M9 12h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Oil &amp; fluid changes</h3>
+        <p>Oil and filter changes, and a proper check of your brake, coolant and other fluids while it's up on the ramp.</p>
+      </article>
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17h2a3 3 0 0 0 6 0h2a3 3 0 0 0 6 0h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 12l2-4h7l3 4M4 12v5h1M16 12l3 1v4h-1M8 12v-4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <h3>Repairs</h3>
+        <p>Brakes, clutches and the jobs a full service turns up. We diagnose it, quote it, then get it sorted.</p>
+      </article>
+      <article class="svc reveal">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 16l2-5h7l3 5M3 16v3h2M15 16h4v3h-1" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="19" r="1.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16.5" cy="19" r="1.6" stroke="currentColor" stroke-width="1.6"/><path d="M14 7h6M17 4v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Collection &amp; drop-off</h3>
+        <p>Can't get to us? We'll collect the car, do the work and bring it back — free within our local area.</p>
+      </article>
+
+      <article class="svc svc--wide reveal">
+        <div class="svc-wide-body">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Not sure what's wrong? Just describe it.</h3>
+            <p>A noise, a light, a smell, an MOT advisory you don't understand — tell us in plain words and we'll work out what it needs.</p>
+          </div>
+        </div>
+        <a class="btn" href="#enquiry">Get a price</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section id="proof" class="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="proof-grid">
+      <div class="reveal">
+        <p class="eyebrow" data-n="03">The reviews</p>
+        <h2 id="proof-h" class="sec-head" style="margin-bottom:1.4rem">Every review, five stars</h2>
+        <div class="rating">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="num">5.0</span>
+          <span class="meta">Rated 5.0 from 6 Google reviews</span>
+          <div class="src">
+            <span class="pill">Google · 5.0 (6)</span>
+            <span class="pill">Facebook · 5.0 (4)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <!-- Real customer review (from Abbott Automotive's own five-star review card). Reviewer name to be
+             confirmed against the live Google listing before launch — shown unattributed until then. -->
+        <blockquote class="review">
+          <div class="qstars" aria-label="Five out of five stars">★★★★★</div>
+          <p>“Took my daughter's car in for a full service and clutch repair. All was carried out to a good standard. Ollie kept me posted on progress and pricing is competitive. I would recommend to a friend. Give a local business a chance.”</p>
+          <footer>— Verified five-star review · full service &amp; clutch repair</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-n="04">On the ramp</p>
+      <h2 id="work-h">Real jobs, real workshop</h2>
+      <p>No stock photos. These are Ollie's own — the unit, the ramp, and the honest before-and-after you get when someone actually shows you the old part.</p>
+    </div>
+
+    <!-- Photo slots: real images drop straight into the <img> in each block.
+         Filenames map to the asset table in CONTEXT.md. -->
+    <div class="work-grid reveal">
+      <figure class="photo">
+        <!-- <img src="images/workshop-unit.jpg" alt="Inside Abbott Automotive's unit: white walls, red two-post ramp and tool chest"> -->
+        <figcaption class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="13.5" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7l1.5-2h5L16 7" stroke="currentColor" stroke-width="1.6"/></svg><span><b>Photo · the unit</b>workshop-unit.jpg — red two-post ramp &amp; tool chest</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <!-- <img src="images/cabin-filter.jpg" alt="Dirty cabin filter next to a clean replacement, held in hand"> -->
+        <figcaption class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="13.5" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg><span><b>Photo · service</b>cabin-filter.jpg — dirty vs clean filter</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <!-- <img src="images/oil-change.jpg" alt="Fresh oil draining from the sump on a car up on the ramp"> -->
+        <figcaption class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="13.5" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg><span><b>Photo · oil change</b>oil-change.jpg — drain at the sump</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <!-- <img src="images/air-filters.jpg" alt="Old and new air filters side by side on the workshop floor"> -->
+        <figcaption class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="13.5" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg><span><b>Photo · service</b>air-filters.jpg — old vs new air filter</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIND US ============ -->
+<section id="find" aria-labelledby="find-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-n="05">Finding us</p>
+      <h2 id="find-h">On Winnington Business Park</h2>
+    </div>
+    <div class="find-grid">
+      <div class="find-map reveal">
+        <div class="pin">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          <b>Unit 34</b>
+          <span>Winnington Business Park · CW8 4DL</span>
+        </div>
+        <a class="btn btn--ghost maplink" href="https://www.google.com/maps/search/?api=1&query=Abbott+Automotive+Services+Unit+34+Winnington+Business+Park+CW8+4DL" target="_blank" rel="noopener">Directions</a>
+      </div>
+      <div class="find-body reveal">
+        <h3>Come straight to the unit</h3>
+        <address class="addr">
+          <b>Abbott Automotive Services</b><br>
+          Unit 34, Winnington Business Park<br>
+          Northwich, Cheshire<br>
+          <strong>CW8 4DL</strong>
+        </address>
+        <p class="find-note">There's no shop front and no passing trade out here — so if it's your first visit, give Ollie a ring on <a href="tel:+447856461584" style="color:var(--red)">07856&nbsp;461584</a> and he'll talk you in from the business park entrance. Or skip the trip entirely and book free local collection.</p>
+        <p style="margin-top:1.2rem"><a class="btn" href="#enquiry">Get a price</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-n="06">Get in touch</p>
+      <h2 id="contact-h">Talk to Ollie direct</h2>
+      <p class="contact-lead">Straight to the man doing the work — no call centre, no waiting on hold. Call, text or WhatsApp whichever suits you.</p>
+      <div class="contact-actions">
+        <a class="btn btn--nav" href="tel:+447856461584">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.24 1L6.6 10.8Z"/></svg>
+          Call 07856 461584
+        </a>
+        <a class="btn btn--wa" href="https://wa.me/447856461584?text=Hi%20Ollie%2C%20I%27d%20like%20a%20price%20for%20some%20work%20on%20my%20car." target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1 3.6 3.7-1A10 10 0 1 0 12 2Zm5.3 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3-.8-2.5-1.1-4.1-3.7-4.2-3.9-.1-.2-1-1.3-1-2.5s.6-1.7.8-2c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.2 1.3 1.1 1.7 1.2 2 .9.2-.3.5-.7.7-1 .2-.2.4-.2.6-.1l1.9.9c.5.2.6.3.6.5 0 .1 0 .5-.1.9Z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a class="btn btn--ghost" href="mailto:abbottautomotiveservices@gmail.com">Email us</a>
+      </div>
+    </div>
+
+    <div class="hours reveal" aria-labelledby="hours-h">
+      <h3 id="hours-h">Opening hours</h3>
+      <dl>
+        <div class="row" data-day="1"><dt>Monday</dt><dd>08:30 – 17:00</dd></div>
+        <div class="row" data-day="2"><dt>Tuesday</dt><dd>08:30 – 17:00</dd></div>
+        <div class="row" data-day="3"><dt>Wednesday</dt><dd>08:30 – 17:00</dd></div>
+        <div class="row" data-day="4"><dt>Thursday</dt><dd>08:30 – 17:00</dd></div>
+        <div class="row" data-day="5"><dt>Friday</dt><dd>08:30 – 17:00</dd></div>
+        <div class="row shut" data-day="6"><dt>Saturday</dt><dd>Closed</dd></div>
+        <div class="row shut" data-day="0"><dt>Sunday</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="wordmark">
+          <b>ABBOTT</b>
+          <span><i>Automotive</i> Services</span>
+        </span>
+        <p class="foot-tag">Because your car matters</p>
+        <p class="foot-sub">Let us handle the details, so you enjoy the drive. Independent servicing &amp; repairs in Northwich.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>Unit 34, Winnington Business Park</li>
+          <li>Northwich, Cheshire</li>
+          <li>CW8 4DL</li>
+          <li>Mon–Fri · 08:30–17:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+447856461584">07856 461584</a></li>
+          <li><a href="https://wa.me/447856461584" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:abbottautomotiveservices@gmail.com">Email</a></li>
+          <li><a href="https://www.instagram.com/abbott_automotive_services/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© <span id="yr">2026</span> Abbott Automotive Services</span>
+      <span>Vehicle service, maintenance &amp; repair · Northwich</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Mobile nav toggle */
+  var toggle = document.getElementById("navToggle");
+  var nav = document.getElementById("nav");
+  if(toggle && nav){
+    toggle.addEventListener("click", function(){
+      var open = nav.getAttribute("data-open") === "true";
+      nav.setAttribute("data-open", String(!open));
+      toggle.setAttribute("aria-expanded", String(!open));
+      toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    });
+    /* close menu after choosing a link (mobile) */
+    nav.addEventListener("click", function(e){
+      if(e.target.closest("a") && window.matchMedia("(max-width:900px)").matches){
+        nav.setAttribute("data-open","false");
+        toggle.setAttribute("aria-expanded","false");
+        toggle.setAttribute("aria-label","Open menu");
+      }
+    });
+  }
+
+  /* Reg-plate enquiry -> WhatsApp to Ollie (client-side, real link). */
+  var form = document.getElementById("enquiry");
+  if(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var reg = (document.getElementById("reg").value || "").trim().toUpperCase();
+      var phone = (document.getElementById("phone").value || "").trim();
+      var msg = "Hi Ollie, can I get a price please?";
+      if(reg) msg += "\nReg: " + reg;
+      if(phone) msg += "\nMy number: " + phone;
+      var url = "https://wa.me/447856461584?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank", "noopener");
+    });
+  }
+
+  /* Highlight today's opening hours row */
+  var today = new Date().getDay(); // 0 Sun .. 6 Sat
+  var row = document.querySelector('.hours .row[data-day="'+today+'"]');
+  if(row) row.classList.add("today");
+
+  /* Current year */
+  var yr = document.getElementById("yr");
+  if(yr) yr.textContent = String(new Date().getFullYear());
+
+  /* Scroll reveal (motion-safe) */
+  var reveals = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:0.08});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
