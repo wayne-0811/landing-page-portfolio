@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halden Automotive — the Ashcombe garage that comes to you</title>
+<meta name="description" content="Concept landing page for a made-up independent garage. Servicing, MOTs, diagnostics and repairs, with free local collection and drop-off.">
+<meta name="theme-color" content="#0b0707">
+
+<!--
+  CONCEPT PAGE. Halden Automotive is not a real business. The reviews and
+  figures are sample content, the phone number is from the range reserved for
+  fiction, and the enquiry form sends nothing.
+
+  Hero video: "Mechanic repairing a car engine", Mixkit (Stock Video Free License).
+  Photos: Unsplash (Unsplash License).
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-head" id="top">
+  <a class="brand" href="#top" aria-label="Halden Automotive home">
+    <svg class="brand-mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M6 0h6L6 22H0zM15 0h6l-6 22H9zM24 0h6l-6 22h-6z" fill="currentColor"/></svg>
+    <span>Halden</span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="chip" href="#services">Services</a>
+    <a class="chip" href="#workshop">Our work</a>
+    <a class="chip" href="#about">About</a>
+    <a class="chip" href="#find">Find us</a>
+  </nav>
+
+  <div class="head-actions">
+    <a class="chip chip--cta" href="#estimate"><i class="dot" aria-hidden="true"></i>Get a price</a>
+    <button class="chip menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-h">
+  <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="metadata"
+         poster="https://assets.mixkit.co/videos/4716/4716-thumb-1080-0.jpg" aria-hidden="true" tabindex="-1">
+    <source src="https://assets.mixkit.co/videos/4716/4716-720.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="chip chip--tag">Servicing <i>•</i> MOTs <i>•</i> Diagnostics <i>•</i> Collection</p>
+      <h1 id="hero-h">Your car needs work? We&rsquo;ll come and get it.</h1>
+      <div class="hero-btns">
+        <a class="btn btn--red" href="#estimate">Get a price</a>
+        <a class="btn btn--dark" href="#workshop">See our work</a>
+      </div>
+    </div>
+    <p class="hero-sub">Servicing, MOTs, diagnostics and repairs from a proper workshop on Millbrook Business Park, with free local collection and drop-off so you don&rsquo;t lose your day.</p>
+  </div>
+
+  <button class="video-toggle" id="video-toggle" type="button" aria-pressed="false">Pause video</button>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about" aria-labelledby="about-h">
+  <p class="chip chip--label reveal"><i class="dot" aria-hidden="true"></i>About</p>
+  <h2 class="statement reveal" id="about-h">Halden started in a single unit with one promise: tell you the truth about your car, and do the work like it&rsquo;s our own.</h2>
+
+  <div class="tiles">
+    <figure class="tile reveal">
+      <img src="https://images.unsplash.com/photo-1645445522156-9ac06bc7a767?auto=format&fit=crop&w=700&q=70" alt="A mechanic fitting a wheel in the workshop" loading="lazy" width="700" height="800">
+      <figcaption><b>Free</b><span>Local collection and drop-off</span></figcaption>
+    </figure>
+    <figure class="tile tile--wide reveal">
+      <img src="https://images.unsplash.com/photo-1767681092416-bccf9410bda4?auto=format&fit=crop&w=1400&q=70" alt="Cars up on ramps inside a bright workshop" loading="lazy" width="1400" height="1000">
+    </figure>
+    <figure class="tile reveal">
+      <img src="https://images.unsplash.com/photo-1642075223291-f9ec545889fa?auto=format&fit=crop&w=700&q=70" alt="A gloved hand holding a used oil filter" loading="lazy" width="700" height="800">
+      <figcaption><b>Quote first</b><span>A price before any work starts</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services" aria-labelledby="services-h">
+  <div class="sec-head">
+    <div>
+      <p class="chip chip--label chip--on-light reveal"><i class="dot" aria-hidden="true"></i>What we offer</p>
+      <h2 class="reveal" id="services-h">Five ways we keep you on the road</h2>
+    </div>
+    <a class="chip chip--solid reveal" href="#estimate">Get a price</a>
+  </div>
+
+  <!-- The row follows the mouse: move across it and the cards slide with you.
+       On touch screens it is a normal swipe. The arrows work everywhere. -->
+  <div class="rail" id="rail" tabindex="0" role="group" aria-label="Services. Scroll sideways for more.">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" width="800" height="800">
+      <div class="card-body">
+        <h3>Servicing &amp; MOTs</h3>
+        <p>Full and interim services, plus MOTs arranged. We tell you what needs doing now and what can safely wait.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" width="800" height="800">
+      <div class="card-body">
+        <h3>Diagnostics</h3>
+        <p>A noise, a warning light, a smell. Tell us in plain words and we work out what it needs before anything is replaced.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1702146713922-613313be011d?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" width="800" height="800">
+      <div class="card-body">
+        <h3>Wheel alignment</h3>
+        <p>Pulling to one side or wearing tyres unevenly? We set it straight so the car drives true and the tyres last.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1771340742493-52fbd5476ccb?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" width="800" height="800">
+      <div class="card-body">
+        <h3>Oil &amp; fluid checks</h3>
+        <p>Fresh oil, the right filter and every level checked. Quick to do and the cheapest way to protect an engine.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" width="800" height="800">
+      <div class="card-body">
+        <h3>Collection &amp; drop-off</h3>
+        <p>We pick the car up from your home or work and bring it back when it&rsquo;s done. Free within the local area.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="rail-nav">
+    <button class="arrow" id="rail-prev" type="button" aria-label="Previous services">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+    </button>
+    <button class="arrow" id="rail-next" type="button" aria-label="More services">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+    </button>
+    <span class="rail-hint" aria-hidden="true">Move across the cards</span>
+  </div>
+</section>
+
+<!-- ============ REVIEW ============ -->
+<section class="review" aria-labelledby="review-h">
+  <h2 class="sr-only" id="review-h">What customers say</h2>
+  <img class="review-img reveal" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&h=600&q=70" alt="Hands working on an engine with a spanner" loading="lazy" width="600" height="600">
+  <figure class="review-body reveal">
+    <blockquote>&ldquo;Booked a full service and they collected the car from my work. Sam told me what needed doing before he started, and the price matched the quote.&rdquo;</blockquote>
+    <figcaption>Sample review <span>Full service</span></figcaption>
+    <p class="sample-note">Sample content: the reviews and figures on this page are made up for this concept.</p>
+  </figure>
+</section>
+
+<!-- ============ WORKSHOP ============ -->
+<section class="workshop" id="workshop" aria-labelledby="workshop-h">
+  <img src="https://images.unsplash.com/photo-1786489785506-9c527aaf908d?auto=format&fit=crop&w=1800&q=70" alt="Someone working on the rear panel of a car in the workshop" loading="lazy" width="1800" height="1000">
+  <div class="workshop-shade" aria-hidden="true"></div>
+  <div class="workshop-inner">
+    <div class="reveal">
+      <h2 id="workshop-h">Nothing gets replaced on a guess. We show you the old part before we quote.</h2>
+      <a class="chip chip--solid" href="#estimate">Talk to Sam</a>
+    </div>
+    <p class="workshop-stat reveal"><span>Before any work starts</span><b>A written price</b><span>and a call if anything changes</span></p>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section class="steps" aria-labelledby="steps-h">
+  <div class="sec-head">
+    <div>
+      <p class="chip chip--label reveal"><i class="dot" aria-hidden="true"></i>How it works</p>
+      <h2 class="reveal" id="steps-h">Three steps from booking to done</h2>
+    </div>
+    <a class="chip chip--solid chip--light reveal" href="#estimate"><i class="dot" aria-hidden="true"></i>Get a price</a>
+  </div>
+  <ol class="step-grid">
+    <li class="step reveal"><span class="step-n">01</span><h3>Send your reg</h3><p>Pop your number plate and mobile in below. No call centre and no obligation.</p></li>
+    <li class="step reveal"><span class="step-n">02</span><h3>We collect the car</h3><p>We pick it up from home or work at a time that suits, or you drop it at the unit.</p></li>
+    <li class="step reveal"><span class="step-n">03</span><h3>We confirm before we start</h3><p>You get a price and a plain explanation first. Nothing is done until you say yes.</p></li>
+  </ol>
+</section>
+
+<!-- ============ ESTIMATE ============ -->
+<section class="estimate" id="estimate" aria-labelledby="estimate-h">
+  <div class="estimate-copy reveal">
+    <p class="chip chip--label"><i class="dot" aria-hidden="true"></i>Get a price</p>
+    <h2 id="estimate-h">Get your free estimate</h2>
+    <p>Tell us the car and what&rsquo;s wrong. Sam replies with a price, usually the same day.</p>
+    <ul class="contact-list">
+      <li><span>Call or text</span><a href="tel:+447700900123">07700 900123</a></li>
+      <li><span>Open</span>Monday to Friday, 8:30 to 17:00</li>
+    </ul>
+  </div>
+
+  <form class="form reveal" id="enquiry" novalidate>
+    <h3>Request a price</h3>
+    <label class="plate-label" for="reg">Your registration</label>
+    <div class="plate">
+      <span class="plate-gb" aria-hidden="true">UK</span>
+      <input id="reg" name="reg" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" placeholder="AB12 CDE">
+    </div>
+
+    <label for="phone">Your mobile number</label>
+    <input class="field" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07…">
+
+    <label for="job">What does it need?</label>
+    <select class="field" id="job" name="job">
+      <option>Service or MOT</option>
+      <option>Diagnostics</option>
+      <option>Wheel alignment</option>
+      <option>Oil and fluids</option>
+      <option>Not sure yet</option>
+    </select>
+
+    <button class="btn btn--red btn--full" type="submit">Send to Sam</button>
+    <p class="form-note" id="form-note" role="status">This isn&rsquo;t a DVLA check, just a quick way to reach us.</p>
+  </form>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot" id="find">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#top" aria-label="Halden Automotive home">
+        <svg class="brand-mark" viewBox="0 0 30 22" aria-hidden="true"><path d="M6 0h6L6 22H0zM15 0h6l-6 22H9zM24 0h6l-6 22h-6z" fill="currentColor"/></svg>
+        <span>Halden</span>
+      </a>
+      <p class="foot-sub">Let us handle the details, so you enjoy the drive.</p>
+    </div>
+    <div>
+      <h2 class="foot-h">Find us</h2>
+      <address>Unit 12, Millbrook Business Park<br>Ashcombe AS4 2HD</address>
+      <p class="foot-note">There&rsquo;s no shop front out here. If it&rsquo;s your first visit, give Sam a ring and he&rsquo;ll talk you in.</p>
+    </div>
+    <div>
+      <h2 class="foot-h">Hours</h2>
+      <dl class="hours">
+        <div><dt>Mon to Fri</dt><dd>8:30 to 17:00</dd></div>
+        <div><dt>Saturday</dt><dd>Closed</dd></div>
+        <div><dt>Sunday</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="wordmark" aria-hidden="true">Halden</p>
+  <p class="foot-legal">&copy; <span id="yr">2026</span> Halden Automotive. A concept page: this is not a real business.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -41,3 +41,7 @@ Fast turnaround
 
 - Email: phuawaiwai021108imp@gmail.com
 - Upwork: https://www.upwork.com/freelancers/~01935d22c3843e791e?mp_source=share
+
+## Concept pages
+
+Every business in this repo is made up. Reviews and figures on the pages are sample content and say so. These folders are also the source for the concept pages on leadesigned.com, which pulls this repo in as a submodule.
