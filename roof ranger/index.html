@@ -1,1029 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tallpine Roofing — Roofing You Can Trust | Free 60-Second Quote</title>
-  <meta
-    name="description"
-    content="Tallpine Roofing repairs, replaces, and restores roofs done right the first time. Licensed, insured, and backed by a written workmanship warranty. Get your free, no-obligation quote in 60 seconds."
-  />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tallpine Roofing — a roof done right the first time</title>
+<meta name="description" content="Concept landing page for a made-up roofing company. Repairs, replacements and storm restoration with upfront pricing and a free 60-second quote.">
+<meta name="theme-color" content="#f4efe9">
 
-  <!-- ==========================================================
-       ASSET SLOTS — swap these for real assets:
-       1. Logo: replace the inline <svg class="logo-mark"> below,
-          or drop an <img src="logo.png"> in its place.
-       2. Photos: every image uses a data-slot attribute
-          (e.g. data-slot="hero", data-slot="gallery-1").
-          Replace the src with the real photo of
-          the same name. Dimensions/aspect ratios are pre-set.
-       ========================================================== -->
+<!--
+  CONCEPT PAGE. Tallpine Roofing is not a real business. The reviews and
+  figures are sample content, the phone number is a fictional 555 number, and
+  the quote form sends nothing.
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  The before-and-after in the hero uses two stock photos of different roofs to
+  show the idea. On a real site these would be the same roof, before and after.
+  Photos: Unsplash (Unsplash License).
+-->
 
-  <!-- If JS is unavailable, never hide content behind the reveal animation -->
-  <noscript>
-    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
-  </noscript>
-
-  <style>
-    :root {
-      --bg: #0d1117;
-      --bg-2: #111823;
-      --surface: #161d29;
-      --surface-2: #1c2534;
-      --navy: #0b1220;
-      --accent: #ff7a1a;        /* safety orange — energy + action */
-      --accent-hover: #ff8f3d;
-      --accent-ink: #0d1117;
-      --gold: #f5b301;
-      --text: #f5f7fa;
-      --text-muted: #9aa7bd;
-      --text-dim: #6c7a92;
-      --border: rgba(255, 255, 255, 0.09);
-      --border-strong: rgba(255, 255, 255, 0.18);
-      --success: #34d399;
-      --shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
-      --radius: 16px;
-      --maxw: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: var(--maxw);
-      margin-inline: auto;
-      padding-inline: clamp(1.15rem, 4vw, 2.5rem);
-    }
-
-    section { position: relative; }
-
-    /* ============ BUTTONS ============ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      font-weight: 700;
-      font-size: 1rem;
-      font-family: "Inter", sans-serif;
-      padding: 0.95rem 1.6rem;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--accent-ink);
-      box-shadow: 0 10px 24px -8px rgba(255, 122, 26, 0.6);
-    }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px -10px rgba(255, 122, 26, 0.7);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-strong);
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: var(--text); }
-    .btn-lg { padding: 1.1rem 2rem; font-size: 1.06rem; }
-    .btn-block { width: 100%; }
-
-    /* ============ HEADER ============ */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: rgba(13, 17, 23, 0.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    header.scrolled { border-color: var(--border); }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      height: 72px;
-    }
-    .brand { display: flex; align-items: center; gap: 0.65rem; font-family: "Space Grotesk", sans-serif; }
-    .logo-mark { width: 40px; height: 40px; flex: none; }
-    .brand-name { font-weight: 700; font-size: 1.32rem; letter-spacing: -0.02em; }
-    .brand-name span { color: var(--accent); }
-
-    .nav-links { display: none; gap: 2rem; align-items: center; }
-    .nav-links a { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; transition: color 0.16s; }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta { display: flex; align-items: center; gap: 0.9rem; }
-    .nav-phone {
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1.02rem;
-      color: var(--text);
-    }
-    .nav-phone svg { color: var(--accent); }
-
-    @media (min-width: 900px) {
-      .nav-links { display: flex; }
-      .nav-phone { display: inline-flex; }
-    }
-
-    /* ============ HERO ============ */
-    .hero { position: relative; overflow: hidden; }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(120% 90% at 80% -10%, rgba(255,122,26,0.14), transparent 55%),
-        radial-gradient(90% 80% at 0% 0%, rgba(60,110,200,0.14), transparent 50%),
-        var(--bg);
-      z-index: 0;
-    }
-    .hero-inner {
-      position: relative; z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(2.2rem, 5vw, 3.5rem);
-      align-items: center;
-      padding-top: clamp(2.5rem, 6vw, 4.5rem);
-      padding-bottom: clamp(3rem, 7vw, 5rem);
-    }
-    @media (min-width: 960px) {
-      .hero-inner { grid-template-columns: 1.05fr 0.95fr; }
-    }
-
-    .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem;
-      margin-bottom: 1.5rem;
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.8rem; font-weight: 600;
-      padding: 0.4rem 0.75rem;
-      border-radius: 100px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-    .pill svg { color: var(--success); }
-
-    .hero h1 {
-      font-size: clamp(2.35rem, 6vw, 3.9rem);
-      font-weight: 700;
-      margin-bottom: 1.15rem;
-    }
-    .hero h1 .hl { color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(1.05rem, 2.2vw, 1.28rem);
-      color: var(--text-muted);
-      max-width: 34ch;
-      margin: 0 0 1.9rem;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 1.9rem; }
-
-    .hero-trust {
-      display: flex; align-items: center; gap: 0.9rem;
-      color: var(--text-muted); font-size: 0.92rem;
-    }
-    .stars { color: var(--gold); letter-spacing: 1px; font-size: 1.05rem; }
-    .avatars { display: flex; }
-    .avatars span {
-      width: 34px; height: 34px; border-radius: 50%;
-      border: 2px solid var(--bg);
-      margin-left: -10px;
-      background-size: cover; background-position: center;
-      background-color: var(--surface-2);
-    }
-    .avatars span:first-child { margin-left: 0; }
-
-    /* Hero quote card */
-    .quote-card {
-      position: relative;
-      background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
-      border: 1px solid var(--border-strong);
-      border-radius: 20px;
-      padding: clamp(1.4rem, 3vw, 2rem);
-      box-shadow: var(--shadow);
-    }
-    .quote-card::before {
-      content: "";
-      position: absolute; inset: 0;
-      border-radius: 20px;
-      padding: 1px;
-      background: linear-gradient(160deg, rgba(255,122,26,0.5), transparent 40%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      pointer-events: none;
-    }
-    .quote-card h3 { font-size: 1.35rem; margin-bottom: 0.3rem; }
-    .quote-card .qc-sub { color: var(--text-muted); font-size: 0.92rem; margin: 0 0 1.25rem; }
-
-    .field { margin-bottom: 0.85rem; }
-    .field label {
-      display: block; font-size: 0.82rem; font-weight: 600;
-      color: var(--text-muted); margin-bottom: 0.35rem;
-    }
-    .field input, .field select {
-      width: 100%;
-      background: var(--navy);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 0.8rem 0.9rem;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: border-color 0.16s, box-shadow 0.16s;
-    }
-    .field input::placeholder { color: var(--text-dim); }
-    .field input:focus, .field select:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(255,122,26,0.18);
-    }
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-    .qc-fine {
-      display: flex; align-items: center; gap: 0.45rem;
-      font-size: 0.8rem; color: var(--text-dim);
-      margin-top: 0.9rem; justify-content: center;
-    }
-    .qc-fine svg { color: var(--success); flex: none; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 1rem 0.5rem;
-    }
-    .form-success.show { display: block; }
-    .form-success .check {
-      width: 56px; height: 56px; margin: 0 auto 1rem;
-      border-radius: 50%;
-      background: rgba(52,211,153,0.15);
-      display: grid; place-items: center;
-      color: var(--success);
-    }
-    .form-success h3 { margin-bottom: 0.4rem; }
-    .form-success p { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
-
-    /* ============ TRUST BAR ============ */
-    .trustbar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-2);
-    }
-    .trustbar-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-    @media (min-width: 760px) { .trustbar-grid { grid-template-columns: repeat(4, 1fr); } }
-    .trust-item {
-      background: var(--bg-2);
-      padding: 1.5rem 1.25rem;
-      text-align: center;
-    }
-    .trust-item .num {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(1.7rem, 4vw, 2.3rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1;
-    }
-    .trust-item .num span { color: var(--accent); }
-    .trust-item .lbl { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.4rem; }
-
-    /* ============ SECTION HEADINGS ============ */
-    .sec { padding-block: clamp(3.5rem, 8vw, 6rem); }
-    .sec-head { max-width: 620px; margin: 0 auto clamp(2.2rem, 5vw, 3.2rem); text-align: center; }
-    .eyebrow {
-      font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); margin: 0 0 0.85rem;
-    }
-    .sec-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-bottom: 0.9rem; }
-    .sec-head p { color: var(--text-muted); font-size: 1.08rem; margin: 0; }
-
-    /* ============ SERVICES ============ */
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.15rem;
-    }
-    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 980px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
-    .service {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s;
-    }
-    .service:hover { transform: translateY(-4px); border-color: var(--border-strong); background: var(--surface-2); }
-    .service-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: grid; place-items: center;
-      background: rgba(255,122,26,0.12);
-      color: var(--accent);
-      margin-bottom: 1.1rem;
-    }
-    .service h3 { font-size: 1.22rem; margin-bottom: 0.5rem; }
-    .service p { color: var(--text-muted); font-size: 0.96rem; margin: 0; }
-
-    /* ============ WHY / FEATURES SPLIT ============ */
-    .split {
-      display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem);
-      align-items: center;
-    }
-    @media (min-width: 940px) { .split { grid-template-columns: 1fr 1fr; } }
-    .split-media {
-      border-radius: 20px; overflow: hidden;
-      border: 1px solid var(--border);
-      aspect-ratio: 4 / 3;
-      position: relative;
-      box-shadow: var(--shadow);
-    }
-    .split-media img { width: 100%; height: 100%; object-fit: cover; }
-    .float-card {
-      position: absolute; bottom: 16px; left: 16px; right: 16px;
-      background: rgba(13,17,23,0.86);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-strong);
-      border-radius: 14px;
-      padding: 0.9rem 1.1rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .float-card .fc-ic { color: var(--gold); flex: none; }
-    .float-card strong { display: block; font-family: "Space Grotesk", sans-serif; }
-    .float-card small { color: var(--text-muted); }
-
-    .why-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; gap: 1.15rem; }
-    .why-list li { display: flex; gap: 0.85rem; }
-    .why-list .ic {
-      flex: none; width: 30px; height: 30px; border-radius: 8px;
-      display: grid; place-items: center;
-      background: rgba(52,211,153,0.13); color: var(--success);
-      margin-top: 2px;
-    }
-    .why-list h4 { font-family: "Inter", sans-serif; font-size: 1.02rem; font-weight: 700; margin: 0 0 0.15rem; }
-    .why-list p { color: var(--text-muted); font-size: 0.94rem; margin: 0; }
-
-    /* ============ PROCESS ============ */
-    .steps { display: grid; grid-template-columns: 1fr; gap: 1.15rem; counter-reset: step; }
-    @media (min-width: 760px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-    .step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.4rem;
-      position: relative;
-    }
-    .step .step-n {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700; font-size: 1.05rem;
-      width: 40px; height: 40px; border-radius: 10px;
-      background: var(--accent); color: var(--accent-ink);
-      display: grid; place-items: center;
-      margin-bottom: 1rem;
-    }
-    .step h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-    .step p { color: var(--text-muted); font-size: 0.93rem; margin: 0; }
-
-    /* ============ GALLERY ============ */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.9rem;
-    }
-    @media (min-width: 760px) { .gallery { grid-template-columns: repeat(4, 1fr); } }
-    .gallery figure {
-      margin: 0; border-radius: 14px; overflow: hidden;
-      border: 1px solid var(--border);
-      aspect-ratio: 1 / 1;
-      position: relative;
-    }
-    .gallery figure.wide { grid-column: span 2; aspect-ratio: 2 / 1; }
-    .gallery img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .gallery figure:hover img { transform: scale(1.06); }
-    .gallery figcaption {
-      position: absolute; left: 10px; bottom: 10px;
-      font-size: 0.75rem; font-weight: 600;
-      background: rgba(13,17,23,0.75);
-      padding: 0.25rem 0.6rem; border-radius: 6px;
-      backdrop-filter: blur(4px);
-    }
-
-    /* ============ REVIEWS ============ */
-    .reviews-grid {
-      display: grid; grid-template-columns: 1fr; gap: 1.15rem;
-    }
-    @media (min-width: 720px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
-    .review {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      display: flex; flex-direction: column;
-    }
-    .review .stars { margin-bottom: 0.8rem; }
-    .review p { margin: 0 0 1.3rem; font-size: 0.98rem; color: var(--text); }
-    .review .who { display: flex; align-items: center; gap: 0.7rem; margin-top: auto; }
-    .review .who .ava {
-      width: 42px; height: 42px; border-radius: 50%;
-      background-size: cover; background-position: center;
-      background-color: var(--surface-2); flex: none;
-    }
-    .review .who strong { display: block; font-size: 0.95rem; }
-    .review .who small { color: var(--text-dim); }
-    .verified { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--success); font-size: 0.78rem; margin-top: 0.2rem; }
-
-    /* ============ GUARANTEE ============ */
-    .guarantee {
-      background: linear-gradient(135deg, var(--surface-2), var(--bg-2));
-      border: 1px solid var(--border-strong);
-      border-radius: 22px;
-      padding: clamp(2rem, 5vw, 3.2rem);
-      display: grid; grid-template-columns: 1fr; gap: 2rem;
-      align-items: center;
-    }
-    @media (min-width: 820px) { .guarantee { grid-template-columns: auto 1fr; } }
-    .seal {
-      width: 132px; height: 132px; flex: none; margin-inline: auto;
-    }
-    .guarantee h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin-bottom: 0.8rem; }
-    .guarantee p { color: var(--text-muted); margin: 0 0 1.2rem; font-size: 1.03rem; }
-    .guarantee ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-    .guarantee li { display: flex; gap: 0.55rem; align-items: center; font-size: 0.96rem; }
-    .guarantee li svg { color: var(--success); flex: none; }
-
-    /* ============ FINAL CTA ============ */
-    .final { position: relative; overflow: hidden; }
-    .final-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        linear-gradient(180deg, rgba(13,17,23,0.72), rgba(13,17,23,0.94)),
-        var(--navy);
-    }
-    .final-inner {
-      position: relative; z-index: 2;
-      text-align: center;
-      max-width: 720px; margin-inline: auto;
-    }
-    .final h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
-    .final p { color: var(--text-muted); font-size: 1.12rem; margin: 0 0 2rem; }
-    .final-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
-    .final .hero-trust { justify-content: center; margin-top: 1.8rem; }
-
-    /* ============ FOOTER ============ */
-    footer {
-      background: var(--navy);
-      border-top: 1px solid var(--border);
-      padding-block: clamp(2.5rem, 5vw, 3.5rem) 2rem;
-    }
-    .foot-grid {
-      display: grid; grid-template-columns: 1fr; gap: 2rem;
-    }
-    @media (min-width: 760px) { .foot-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
-    .foot-brand p { color: var(--text-muted); font-size: 0.94rem; margin: 1rem 0 1.2rem; max-width: 34ch; }
-    .foot-social { display: flex; gap: 0.6rem; }
-    .foot-social a {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: grid; place-items: center;
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text-muted); transition: 0.16s;
-    }
-    .foot-social a:hover { color: var(--accent); border-color: var(--accent); }
-    .foot-col h4 { font-family: "Inter", sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin: 0 0 1rem; }
-    .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
-    .foot-col a { color: var(--text-muted); font-size: 0.94rem; }
-    .foot-col a:hover { color: var(--text); }
-    .foot-contact li { display: flex; gap: 0.55rem; align-items: flex-start; color: var(--text-muted); font-size: 0.94rem; margin-bottom: 0.6rem; }
-    .foot-contact svg { color: var(--accent); flex: none; margin-top: 3px; }
-    .foot-bottom {
-      border-top: 1px solid var(--border);
-      margin-top: 2.5rem; padding-top: 1.5rem;
-      display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem;
-      justify-content: space-between; align-items: center;
-      color: var(--text-dim); font-size: 0.85rem;
-    }
-    .foot-bottom a { color: var(--text-dim); }
-    .foot-bottom a:hover { color: var(--text-muted); }
-
-    /* ============ STICKY MOBILE CTA ============ */
-    .mobile-cta {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
-      display: flex; gap: 0.6rem;
-      padding: 0.7rem 0.9rem;
-      background: rgba(13,17,23,0.94);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-    }
-    .mobile-cta .btn { flex: 1; padding: 0.85rem; font-size: 0.95rem; }
-    @media (min-width: 900px) { .mobile-cta { display: none; } }
-    @media (max-width: 899px) { body { padding-bottom: 72px; } }
-
-    /* reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      html { scroll-behavior: auto; }
-    }
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header id="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Tallpine Roofing home">
-        <!-- LOGO SLOT — replace this SVG with a real logo if desired -->
-        <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M24 3 6 13v8c0 12 7.6 20 18 24 10.4-4 18-12 18-24v-8L24 3Z" fill="#ff7a1a"/>
-          <path d="M24 3 6 13v8c0 12 7.6 20 18 24 10.4-4 18-12 18-24v-8L24 3Z" fill="url(#g)" fill-opacity=".25"/>
-          <path d="m14 25 10-8 10 8" stroke="#0d1117" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M18 26v7h12v-7" stroke="#0d1117" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs><linearGradient id="g" x1="6" y1="3" x2="42" y2="45"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-        </svg>
-        <span class="brand-name">Tallpine <span>Roofing</span></span>
-      </a>
+<a class="skip" href="#main">Skip to content</a>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#why">Why Us</a>
-        <a href="#work">Our Work</a>
-        <a href="#reviews">Reviews</a>
-      </nav>
+<div class="page">
 
-      <div class="nav-cta">
-        <a class="nav-phone" href="tel:+18005551234">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
-          (800) 555-1234
-        </a>
-        <a class="btn btn-primary" href="#quote">Free Quote</a>
-      </div>
+<!-- ============ HERO: before-and-after that follows the mouse ============ -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="cmp" id="cmp" style="--pos: 50%">
+    <img class="cmp-img" src="https://images.unsplash.com/photo-1602586179661-bb6b912de5be?auto=format&fit=crop&w=2000&q=70" alt="After: a new roof with clean, even dark tiles" width="2000" height="1200" fetchpriority="high">
+    <div class="cmp-before">
+      <img class="cmp-img" src="https://images.unsplash.com/photo-1658798105979-b6f06529fbd0?auto=format&fit=crop&w=2000&q=70" alt="Before: an old roof with cracked, lifting and missing shingles" width="2000" height="1200">
+    </div>
+    <div class="cmp-shade" aria-hidden="true"></div>
+    <span class="cmp-tag cmp-tag--before" aria-hidden="true">Before</span>
+    <span class="cmp-tag cmp-tag--after" aria-hidden="true">After</span>
+    <div class="cmp-handle" id="cmp-handle" aria-hidden="true">
+      <span class="cmp-grip">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg>
+      </span>
+    </div>
+    <label class="sr-only" for="cmp-range">Compare the roof before and after. Use the arrow keys to move the divider.</label>
+    <input class="cmp-range" id="cmp-range" type="range" min="0" max="100" value="50" step="1">
+  </div>
+
+  <header class="bar">
+    <a class="brand" href="#top" aria-label="Tallpine Roofing home">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.8V20h13V9.8"/></svg>
+      <span>Tallpine</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#why">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#quote">Contact</a>
+    </nav>
+    <div class="bar-actions">
+      <a class="pill pill--dark" href="#quote">Free quote</a>
+      <button class="pill menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
   </header>
 
-  <span id="top"></span>
-
-  <!-- ================= HERO ================= -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <div class="hero-badges">
-          <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Licensed &amp; Insured</span>
-          <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 25-Year Warranty</span>
-          <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free Inspections</span>
-        </div>
-
-        <h1>A roof done <span class="hl">right the first time.</span></h1>
-        <p class="hero-sub">Tallpine Roofing repairs, replaces, and restores roofs with honest pricing and craftsmanship that lasts. No pressure. No surprises. Just a roof you never have to worry about again.</p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="#quote">Get My Free Quote →</a>
-          <a class="btn btn-ghost btn-lg" href="tel:+18005551234">Call (800) 555-1234</a>
-        </div>
-
-        <div class="hero-trust">
-          <div class="avatars" aria-hidden="true">
-            <span style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=60')"></span>
-            <span style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=60')"></span>
-            <span style="background-image:url('https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=80&q=60')"></span>
-            <span style="background-image:url('https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=80&q=60')"></span>
-          </div>
-          <div>
-            <span class="stars">★★★★★</span><br />
-            <strong>4.9/5</strong> from 300+ local homeowners
-          </div>
-        </div>
-      </div>
-
-      <!-- QUOTE CARD -->
-      <div class="quote-card" id="quote">
-        <form id="quote-form" novalidate>
-          <h3>Get your free quote</h3>
-          <p class="qc-sub">Takes 60 seconds. A real person calls you back same day — no obligation.</p>
-
-          <div class="field">
-            <label for="q-name">Full name</label>
-            <input id="q-name" name="name" type="text" placeholder="Jane Smith" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label for="q-phone">Phone number</label>
-            <input id="q-phone" name="phone" type="tel" placeholder="(555) 123-4567" autocomplete="tel" required />
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="q-zip">ZIP code</label>
-              <input id="q-zip" name="zip" type="text" inputmode="numeric" placeholder="00000" autocomplete="postal-code" required />
-            </div>
-            <div class="field">
-              <label for="q-service">I need</label>
-              <select id="q-service" name="service">
-                <option>Roof repair</option>
-                <option>Roof replacement</option>
-                <option>Storm / leak damage</option>
-                <option>Free inspection</option>
-                <option>Something else</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="btn btn-primary btn-block btn-lg" type="submit">Get My Free Quote →</button>
-
-          <div class="qc-fine">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Your info is safe. We never share or sell your details.
-          </div>
-        </form>
-
-        <div class="form-success" id="quote-success">
-          <div class="check">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>You're all set!</h3>
-          <p>Thanks — a Tallpine Roofing specialist will call you back today. Keep an eye on your phone.</p>
-        </div>
-      </div>
+  <div class="hero-copy">
+    <p class="hero-badges">
+      <span>Licensed &amp; insured</span>
+      <span>25-year warranty</span>
+    </p>
+    <h1 id="hero-h">A roof done right the first time</h1>
+    <p class="hero-sub">Repairs, replacements and storm restoration with honest pricing and work that lasts. Slide the divider to see the difference.</p>
+    <div class="hero-btns">
+      <a class="pill pill--light pill--lg" href="#quote">Get my free quote</a>
+      <a class="pill pill--glass pill--lg" href="#services">See our services</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= TRUST BAR ================= -->
-  <section class="trustbar" aria-label="Company stats">
-    <div class="wrap">
-      <div class="trustbar-grid">
-        <div class="trust-item"><div class="num">15<span>+</span></div><div class="lbl">Years roofing homes</div></div>
-        <div class="trust-item"><div class="num">2,000<span>+</span></div><div class="lbl">Roofs installed &amp; repaired</div></div>
-        <div class="trust-item"><div class="num">4.9<span>★</span></div><div class="lbl">Average customer rating</div></div>
-        <div class="trust-item"><div class="num">100<span>%</span></div><div class="lbl">Satisfaction guaranteed</div></div>
-      </div>
-    </div>
-  </section>
+<main id="main">
 
-  <!-- ================= SERVICES ================= -->
-  <section class="sec" id="services">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">What we do</p>
-        <h2>Complete roofing, one trusted crew</h2>
-        <p>From a single leak to a full replacement, Tallpine Roofing handles it end to end — with upfront pricing and clean, on-time work.</p>
-      </div>
+<!-- ============ TRUST ROW ============ -->
+<ul class="trust">
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.700 7-5.500 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+    <h2>Licensed &amp; insured</h2>
+    <p>Certified crews you can trust on your home.</p>
+  </li>
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <h2>Fast response</h2>
+    <p>Same-day callbacks and emergency storm cover.</p>
+  </li>
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 12 3l9 6-9 6z"/><path d="m3 14 9 6 9-6"/></svg>
+    <h2>Quality materials</h2>
+    <p>Shingle, tile and metal built for decades of weather.</p>
+  </li>
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10v18l-5-3-5 3z"/><path d="M10 8h4M10 12h4"/></svg>
+    <h2>Our promise</h2>
+    <p>Workmanship backed by a written warranty.</p>
+  </li>
+</ul>
 
-      <div class="services-grid">
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
-          <h3>Roof Replacement</h3>
-          <p>Full tear-offs and new installs in asphalt, architectural shingle, and metal — built to shrug off decades of weather.</p>
-        </div>
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
-          <h3>Repairs &amp; Leaks</h3>
-          <p>Fast, precise fixes for leaks, missing shingles, flashing, and soft spots — stopping small problems before they get big.</p>
-        </div>
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 12a10 10 0 0 0 18 6"/><path d="m13 12 3-3 3 3"/></svg></div>
-          <h3>Storm &amp; Hail Damage</h3>
-          <p>Emergency tarping and full storm restoration — plus hands-on help documenting your insurance claim the right way.</p>
-        </div>
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>Free Inspections</h3>
-          <p>A thorough, no-pressure roof health check with honest photos and a plain-English report — even if all you need is peace of mind.</p>
-        </div>
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/></svg></div>
-          <h3>Gutters &amp; Drainage</h3>
-          <p>Seamless gutters and guards that keep water moving away from your roofline, siding, and foundation year-round.</p>
-        </div>
-        <div class="service reveal">
-          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-          <h3>Skylights &amp; Ventilation</h3>
-          <p>Proper attic ventilation and leak-free skylight installs that lower energy bills and extend the life of your whole roof.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services" aria-labelledby="services-h">
+  <p class="eyebrow reveal">Complete roofing service</p>
+  <h2 class="sec-title reveal" id="services-h">Every roofing service, one team</h2>
 
-  <!-- ================= WHY US ================= -->
-  <section class="sec" id="why" style="background:var(--bg-2);border-block:1px solid var(--border);">
-    <div class="wrap split">
-      <div class="split-media reveal">
-        <!-- PHOTO SLOT: data-slot="why" -->
-        <img data-slot="why" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=1000&q=70" alt="Tallpine Roofing crew installing new shingles on a residential roof" loading="lazy" />
-        <div class="float-card">
-          <svg class="fc-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
-          <div><strong>Rated 4.9/5</strong><small>by 300+ local homeowners</small></div>
-        </div>
-      </div>
-
-      <div class="split-copy reveal">
-        <p class="eyebrow">Why Tallpine Roofing</p>
-        <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:0.5rem;">Roofing without the runaround</h2>
-        <p style="color:var(--text-muted);font-size:1.05rem;margin:0.6rem 0 0;">Most people dread calling a roofer. We built Tallpine Roofing to be the opposite — clear, punctual, and genuinely on your side.</p>
-
-        <ul class="why-list">
-          <li>
-            <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><h4>Upfront, honest pricing</h4><p>A detailed written quote before we start — the number we say is the number you pay.</p></div>
-          </li>
-          <li>
-            <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><h4>Manufacturer-certified crews</h4><p>Factory-trained installers using premium materials, backed by a 25-year workmanship warranty.</p></div>
-          </li>
-          <li>
-            <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><h4>On time, cleaned up, done</h4><p>We show up when we say, protect your property, and leave the site spotless — magnetic nail sweep included.</p></div>
-          </li>
-          <li>
-            <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><h4>Insurance claim experts</h4><p>Storm damage? We deal directly with your adjuster and fight to get your claim covered fairly.</p></div>
-          </li>
-        </ul>
-
-        <a class="btn btn-primary btn-lg" href="#quote">Start My Free Quote →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PROCESS ================= -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">How it works</p>
-        <h2>Four simple steps to a better roof</h2>
-        <p>No pushy sales visits, no confusing paperwork. Here's exactly what to expect.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="step-n">1</div><h3>Free inspection</h3><p>We assess your roof and send clear photos plus an honest, no-pressure report.</p></div>
-        <div class="step reveal"><div class="step-n">2</div><h3>Transparent quote</h3><p>A detailed, fixed written price with material options — reviewed with you line by line.</p></div>
-        <div class="step reveal"><div class="step-n">3</div><h3>Expert install</h3><p>Our certified crew completes most roofs in a day, cleaning up as they go.</p></div>
-        <div class="step reveal"><div class="step-n">4</div><h3>Final walkthrough</h3><p>We inspect together, hand over your warranty, and stand behind the work for good.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= GALLERY ================= -->
-  <section class="sec" id="work" style="background:var(--bg-2);border-block:1px solid var(--border);">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Our work</p>
-        <h2>Roofs the neighbors notice</h2>
-        <p>A look at recent Tallpine Roofing projects — real homes, real craftsmanship.</p>
-      </div>
-      <div class="gallery reveal">
-        <figure class="wide">
-          <!-- PHOTO SLOT: data-slot="gallery-1" -->
-          <img data-slot="gallery-1" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=70" alt="Newly replaced residential roof" loading="lazy" />
-          <figcaption>Full replacement · Architectural shingle</figcaption>
-        </figure>
-        <figure>
-          <img data-slot="gallery-2" src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?auto=format&fit=crop&w=600&q=70" alt="Close-up of clean shingle work" loading="lazy" />
-          <figcaption>Ridge detail</figcaption>
-        </figure>
-        <figure>
-          <img data-slot="gallery-3" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=600&q=70" alt="Modern home with new roof" loading="lazy" />
-          <figcaption>New build</figcaption>
-        </figure>
-        <figure>
-          <img data-slot="gallery-4" src="https://images.unsplash.com/photo-1591588582259-e675bd2e6088?auto=format&fit=crop&w=600&q=70" alt="Roofer working on a rooftop" loading="lazy" />
-          <figcaption>Storm repair</figcaption>
-        </figure>
-        <figure>
-          <img data-slot="gallery-5" src="https://images.unsplash.com/photo-1523575708161-ad0fc2a9b951?auto=format&fit=crop&w=600&q=70" alt="Metal roof installation" loading="lazy" />
-          <figcaption>Standing-seam metal</figcaption>
-        </figure>
-        <figure class="wide">
-          <img data-slot="gallery-6" src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=900&q=70" alt="Craftsman home with a freshly finished roof" loading="lazy" />
-          <figcaption>Craftsman restoration · Cedar tone</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= REVIEWS ================= -->
-  <section class="sec" id="reviews">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Reviews</p>
-        <h2>Homeowners who'd hire us again</h2>
-        <p>What homeowners say once the crew has packed up.</p>
-      </div>
-      <p class="sample-note" style="margin:0 0 1.25rem;font-size:0.8125rem;line-height:1.5;opacity:.75;">Sample content: the reviews and figures on this page are made up for this concept.</p>
-      <div class="reviews-grid">
-        <div class="review reveal">
-          <div class="stars">★★★★★</div>
-          <p>"Tallpine Roofing replaced our whole roof in a single day and you'd never know a crew had been there — spotless. The quote was exactly what we paid. Couldn't recommend them more."</p>
-          <div class="who">
-            <span class="ava" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=60')"></span>
-            <div><strong>Melissa R.</strong><small>Full replacement</small><br /><span class="verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verified customer</span></div>
-          </div>
-        </div>
-        <div class="review reveal">
-          <div class="stars">★★★★★</div>
-          <p>"After a bad storm, they tarped our roof the same night I called and handled the whole insurance claim. Professional, honest, and genuinely kind people to deal with."</p>
-          <div class="who">
-            <span class="ava" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=60')"></span>
-            <div><strong>David &amp; Anna T.</strong><small>Storm restoration</small><br /><span class="verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verified customer</span></div>
-          </div>
-        </div>
-        <div class="review reveal">
-          <div class="stars">★★★★★</div>
-          <p>"I got three quotes. Tallpine Roofing was the only one that actually got on the roof, showed me photos, and didn't try to upsell me. Fair price, flawless work. These are my roofers for life."</p>
-          <div class="who">
-            <span class="ava" style="background-image:url('https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=100&q=60')"></span>
-            <div><strong>James P.</strong><small>Leak repair</small><br /><span class="verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Verified customer</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= GUARANTEE ================= -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="guarantee reveal">
-        <svg class="seal" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-          <circle cx="60" cy="60" r="56" fill="#161d29" stroke="#ff7a1a" stroke-width="3"/>
-          <circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,122,26,0.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
-          <path d="M60 30 38 40v14c0 13 8.5 22 22 26 13.5-4 22-13 22-26V40L60 30Z" fill="#ff7a1a"/>
-          <path d="m50 58 7 7 14-15" stroke="#0d1117" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="60" y="100" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="#f5f7fa">25-YEAR WARRANTY</text>
-        </svg>
-        <div>
-          <p class="eyebrow">Our promise</p>
-          <h2>The Tallpine Roofing Guarantee</h2>
-          <p>We don't consider a job done until you're completely happy. If something isn't right, we make it right — no arguments, no fine print.</p>
-          <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 25-year workmanship warranty in writing</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Fixed-price quotes — zero surprise fees</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Fully licensed, bonded &amp; insured</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 100% satisfaction or we come back free</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FINAL CTA ================= -->
-  <section class="sec final">
-    <div class="final-bg" aria-hidden="true"></div>
-    <div class="wrap final-inner reveal">
-      <p class="eyebrow">Ready when you are</p>
-      <h2>Get your free roof quote today</h2>
-      <p>It takes 60 seconds and there's zero obligation. Find out exactly what your roof needs — from the crew your neighbors already trust.</p>
-      <div class="final-actions">
-        <a class="btn btn-primary btn-lg" href="#quote">Get My Free Quote →</a>
-        <a class="btn btn-ghost btn-lg" href="tel:+18005551234">Call (800) 555-1234</a>
-      </div>
-      <div class="hero-trust">
-        <span class="stars">★★★★★</span>
-        <span style="color:var(--text-muted)">4.9/5 · Same-day callbacks · No obligation</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <div class="wrap">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <a class="brand" href="#top" aria-label="Tallpine Roofing home">
-            <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <path d="M24 3 6 13v8c0 12 7.6 20 18 24 10.4-4 18-12 18-24v-8L24 3Z" fill="#ff7a1a"/>
-              <path d="m14 25 10-8 10 8" stroke="#0d1117" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M18 26v7h12v-7" stroke="#0d1117" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="brand-name">Tallpine <span>Roofing</span></span>
-          </a>
-          <p>Honest, high-craft roofing for homeowners who want it done right the first time — and never worry about it again.</p>
-          <div class="foot-social">
-            <a href="#top" aria-label="Tallpine Roofing on Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>
-            </a>
-            <a href="tel:+18005551234" aria-label="Call Tallpine Roofing">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="foot-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">Roof replacement</a></li>
-            <li><a href="#services">Repairs &amp; leaks</a></li>
-            <li><a href="#services">Storm &amp; hail damage</a></li>
-            <li><a href="#services">Free inspections</a></li>
-            <li><a href="#services">Gutters &amp; drainage</a></li>
-          </ul>
-        </div>
-
-        <div class="foot-col">
-          <h4>Get in touch</h4>
-          <ul class="foot-contact">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg> (800) 555-1234</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><path d="m22 6-10 7L2 6"/></svg> hello@tallpineroofing.example</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Serving your local area &amp; nearby towns</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mon–Sat, 7am–7pm · 24/7 storm response</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="foot-bottom">
-        <span>© <span id="year"></span> Tallpine Roofing. All rights reserved. Licensed, bonded &amp; insured.</span>
-        <span><a href="#">Privacy</a> · <a href="#">Warranty terms</a> · <a href="#quote">Free quote</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ================= STICKY MOBILE CTA ================= -->
-  <div class="mobile-cta">
-    <a class="btn btn-ghost" href="tel:+18005551234">Call now</a>
-    <a class="btn btn-primary" href="#quote">Free quote</a>
+  <div class="svc-grid">
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1763665814538-8ba04597286c?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Roof replacement</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1635424709961-f3a150459ad4?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Repairs &amp; leaks</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1643509963821-563d2ddb0812?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Storm &amp; hail damage</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Free inspections</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1566071634551-224a639a1c7d?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Gutters &amp; drainage</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="svc reveal" href="#quote">
+      <img src="https://images.unsplash.com/photo-1590365876016-da05ac533e83?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="700" height="860">
+      <span class="svc-name">Skylights &amp; ventilation</span>
+      <span class="svc-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
   </div>
 
-  <script>
-    // Current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <p class="sec-foot reveal">From a single leak to a full replacement, with upfront pricing and clean, on-time work.</p>
+</section>
 
-    // Header shadow on scroll
-    const header = document.getElementById('site-header');
-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+<!-- ============ REVIEWS ============ -->
+<section class="sec sec--tint" id="reviews" aria-labelledby="reviews-h">
+  <p class="eyebrow reveal">What homeowners say</p>
+  <h2 class="sec-title reveal" id="reviews-h">Homeowners who&rsquo;d hire us again</h2>
+  <p class="sample-note reveal">Sample content: the reviews and figures on this page are made up for this concept.</p>
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  <div class="rev-grid">
+    <figure class="rev reveal">
+      <p class="stars" aria-label="Five out of five stars">★★★★★</p>
+      <blockquote>&ldquo;Tallpine replaced our whole roof in a single day and you&rsquo;d never know a crew had been there. The quote was exactly what we paid.&rdquo;</blockquote>
+      <figcaption><b>Melissa R.</b><span>Full replacement</span></figcaption>
+    </figure>
+    <figure class="rev reveal">
+      <p class="stars" aria-label="Five out of five stars">★★★★★</p>
+      <blockquote>&ldquo;After a bad storm they tarped our roof the same night I called and handled the whole insurance claim. Professional, honest and kind.&rdquo;</blockquote>
+      <figcaption><b>David &amp; Anna T.</b><span>Storm restoration</span></figcaption>
+    </figure>
+    <figure class="rev reveal">
+      <p class="stars" aria-label="Five out of five stars">★★★★★</p>
+      <blockquote>&ldquo;I got three quotes. Tallpine was the only one that got on the roof, showed me photos and didn&rsquo;t try to upsell me. Fair price, flawless work.&rdquo;</blockquote>
+      <figcaption><b>James P.</b><span>Leak repair</span></figcaption>
+    </figure>
+  </div>
+</section>
 
-    // Quote form — front-end demo submission
-    const form = document.getElementById('quote-form');
-    const success = document.getElementById('quote-success');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Minimal validation
-      const name = form.name.value.trim();
-      const phone = form.phone.value.trim();
-      const zip = form.zip.value.trim();
-      if (!name || !phone || !zip) {
-        [...form.querySelectorAll('[required]')].forEach((f) => {
-          if (!f.value.trim()) { f.style.borderColor = '#ff5a5a'; f.focus(); }
-        });
-        return;
-      }
-      // In production, POST to your CRM / email endpoint here.
-      form.style.display = 'none';
-      success.classList.add('show');
-    });
-    // Clear error state on input
-    form.querySelectorAll('[required]').forEach((f) => {
-      f.addEventListener('input', () => { f.style.borderColor = ''; });
-    });
-  </script>
+<!-- ============ WHY ============ -->
+<section class="sec why" id="why" aria-labelledby="why-h">
+  <figure class="why-img reveal">
+    <img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&w=1100&q=70" alt="A roofer in a harness working on a shingle roof" loading="lazy" width="1100" height="1250">
+    <figcaption>25-year workmanship warranty</figcaption>
+  </figure>
+  <div class="why-body">
+    <p class="eyebrow eyebrow--left reveal">Built to protect, done right</p>
+    <h2 class="sec-title sec-title--left reveal" id="why-h">Roofing without the runaround</h2>
+    <ul class="why-list">
+      <li class="reveal"><b>Upfront, honest pricing.</b> A detailed written quote before we start. The number we say is the number you pay.</li>
+      <li class="reveal"><b>Certified crews.</b> Factory-trained installers using premium materials, backed by a 25-year workmanship warranty.</li>
+      <li class="reveal"><b>On time, cleaned up, done.</b> We show up when we say, protect your property and leave the site spotless.</li>
+      <li class="reveal"><b>Insurance claim help.</b> Storm damage? We deal with your adjuster directly so the claim is handled fairly.</li>
+    </ul>
+    <a class="pill pill--dark pill--lg reveal" href="#quote">Start my free quote</a>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section class="sec sec--tint" aria-labelledby="steps-h">
+  <p class="eyebrow reveal">Simple process, zero stress</p>
+  <h2 class="sec-title reveal" id="steps-h">How we work for you</h2>
+  <p class="sec-sub reveal">Four steps from &ldquo;we&rsquo;ve got a problem&rdquo; to &ldquo;problem solved&rdquo;. No pushy sales visits and no confusing paperwork.</p>
+
+  <ol class="step-grid">
+    <li class="step reveal"><span class="step-n">01</span><h3>Free inspection</h3><p>We assess your roof and send clear photos with an honest, no-pressure report.</p></li>
+    <li class="step reveal"><span class="step-n">02</span><h3>Transparent quote</h3><p>A fixed written price with material options, reviewed with you line by line.</p></li>
+    <li class="step reveal"><span class="step-n">03</span><h3>Expert install</h3><p>Our certified crew completes most roofs in a day, cleaning up as they go.</p></li>
+    <li class="step reveal"><span class="step-n">04</span><h3>Final walkthrough</h3><p>We inspect the work together and hand over your warranty.</p></li>
+  </ol>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="sec quote" id="quote" aria-labelledby="quote-h">
+  <div class="quote-copy reveal">
+    <p class="eyebrow eyebrow--left">Ready when you are</p>
+    <h2 class="sec-title sec-title--left" id="quote-h">Get your free roof quote</h2>
+    <p>It takes 60 seconds and there&rsquo;s no obligation. A real person calls you back the same day.</p>
+    <ul class="promise">
+      <li>25-year workmanship warranty in writing</li>
+      <li>Fixed-price quotes with no surprise fees</li>
+      <li>Fully licensed, bonded and insured</li>
+    </ul>
+    <p class="quote-call">Prefer to talk? <a href="tel:+18005551234">Call (800) 555-1234</a></p>
+  </div>
+
+  <form class="form reveal" id="quote-form" novalidate>
+    <label for="q-name">Full name</label>
+    <input id="q-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith">
+
+    <label for="q-phone">Phone number</label>
+    <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567">
+
+    <div class="form-row">
+      <div>
+        <label for="q-zip">ZIP code</label>
+        <input id="q-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000">
+      </div>
+      <div>
+        <label for="q-need">I need</label>
+        <select id="q-need" name="need">
+          <option>Roof repair</option>
+          <option>Roof replacement</option>
+          <option>Storm or leak damage</option>
+          <option>Free inspection</option>
+          <option>Something else</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="pill pill--accent pill--lg pill--full" type="submit">Get my free quote</button>
+    <p class="form-note" id="form-note" role="status">Your details are safe. We never share or sell them.</p>
+  </form>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#top" aria-label="Tallpine Roofing home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.8V20h13V9.8"/></svg>
+        <span>Tallpine</span>
+      </a>
+      <p>Honest, high-craft roofing for homeowners who want it done right the first time.</p>
+    </div>
+    <div>
+      <h2>Services</h2>
+      <ul>
+        <li>Roof replacement</li>
+        <li>Repairs &amp; leaks</li>
+        <li>Storm &amp; hail damage</li>
+        <li>Free inspections</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Get in touch</h2>
+      <ul>
+        <li>(800) 555-1234</li>
+        <li>hello@tallpineroofing.example</li>
+        <li>Mon to Sat, 7am to 7pm</li>
+        <li>24/7 storm response</li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-legal">&copy; <span id="yr">2026</span> Tallpine Roofing. A concept page: this is not a real business.</p>
+</footer>
+
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
