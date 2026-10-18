@@ -48,23 +48,31 @@
   var note = document.getElementById("form-note");
   if (form && note) {
     var defaultNote = note.textContent;
+    // Short names for the summary, keyed by field name
+    var names = { name: "your name", email: "your email", type: "a project type" };
     var mark = function (input) {
       var bad = !input.checkValidity();
       input.closest(".field").setAttribute("data-invalid", String(bad));
       input.setAttribute("aria-invalid", String(bad));
+      var msg = document.getElementById(input.getAttribute("aria-describedby"));
+      if (msg) msg.hidden = !bad;
       return !bad;
+    };
+    var list = function (items) {
+      if (items.length < 2) return items.join("");
+      return items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
     };
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var required = form.querySelectorAll("[required]");
-      var firstBad = null;
+      var bad = [];
       required.forEach(function (input) {
-        if (!mark(input) && !firstBad) firstBad = input;
+        if (!mark(input)) bad.push(input);
       });
-      if (firstBad) {
+      if (bad.length) {
         note.setAttribute("data-state", "error");
-        note.textContent = "Please add your name, a valid email and a project type so we can reply.";
-        firstBad.focus();
+        note.textContent = "Please check " + list(bad.map(function (i) { return names[i.name]; })) + " so we can reply.";
+        bad[0].focus();
         return;
       }
       var name = form.elements.name.value.trim().split(" ")[0];

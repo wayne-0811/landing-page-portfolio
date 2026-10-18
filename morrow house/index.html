@@ -55,6 +55,7 @@
     <div class="hero-summary">
       <p class="body">Custom homes rooted in place. Built with care, clarity, and a belief that the best things are made to last.</p>
       <a class="cue btn-label" href="#approach">Discover the difference <img src="assets/arrow-down.svg" alt="" width="20" height="20"></a>
+      <a class="btn btn-label hero-cta" href="#enquiry">Start your project <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
     </div>
   </div>
 
@@ -192,7 +193,7 @@
       <p class="tag label"><i class="dot" aria-hidden="true"></i>04 / From ground to home</p>
       <h2 class="h-62" id="process-h">A clear path.<br>A shared<br>commitment.</h2>
       <p class="body">Building a home should feel as considered as the home itself. We make a complex journey clear, collaborative, and genuinely personal.</p>
-      <a class="text-link btn-label" href="#enquiry">How we build <img src="assets/arrow-up-right.svg" alt="" width="17" height="17"></a>
+      <a class="text-link btn-label" href="#enquiry">Start your project <img src="assets/arrow-up-right.svg" alt="" width="17" height="17"></a>
       <p class="small process-note">One dedicated project lead.<br>From the first conversation to the final detail.</p>
     </div>
     <ol class="phases">
@@ -347,16 +348,18 @@
     <form class="form reveal" id="enquiry-form" novalidate>
       <div class="field">
         <label class="micro" for="f-name">Your name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Full name" required>
+        <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Full name" required aria-describedby="err-name">
+        <p class="field-error micro" id="err-name" hidden>Add your name</p>
       </div>
       <div class="field">
         <label class="micro" for="f-email">Email address</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="err-email">
+        <p class="field-error micro" id="err-email" hidden>Use an address like name@example.com</p>
       </div>
       <div class="field">
         <label class="micro" for="f-type">Project type</label>
         <div class="select">
-          <select id="f-type" name="type" required>
+          <select id="f-type" name="type" required aria-describedby="err-type">
             <option value="" selected disabled>Please select</option>
             <option>Custom home</option>
             <option>Thoughtful renovation</option>
@@ -365,13 +368,14 @@
           </select>
           <img src="assets/chevron-down.svg" alt="" width="18" height="18">
         </div>
+        <p class="field-error micro" id="err-type" hidden>Choose a project type</p>
       </div>
       <div class="field">
-        <label class="micro" for="f-loc">Location</label>
+        <label class="micro" for="f-loc">Location <span class="optional">(optional)</span></label>
         <input id="f-loc" name="location" type="text" autocomplete="address-level2" placeholder="Town or region">
       </div>
       <div class="field field--wide">
-        <label class="micro" for="f-plans">Tell us a little about your plans</label>
+        <label class="micro" for="f-plans">Tell us a little about your plans <span class="optional">(optional)</span></label>
         <textarea id="f-plans" name="plans" rows="1" placeholder="Your ideas, timeline, and what matters most&hellip;"></textarea>
       </div>
       <p class="small form-note field--wide" id="form-note" role="status">Your details stay with our team. We&rsquo;ll be in touch within two working days.</p>
