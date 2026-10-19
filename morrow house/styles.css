@@ -312,6 +312,8 @@ h1, h2, h3 { font-weight: 400; }
 }
 .invite { display: flex; flex-direction: column; gap: 28px; }
 .invite-text { max-width: 400px; color: var(--muted); }
+/* 1.75 keeps the two stacked links at least 24px apart as tap targets (WCAG 2.5.8) */
+.invite-contact { line-height: 1.75; }
 .invite-contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .form {
