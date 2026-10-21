@@ -5,28 +5,21 @@ If you need a fast, conversion-focused landing page — design and copy — I'm 
 
 ## What's inside
 
-### TEMPO — remote running coaching
-A single-page marketing site for a personal running coach. The brief: take recreational runners who've plateaued and convince them to book a free intro call. Dark, premium, athletic — with conversion copy written to do the persuading, not just placeholder text.
-Highlights:
+`main` holds the full portfolio: the gallery page (`index.html`) and every concept folder.
 
-A hero that names the problem and the promise in one line
-A stats bar, a clear three-step "how it works," and benefit-led feature blocks
-Three pricing tiers with the recommended plan highlighted
-An accordion FAQ that handles real objections
-Testimonials and a single, repeated call to action
+| Concept | Folder | Branch |
+| --- | --- | --- |
+| Tallpine Roofing — local roofing company | `roof ranger/` | `concept/tallpine-roofing` |
+| Halden Automotive — independent garage | `halden automotive/` | `concept/halden-automotive` |
+| Morrow House — custom home builder | `morrow house/` | `concept/morrow-house` |
+| Walles — boutique buyer's agency | `walles/` | `concept/walles` |
 
-**Built with**
+Each `concept/*` branch carries only that concept's folder, so one build can be worked on or shared on its own. Changes made on a concept branch get merged back into `main`.
 
-- Semantic HTML (`header`, `nav`, `main`, `section`, `footer`) with a proper
-  heading order.
-- Mobile-first, fully responsive layout (verified down to 375px).
-- CSS custom properties for the design tokens (dark/premium/athletic, one acid
-  lime accent used sparingly).
-- Space Grotesk (display) + Inter (body) via Google Fonts.
-- ~90 lines of vanilla JS: mobile nav toggle, FAQ accordion, scroll-reveal.
-- Accessible: visible keyboard focus states, `alt` text on all images,
-  `aria-expanded`/`aria-controls` on interactive widgets, and
-  `prefers-reduced-motion` respected.
+Concepts kept on a branch only, not shown in the gallery:
+
+- `concept/abbott-automotive` — Abbott Automotive homepage mockup
+- `concept/abbott-automotive-alt` — an earlier, single-file take on the same mockup
 
 ## What I offer
 
