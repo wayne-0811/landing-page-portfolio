@@ -203,7 +203,6 @@ a:hover { color: inherit; }
   background: var(--surface-alt); touch-action: pan-y; cursor: ew-resize; user-select: none;
 }
 .compare__img { -webkit-user-drag: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.compare__img--drawn { filter: url(#pencil); }
 .compare__render { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); background: var(--mh-linen); }
 .compare__tag {
   position: absolute; top: 16px; z-index: 2; padding: 6px 10px;

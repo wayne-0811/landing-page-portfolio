@@ -8,8 +8,8 @@ import { compare } from '../content/homepage';
 
 // Rendering vs finished home in one frame. The range input sets how much of the
 // rendering layer is visible; both images stay full-frame so they line up.
-// Until a real rendering is supplied, the rendering is the same photograph run
-// through an SVG line-drawing filter.
+// The rendering is a line drawing traced from the photo in the same pixel space
+// (scripts/draw-stillwater.mjs), so the two layers line up.
 export function Compare() {
   const [value, setValue] = useState(50);
   const dragging = useRef(false);
@@ -50,19 +50,6 @@ export function Compare() {
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
-          <svg className="sr-only" aria-hidden="true" focusable="false">
-            <filter id="pencil" colorInterpolationFilters="sRGB">
-              <feColorMatrix type="saturate" values="0" />
-              <feGaussianBlur stdDeviation="1.3" />
-              <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" preserveAlpha="true" />
-              <feComponentTransfer>
-                <feFuncR type="linear" slope="-2.6" intercept="1" />
-                <feFuncG type="linear" slope="-2.6" intercept="1" />
-                <feFuncB type="linear" slope="-2.6" intercept="1" />
-              </feComponentTransfer>
-              <feColorMatrix type="matrix" values="0.94 0 0 0 0.04  0 0.93 0 0 0.04  0 0 0.88 0 0.05  0 0 0 1 0" />
-            </filter>
-          </svg>
           <img
             className="compare__img"
             src="assets/stillwater-hero.jpg"
@@ -72,7 +59,7 @@ export function Compare() {
             loading="lazy"
           />
           <div className="compare__render" aria-hidden="true">
-            <img className="compare__img compare__img--drawn" src="assets/stillwater-hero.jpg" alt="" width="1584" height="672" loading="lazy" />
+            <img className="compare__img" src="assets/stillwater-drawing.svg" alt="" width="1584" height="672" loading="lazy" />
           </div>
           <span className="compare__tag compare__tag--left micro">{compare.rendering}</span>
           <span className="compare__tag compare__tag--right micro">{compare.built}</span>
