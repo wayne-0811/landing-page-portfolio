@@ -16,10 +16,9 @@ If you need a fast, conversion-focused landing page — design and copy — I'm 
 
 Each `concept/*` branch carries only that concept's folder, so one build can be worked on or shared on its own. Changes made on a concept branch get merged back into `main`.
 
-Concepts kept on a branch only, not shown in the gallery:
+Kept on a branch only, not shown in the gallery:
 
-- `concept/abbott-automotive` — Abbott Automotive homepage mockup
-- `concept/abbott-automotive-alt` — an earlier, single-file take on the same mockup
+- `concept/abbott-automotive` — a homepage mockup for a real garage, with placeholder contact details
 
 ## What I offer
 
