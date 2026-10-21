@@ -16,10 +16,6 @@ If you need a fast, conversion-focused landing page — design and copy — I'm 
 
 Each `concept/*` branch carries only that concept's folder, so one build can be worked on or shared on its own. Changes made on a concept branch get merged back into `main`.
 
-Kept on a branch only, not shown in the gallery:
-
-- `concept/abbott-automotive` — a homepage mockup for a real garage, with placeholder contact details
-
 ## What I offer
 
 I design and build landing pages that are made to convert — and I write the copy that makes them work. Most cheap landing pages come back as a nice-looking shell with weak placeholder text. I deliver the page and the words.
