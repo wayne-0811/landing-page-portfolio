@@ -16,6 +16,14 @@ If you need a fast, conversion-focused landing page — design and copy — I'm 
 
 Each `concept/*` branch carries only that concept's folder, so one build can be worked on or shared on its own. Changes made on a concept branch get merged back into `main`.
 
+Morrow House is built with Next.js. Its source lives in `morrow house/site/`, and the built static files (`index.html`, `_next/`, `assets/`) are committed beside it, so the folder still opens without a build step. After editing the source, rebuild with:
+
+```sh
+cd "morrow house/site"
+npm ci
+npm run build   # exports the site and copies it into morrow house/
+```
+
 ## What I offer
 
 I design and build landing pages that are made to convert — and I write the copy that makes them work. Most cheap landing pages come back as a nice-looking shell with weak placeholder text. I deliver the page and the words.

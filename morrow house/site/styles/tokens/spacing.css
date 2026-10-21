@@ -1,0 +1,9 @@
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:22px;--space-6:32px;--space-7:40px;--space-8:56px;--space-9:80px;--space-10:104px;--space-11:140px;
+--container:1280px;/* @kind spacing */
+--gutter:clamp(20px,4.4vw,62px);/* @kind spacing */
+--section-y:clamp(80px,10vw,140px);/* @kind spacing */
+--header-h:100px;/* @kind spacing */
+--grid-gap:46px;/* @kind spacing */
+--button-h:44px;/* @kind spacing */
+}

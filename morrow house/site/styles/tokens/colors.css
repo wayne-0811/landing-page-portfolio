@@ -1,0 +1,43 @@
+:root{
+/* Base palette — sampled from the live site */
+--mh-linen:#f2f0e9;      /* page ground */
+--mh-stone:#e7e2d8;      /* alternate section ground */
+--mh-sand:#d5cebf;       /* enquiry section ground */
+--mh-forest:#141b18;     /* deep forest-ink: dark sections, primary text, buttons */
+--mh-forest-2:#232b27;   /* hover on forest */
+--mh-moss:#3d4841;       /* eyebrows, strong secondary text */
+--mh-slate:#5c615c;      /* body copy on light */
+--mh-ash:#8a8e88;        /* placeholders, tertiary */
+--mh-mist:#c3c7c1;       /* body copy on dark */
+--mh-brass:#b79a66;      /* accent: eyebrow squares, arrows */
+--mh-brass-light:#dcbd84;/* accent on dark: step numerals */
+--mh-clay:#9a4a32;       /* intentional addition: form errors only */
+--mh-white:#ffffff;
+--mh-rule:#cfccc3;       /* hairlines on linen/stone */
+--mh-rule-strong:#3d4841;/* form underlines */
+--mh-rule-dark:rgba(242,240,233,.16); /* hairlines on forest */
+--mh-scrim:linear-gradient(180deg,rgba(20,27,24,0) 45%,rgba(20,27,24,.62) 100%);/* @kind color */
+
+/* Semantic aliases */
+--surface-page:var(--mh-linen);
+--surface-alt:var(--mh-stone);
+--surface-warm:var(--mh-sand);
+--surface-dark:var(--mh-forest);
+--surface-card:var(--mh-linen);
+--text-strong:var(--mh-forest);
+--text-body:var(--mh-slate);
+--text-label:var(--mh-moss);
+--text-muted:var(--mh-ash);
+--text-on-dark:var(--mh-linen);
+--text-on-dark-body:var(--mh-mist);
+--text-on-image:var(--mh-white);
+--accent:var(--mh-brass);
+--accent-on-dark:var(--mh-brass-light);
+--border-hairline:var(--mh-rule);
+--border-field:var(--mh-rule-strong);
+--border-on-dark:var(--mh-rule-dark);
+--action-bg:var(--mh-forest);
+--action-bg-hover:var(--mh-forest-2);
+--action-fg:var(--mh-linen);
+--status-error:var(--mh-clay);
+}

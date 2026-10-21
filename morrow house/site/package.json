@@ -1,0 +1,16 @@
+{
+  "name": "morrow-house",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Morrow House concept homepage. Static Next.js export; built files are copied up into the parent folder.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node scripts/postexport.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.60.0",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}
