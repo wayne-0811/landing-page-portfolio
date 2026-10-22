@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { SectionHeading } from '../components/SectionHeading';
+import { ArrowLink } from '../components/ArrowLink';
 import { howWeWork } from '../content/pages';
 
 const { stages, labels } = howWeWork;
@@ -8,8 +10,10 @@ const pad = (n) => String(n).padStart(2, '0');
 
 // Six stages on a line. Stages before the current one fill brass; choosing a
 // stage swaps the panel and photo. The rail is a tab list, so arrow keys move
-// between stages. On phones the rail runs down the page.
-export function StageExplorer() {
+// between stages. On phones the rail runs down the page. Shown on the
+// homepage under its heading ({ id, eyebrow, title, link, href }); the How we
+// work page shows the same stages on a calendar.
+export function StageExplorer({ heading }) {
   const [active, setActive] = useState(0);
   const tabs = useRef([]);
   const stage = stages[active];
@@ -25,8 +29,14 @@ export function StageExplorer() {
   };
 
   return (
-    <section className="section explorer" aria-label="The six stages">
+    <section className="section explorer" id={heading.id} aria-labelledby={`${heading.id}-title`}>
       <div className="wrap">
+        <SectionHeading
+          id={`${heading.id}-title`}
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          aside={<ArrowLink href={heading.href} icon="right">{heading.link}</ArrowLink>}
+        />
         <div className="explorer__rail" role="tablist" aria-label="Stages" onKeyDown={onKeyDown} style={{ '--progress': active / (stages.length - 1) }}>
           <span className="explorer__line" aria-hidden="true"><span className="explorer__fill" /></span>
           {stages.map((s, i) => (
@@ -54,7 +64,7 @@ export function StageExplorer() {
           </div>
           <div className="explorer__facts">
             <p className="micro explorer__kicker">Stage {pad(active + 1)} of {pad(stages.length)}</p>
-            <h2 className="explorer__title">{stage.title}</h2>
+            <h3 className="explorer__title">{stage.title}</h3>
             <dl className="explorer__grid">
               {Object.entries(labels).map(([key, label]) => (
                 <div key={key}>

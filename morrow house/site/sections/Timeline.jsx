@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SectionHeading } from '../components/SectionHeading';
-import { ArrowLink } from '../components/ArrowLink';
-import { process } from '../content/homepage';
+import { howWeWork } from '../content/pages';
 import {
   WEEKDAY_LABELS, addMonths, dateLabel, dayKey, monthGrid, monthLabel, placeBookings, startMonth,
 } from '../lib/calendar';
 
-const { steps, calendar, labels } = process;
+const { stages: steps, calendar, labels } = howWeWork;
+const { detailLabels } = calendar;
 const pad = (n) => String(n).padStart(2, '0');
 
 // Each phase's month, its 42-day grid and its bookings on real dates.
@@ -76,21 +76,33 @@ function PhaseCard({ phase, latest, photo = true, live = false }) {
     <article className="cal-card" aria-live={live ? 'polite' : undefined} aria-atomic={live ? 'true' : undefined}>
       {photo && (
         <div className="cal-card__media">
-          <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
+          <img src={step.image.src} alt={step.image.alt} style={{ objectPosition: step.image.position }} loading="lazy" />
         </div>
       )}
       <div className="cal-card__body">
-        <p className="micro cal-card__kicker">Phase {pad(k + 1)} · {step.time}</p>
+        <p className="micro cal-card__kicker">Stage {pad(k + 1)} · {step.time}</p>
         <h3 className="cal-card__title">{step.title}</h3>
         <p className="body">{step.text}</p>
         <dl className="cal-card__facts">
           {Object.entries(labels).map(([key, label]) => (
             <div key={key}>
               <dt className="micro">{label}</dt>
-              <dd>{step.expect[key]}</dd>
+              <dd>{step[key]}</dd>
             </div>
           ))}
         </dl>
+        <div className="cal-card__more">
+          <div>
+            <p className="micro">{detailLabels.meet}</p>
+            <p className="cal-card__meet">{step.meet}</p>
+          </div>
+          <div>
+            <p className="micro">{detailLabels.leave}</p>
+            <ul className="cal-card__list">
+              {step.leave.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </div>
+        </div>
         {latest && (
           <p className="cal-card__booked">
             <span className="micro">Booked</span>
@@ -102,10 +114,11 @@ function PhaseCard({ phase, latest, photo = true, live = false }) {
   );
 }
 
-// How we build, as a real calendar. On wide screens the panel holds still
-// while the page scrolls through a runway: each phase turns to its month and
-// its bookings appear as you scroll, with a card on what to expect. Dates
-// start from the visitor's next month. Phones stack the phases instead.
+// The six stages as a real calendar (How we work page). On wide screens the
+// panel holds still while the page scrolls through a runway: each stage turns
+// to its month and its bookings appear as you scroll, with a card on what to
+// expect, who you'll meet and what you leave with. Dates start from the
+// visitor's next month. Phones stack the stages instead.
 export function Timeline() {
   const runway = useRef(null);
   const sticky = useRef(null);
@@ -159,14 +172,9 @@ export function Timeline() {
   const latest = revealedList.sort((a, b) => b.reveal - a.reveal || a.date - b.date)[0];
 
   return (
-    <section className="section tl-section" id="process" aria-labelledby="process-title">
+    <section className="section tl-section" id="schedule" aria-labelledby="schedule-title">
       <div className="wrap">
-        <SectionHeading
-          id="process-title"
-          eyebrow={process.eyebrow}
-          title={process.title}
-          aside={<ArrowLink href="how-we-work.html" icon="right">{process.link}</ArrowLink>}
-        />
+        <SectionHeading id="schedule-title" eyebrow={calendar.eyebrow} title={calendar.title} />
       </div>
 
       {/* Wide screens: pinned calendar */}
@@ -174,7 +182,7 @@ export function Timeline() {
         <div className="cal-sticky" ref={sticky}>
           <div className="wrap cal-layout">
             <div className="cal">
-              <div className="cal__phases" role="group" aria-label="Phases">
+              <div className="cal__phases" role="group" aria-label="Stages">
                 {steps.map((s, k) => (
                   <button
                     key={s.title}
@@ -185,14 +193,13 @@ export function Timeline() {
                   >
                     <span className="cal__swatch" aria-hidden="true" />
                     <span className="cal__phase-name">{s.title}</span>
-                    <span className="micro">{s.time}</span>
                   </button>
                 ))}
               </div>
 
               <div className="mcal-head" key={`head-${pos.k}`}>
                 <p className="mcal-head__month">{phase.label}</p>
-                <p className="micro mcal-head__phase">Phase {pad(pos.k + 1)} · {phase.step.title}</p>
+                <p className="micro mcal-head__phase">Stage {pad(pos.k + 1)} · {phase.step.title}</p>
               </div>
               <div className="mcal-wrap" key={`grid-${pos.k}`}>
                 <MonthGrid phase={phase} revealed={pos.t} />
@@ -216,7 +223,7 @@ export function Timeline() {
           <div key={ph.k} className="cal-stack__phase">
             <div className="mcal-head">
               <p className="mcal-head__month">{ph.label}</p>
-              <p className="micro mcal-head__phase">Phase {pad(ph.k + 1)} · {ph.step.title}</p>
+              <p className="micro mcal-head__phase">Stage {pad(ph.k + 1)} · {ph.step.title}</p>
             </div>
             <MonthGrid phase={ph} compact />
             <ul className={`agenda ph-${ph.k + 1}`}>

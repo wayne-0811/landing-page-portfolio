@@ -1,4 +1,4 @@
-// Date helpers for the How we build calendar: real month grids (Monday
+// Date helpers for the How we work calendar: real month grids (Monday
 // first) and bookings placed on real dates. Plain local dates, no time zones.
 
 export const WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];

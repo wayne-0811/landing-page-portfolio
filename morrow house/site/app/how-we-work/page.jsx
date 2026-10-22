@@ -1,7 +1,7 @@
 import { PageFrame } from '../../components/PageFrame';
 import { PageIntro } from '../../components/PageIntro';
 import { ClosingCta } from '../../components/ClosingCta';
-import { StageExplorer } from '../../sections/StageExplorer';
+import { Timeline } from '../../sections/Timeline';
 import { howWeWork } from '../../content/pages';
 
 export const metadata = {
@@ -14,7 +14,7 @@ export default function HowWeWorkPage() {
   return (
     <PageFrame current="how-we-work.html">
       <PageIntro eyebrow={howWeWork.eyebrow} title={howWeWork.title} body={howWeWork.body} />
-      <StageExplorer />
+      <Timeline />
       <section className="section section--stone guide" aria-labelledby="guide-title">
         <div className="wrap guide__inner">
           <div className="guide__text">
