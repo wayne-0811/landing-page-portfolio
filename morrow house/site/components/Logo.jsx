@@ -1,0 +1,22 @@
+// House glyph from the live site, inlined so it takes the text colour.
+export function HouseMark({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 27 32" fill="none" aria-hidden="true" focusable="false">
+      <path
+        d="M16.875 27.9989V17.3323C16.875 16.9786 16.7565 16.6395 16.5455 16.3895C16.3345 16.1394 16.0484 15.9989 15.75 15.9989H11.25C10.9516 15.9989 10.6655 16.1394 10.4545 16.3895C10.2435 16.6395 10.125 16.9786 10.125 17.3323V27.9989M3.375 13.3329C3.37492 12.945 3.44625 12.5617 3.58401 12.2099C3.72177 11.858 3.92265 11.546 4.17263 11.2956L12.0476 3.29557C12.4537 2.88878 12.9683 2.6656 13.5 2.6656C14.0317 2.6656 14.5463 2.88878 14.9524 3.29557L22.8274 11.2956C23.0774 11.546 23.2782 11.858 23.416 12.2099C23.5538 12.5617 23.6251 12.945 23.625 13.3329V25.3329C23.625 26.0401 23.3879 26.7184 22.966 27.2185C22.544 27.7186 21.9717 27.9996 21.375 27.9996H5.625C5.02826 27.9996 4.45597 27.7186 4.03401 27.2185C3.61205 26.7184 3.375 26.0401 3.375 25.3329V13.3329Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function Logo({ mark = true, size = 'header', href = 'index.html' }) {
+  return (
+    <a className={`logo logo--${size}`} href={href} aria-label="Morrow House, home">
+      {mark && <HouseMark className="logo__mark" />}
+      <span>morrow house</span>
+    </a>
+  );
+}
