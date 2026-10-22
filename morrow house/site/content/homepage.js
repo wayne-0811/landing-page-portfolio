@@ -143,10 +143,11 @@ export const reviews = {
   count: '47 reviews on Google',
   link: 'Read all reviews on Google',
   note: 'Sample reviews for a concept company.',
+  // Each review is paired with a photograph of a Morrow home for the reel.
   items: [
-    { name: 'Anna W.', when: '3 months ago', quote: '“Every conversation, every detail felt like it mattered. We moved in on the day they promised.”' },
-    { name: 'Mark T.', when: '5 months ago', quote: '“Open books meant we never wondered where the money went. The weekly updates were excellent.”' },
-    { name: 'Sarah L.', when: '1 year ago', quote: '“They brought our 1920s farmhouse back to life and treated the old brick with real care.”' },
+    { name: 'Anna W.', when: '3 months ago', quote: '“Every conversation, every detail felt like it mattered. We moved in on the day they promised.”', image: 'assets/stillwater-card.jpg' },
+    { name: 'Mark T.', when: '5 months ago', quote: '“Open books meant we never wondered where the money went. The weekly updates were excellent.”', image: 'assets/ridge-card.jpg' },
+    { name: 'Sarah L.', when: '1 year ago', quote: '“They brought our 1920s farmhouse back to life and treated the old brick with real care.”', image: 'assets/oak-door.jpg' },
   ],
 };
 

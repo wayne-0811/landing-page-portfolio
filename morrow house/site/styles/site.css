@@ -329,19 +329,9 @@ a:hover { color: inherit; }
 .reviews__rating { font: var(--fw-regular) var(--fs-stat)/1 var(--font-sans); letter-spacing: -0.035em; color: var(--text-strong); }
 .reviews__count { display: flex; flex-direction: column; gap: 6px; }
 .stars { display: inline-flex; gap: 2px; color: var(--accent); }
-.reviews__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px var(--grid-gap); margin-top: var(--space-9); }
-.review { display: flex; flex-direction: column; gap: 18px; padding-top: 28px; border-top: 1px solid var(--border-hairline); }
-.review__who { display: flex; align-items: center; gap: 14px; }
-.review__who > span:last-child { display: flex; flex-direction: column; gap: 3px; }
-.review__avatar {
-  width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 50%;
-  background: var(--mh-forest); color: var(--accent-on-dark); font: italic var(--fw-regular) 20px/1 var(--font-serif);
-}
-.review__name { color: var(--text-strong); }
-.review__quote { font: var(--fw-regular) 22px/1.3 var(--font-serif); color: var(--text-strong); text-wrap: pretty; }
+.reviews__reel { margin-top: var(--space-9); }
 .reviews__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; margin-top: var(--space-8); }
 .reviews__note { color: var(--text-muted); }
-@media (max-width: 900px) { .reviews__list { grid-template-columns: 1fr; } }
 
 /* ---------- 10 Your next chapter ---------- */
 .chapter__grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px var(--grid-gap); align-items: start; }

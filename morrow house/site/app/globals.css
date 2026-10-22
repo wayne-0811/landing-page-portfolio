@@ -64,3 +64,25 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+
+/* Scroll Reel Testimonials (components/ui/scroll-reel-testimonials.tsx):
+   each letter rises into place; the outgoing quote lifts away. */
+@keyframes scroll-reel-char-rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scroll-reel-exit {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-12px); }
+}
+.scroll-reel-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.42em);
+  animation: scroll-reel-char-rise 420ms cubic-bezier(.2, .7, .2, 1) both;
+}
+.scroll-reel-exit { animation: scroll-reel-exit 220ms ease-out forwards; }
+.scroll-reel-exit .scroll-reel-char { animation: none; opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reel-char { opacity: 1; transform: none; animation: none; }
+  .scroll-reel-exit { opacity: 0; animation: none; }
+}
