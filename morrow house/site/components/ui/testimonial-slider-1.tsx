@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Pause, Play, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Testimonial Slider (after kavikatiyar's testimonial-slider-1 on 21st.dev),
@@ -10,6 +10,10 @@ import { cn } from "@/lib/utils";
 // vertical "Reviews" label and thumbnails of the other reviews; a tall photo
 // that slides up or down; and the reviewer and quote sliding sideways.
 // Square corners, linen text, brass details, quiet easing.
+// It plays on its own, looping from the last review to the first: a brass line
+// fills beside the controls and the next review comes in when it is full. It
+// holds while hovered, while focused from the keyboard, while off screen or in
+// a hidden tab, and the pause button stops it until pressed again.
 // Spacing uses flex gaps, not margins: styles/site.css resets margins on
 // headings, paragraphs and blockquotes outside any layer, which would beat
 // Tailwind's margin utilities. Icon colours sit on the icons for the same
@@ -33,17 +37,40 @@ interface TestimonialSliderProps {
   reviews: Review[];
   label?: string;
   className?: string;
+  /** Milliseconds each review stays before the next one. */
+  interval?: number;
 }
 
 const QUIET = [0.2, 0.7, 0.2, 1] as const;
 const pad = (n: number) => String(n).padStart(2, "0");
 
-export function TestimonialSlider({ reviews, label = "Reviews", className }: TestimonialSliderProps) {
+export function TestimonialSlider({ reviews, label = "Reviews", className, interval = 7000 }: TestimonialSliderProps) {
   const [index, setIndex] = React.useState(0);
   const [direction, setDirection] = React.useState<"left" | "right">("right");
   const reduceMotion = useReducedMotion();
   const review = reviews[index];
   const total = reviews.length;
+
+  const root = React.useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = React.useState(false);
+  const [hovered, setHovered] = React.useState(false);
+  const [keyFocus, setKeyFocus] = React.useState(false);
+  const [inView, setInView] = React.useState(false);
+  const [tabHidden, setTabHidden] = React.useState(false);
+  const playing = total > 1 && !paused && !hovered && !keyFocus && inView && !tabHidden;
+
+  React.useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.35 });
+    io.observe(el);
+    const onVisibility = () => setTabHidden(document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
 
   const next = () => {
     setDirection("right");
@@ -82,11 +109,18 @@ export function TestimonialSlider({ reviews, label = "Reviews", className }: Tes
 
   return (
     <div
+      ref={root}
       role="region"
       aria-roledescription="carousel"
       aria-label={label}
       tabIndex={0}
       onKeyDown={onKeyDown}
+      onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
+      onFocus={(e) => setKeyFocus(e.target.matches(":focus-visible"))}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setKeyFocus(false);
+      }}
       className={cn(
         "relative w-full text-mh-linen outline-none focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-mh-linen",
         className,
@@ -147,7 +181,7 @@ export function TestimonialSlider({ reviews, label = "Reviews", className }: Tes
 
         {/* Reviewer, quote, controls */}
         <div className="order-3 flex flex-col justify-between gap-10 md:col-span-5 md:pl-4">
-          <div className="relative min-h-[220px] overflow-hidden pt-2 md:pt-20" aria-live="polite">
+          <div className="relative min-h-[220px] overflow-hidden pt-2 md:pt-20" aria-live={playing ? "off" : "polite"}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={index}
@@ -200,6 +234,31 @@ export function TestimonialSlider({ reviews, label = "Reviews", className }: Tes
             >
               <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" className="text-mh-forest" />
             </button>
+            {total > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setPaused((p) => !p)}
+                  aria-label={paused ? "Play reviews" : "Pause reviews"}
+                  className={cn(buttonBase, "border border-mh-linen/30 bg-transparent text-mh-linen hover:border-mh-linen")}
+                >
+                  {paused ? (
+                    <Play size={16} strokeWidth={1.5} aria-hidden="true" className="text-mh-linen" />
+                  ) : (
+                    <Pause size={16} strokeWidth={1.5} aria-hidden="true" className="text-mh-linen" />
+                  )}
+                </button>
+                {/* Time left on this review; when it fills, the next one comes in. */}
+                <span className="relative ml-3 h-px max-w-40 flex-1 overflow-hidden bg-mh-linen/20" aria-hidden="true">
+                  <span
+                    key={index}
+                    className="slider-timer absolute inset-0 bg-mh-brass-light"
+                    style={{ animationDuration: `${interval}ms`, animationPlayState: playing ? "running" : "paused" }}
+                    onAnimationEnd={next}
+                  />
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>

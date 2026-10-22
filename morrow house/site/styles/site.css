@@ -701,7 +701,14 @@ a:hover { color: inherit; }
 }
 
 /* ---------- Homepage: stage explorer (How we build) ---------- */
-.explorer__rail { margin-top: var(--space-9); }
+/* Wide screens pin the rail and panel while the runway scrolls past; each
+   stage gets an equal stretch of it (see StageExplorer.jsx). */
+.explorer-runway { position: relative; height: calc(100svh + var(--stages) * 55svh); margin-top: var(--space-7); }
+.explorer-sticky { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 899px), (max-height: 640px) {
+  .explorer-runway { height: auto; margin-top: var(--space-9); }
+  .explorer-sticky { position: static; height: auto; }
+}
 .explorer__rail { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .explorer__line { position: absolute; top: 21px; left: calc(100% / 12); right: calc(100% / 12); height: 1px; background: var(--border-hairline); }
 .explorer__fill { position: absolute; inset: 0 auto 0 0; width: calc(var(--progress) * 100%); background: var(--accent); transition: width 420ms var(--ease-quiet); }
@@ -790,3 +797,8 @@ a:hover { color: inherit; }
 /* 404 */
 .notfound { padding-bottom: var(--section-y); }
 .notfound .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-7); }
+
+/* Reviews slider: the line that fills while a review is shown (see
+   components/ui/testimonial-slider-1.tsx). */
+.slider-timer { transform: scaleX(0); transform-origin: left; animation: slider-timer linear forwards; }
+@keyframes slider-timer { to { transform: scaleX(1); } }
