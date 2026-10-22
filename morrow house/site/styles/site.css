@@ -650,12 +650,13 @@ a:hover { color: inherit; }
 }
 
 .dmaterials__head { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 20px; align-items: baseline; }
-.dmaterials__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--grid-gap); margin-top: var(--space-8); }
-.dmaterials__list--text { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.dmaterials__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--grid-gap); margin-top: var(--space-8); }
 .dmaterial { display: flex; flex-direction: column; gap: 10px; }
 .dmaterials__list--text .dmaterial { padding-top: 18px; border-top: 1px solid var(--border-hairline); }
 .dmaterial__swatch { aspect-ratio: 1; overflow: hidden; margin-bottom: 8px; background: var(--surface-alt); }
 .dmaterial__swatch img { width: 100%; height: 100%; object-fit: cover; }
+/* Three materials span the row: wider tiles keep the row as tall as four. */
+.dmaterials__list:not(:has(> :nth-child(4))) .dmaterial__swatch { aspect-ratio: 4 / 3; }
 .dmaterial__name { color: var(--text-strong); }
 @media (max-width: 900px) {
   .dmaterials__head { grid-template-columns: 1fr; }

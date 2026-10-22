@@ -35,10 +35,10 @@ export const homes = [
     image: { src: 'assets/ridge-card.jpg', alt: 'The Ridge Residence: a cedar gable on a stone base among tall forest trees', position: '55% 50%' },
     hero: { src: 'assets/ridge-card.jpg', alt: 'The Ridge Residence: a cedar-clad gable on a dry-laid stone base, reached by a gravel path through ferns and tall trees', position: '55% 45%' },
     materials: [
-      { name: 'Cedar', text: 'Vertical cladding, left to silver with age.' },
-      { name: 'Fieldstone', text: 'A dry-laid base that roots the house to the slope.' },
-      { name: 'Steel', text: 'Slim window frames and a standing-seam roof.' },
-      { name: 'Oak', text: 'Floors, stair treads and kitchen joinery.' },
+      { name: 'Cedar', text: 'Vertical cladding, left to silver with age.', image: { src: 'assets/materials/cedar.svg' } },
+      { name: 'Fieldstone', text: 'A dry-laid base that roots the house to the slope.', image: { src: 'assets/materials/fieldstone.svg' } },
+      { name: 'Steel', text: 'Slim window frames and a standing-seam roof.', image: { src: 'assets/materials/steel.svg' } },
+      { name: 'Oak', text: 'Floors, stair treads and kitchen joinery.', image: { src: 'assets/materials/oak.svg' } },
     ],
   },
   {
@@ -51,9 +51,9 @@ export const homes = [
     image: { src: 'assets/oak-door.jpg', alt: 'A hand-finished oak front door set into a pale stone wall', position: '50% 50%' },
     hero: { src: 'assets/oak-door.jpg', alt: 'A hand-finished oak front door set into a pale stone wall', position: '50% 50%' },
     materials: [
-      { name: 'Brick', text: 'The original walls, cleaned and repointed.' },
-      { name: 'Oak', text: 'New floors laid to match the old.' },
-      { name: 'Lime plaster', text: 'Breathable walls throughout.' },
+      { name: 'Brick', text: 'The original walls, cleaned and repointed.', image: { src: 'assets/materials/brick.svg' } },
+      { name: 'Oak', text: 'New floors laid to match the old.', image: { src: 'assets/materials/oak.svg' } },
+      { name: 'Lime plaster', text: 'Breathable walls throughout.', image: { src: 'assets/materials/lime-plaster.svg' } },
     ],
   },
   {
@@ -66,9 +66,9 @@ export const homes = [
     image: { src: 'assets/whitmore-patio.jpg', alt: 'A stone terrace with a long dining table under a timber pergola', position: '40% 50%' },
     hero: { src: 'assets/whitmore-patio.jpg', alt: 'A stone terrace with a long dining table under a timber pergola, beside a stone house with tall windows', position: '45% 55%' },
     materials: [
-      { name: 'Timber', text: 'Douglas fir frame and cladding.' },
-      { name: 'Fieldstone', text: 'Chimney and garden walls.' },
-      { name: 'Zinc', text: 'Roof and rainwater details.' },
+      { name: 'Timber', text: 'Douglas fir frame and cladding.', image: { src: 'assets/materials/timber.svg' } },
+      { name: 'Fieldstone', text: 'Chimney and garden walls.', image: { src: 'assets/materials/fieldstone.svg' } },
+      { name: 'Zinc', text: 'Roof and rainwater details.', image: { src: 'assets/materials/zinc.svg' } },
     ],
   },
   {
@@ -81,9 +81,9 @@ export const homes = [
     image: { src: 'assets/craft-interior.jpg', alt: 'A light-filled room with limestone floors and oak-framed sliding doors to a garden', position: '60% 50%' },
     hero: { src: 'assets/craft-interior.jpg', alt: 'A light-filled room with limestone floors, a built-in bench and oak-framed sliding doors open to a garden', position: '50% 60%' },
     materials: [
-      { name: 'Concrete', text: 'Board-formed walls, left honest.' },
-      { name: 'Ash', text: 'Benches, shelving and doors.' },
-      { name: 'Glass', text: 'A new north-facing roof light.' },
+      { name: 'Concrete', text: 'Board-formed walls, left honest.', image: { src: 'assets/materials/concrete.svg' } },
+      { name: 'Ash', text: 'Benches, shelving and doors.', image: { src: 'assets/materials/ash.svg' } },
+      { name: 'Glass', text: 'A new north-facing roof light.', image: { src: 'assets/materials/glass.svg' } },
     ],
   },
   {
@@ -96,9 +96,9 @@ export const homes = [
     image: { src: 'assets/journal-homesite.jpg', alt: 'A hillside meadow with oaks and a long view to the Blue Ridge', position: '50% 50%' },
     hero: { src: 'assets/journal-homesite.jpg', alt: 'The High Meadow site: a hillside meadow with scattered oaks and a long view to the Blue Ridge', position: '50% 55%' },
     materials: [
-      { name: 'Stone', text: 'Local stone for the base and terraces.' },
-      { name: 'Cedar', text: 'Cladding and soffits.' },
-      { name: 'Steel', text: 'Window frames and balustrades.' },
+      { name: 'Stone', text: 'Local stone for the base and terraces.', image: { src: 'assets/materials/stone.svg' } },
+      { name: 'Cedar', text: 'Cladding and soffits.', image: { src: 'assets/materials/cedar.svg' } },
+      { name: 'Steel', text: 'Window frames and balustrades.', image: { src: 'assets/materials/steel.svg' } },
     ],
   },
 ];

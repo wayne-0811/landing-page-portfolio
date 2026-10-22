@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<title>Cedar cladding (illustrative material sample)</title>
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.16 0.004" numOctaves="4" seed="9" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1"/>
+  <feComponentTransfer>
+    <feFuncR type="table" tableValues="0.478 0.580 0.678 0.580 0.678 0.580 0.478 0.580 0.678"/>
+    <feFuncG type="table" tableValues="0.310 0.392 0.486 0.392 0.486 0.392 0.310 0.392 0.486"/>
+    <feFuncB type="table" tableValues="0.212 0.275 0.353 0.275 0.353 0.275 0.212 0.275 0.353"/>
+    <feFuncA type="linear" slope="0" intercept="1"/>
+  </feComponentTransfer>
+</filter>
+<filter id="fleck" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.6 0.02" numOctaves="2" seed="12" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1"/>
+  <feComponentTransfer>
+    <feFuncR type="table" tableValues="0.408 0.478 0.580 0.678"/>
+    <feFuncG type="table" tableValues="0.263 0.310 0.392 0.486"/>
+    <feFuncB type="table" tableValues="0.180 0.212 0.275 0.353"/>
+    <feFuncA type="linear" slope="0" intercept="0.18"/>
+  </feComponentTransfer>
+</filter>
+<filter id="sp" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.16 0.08"/>
+</filter>
+<filter id="weather" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="18" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1"/>
+  <feComponentTransfer>
+    <feFuncR type="table" tableValues="0.604 0.725 0.812"/>
+    <feFuncG type="table" tableValues="0.596 0.714 0.800"/>
+    <feFuncB type="table" tableValues="0.565 0.678 0.765"/>
+    <feFuncA type="linear" slope="0" intercept="0.32"/>
+  </feComponentTransfer>
+</filter></defs>
+<rect width="600" height="600" fill="#946446"/>
+<rect width="600" height="600" filter="url(#grain)" />
+<rect width="600" height="600" filter="url(#fleck)" />
+<rect width="600" height="600" filter="url(#weather)" />
+<rect x="114.2" y="0" width="3" height="600" fill="#432b1e" opacity="0.5"/><rect x="117.2" y="0" width="1.5" height="600" fill="#fff" opacity="0.175"/>
+<rect x="115.7" y="256.9" width="120" height="2" fill="#492f20" opacity="0.4"/>
+<rect x="239.6" y="0" width="3" height="600" fill="#432b1e" opacity="0.5"/><rect x="242.6" y="0" width="1.5" height="600" fill="#fff" opacity="0.175"/>
+<rect x="241.1" y="417.6" width="120" height="2" fill="#492f20" opacity="0.4"/>
+<rect x="357.1" y="0" width="3" height="600" fill="#432b1e" opacity="0.5"/><rect x="360.1" y="0" width="1.5" height="600" fill="#fff" opacity="0.175"/>
+<rect x="358.6" y="150.5" width="120" height="2" fill="#492f20" opacity="0.4"/>
+<rect x="475.1" y="0" width="3" height="600" fill="#432b1e" opacity="0.5"/><rect x="478.1" y="0" width="1.5" height="600" fill="#fff" opacity="0.175"/>
+<rect x="476.6" y="384.7" width="120" height="2" fill="#492f20" opacity="0.4"/>
+<rect width="600" height="600" filter="url(#sp)" />
+</svg>
