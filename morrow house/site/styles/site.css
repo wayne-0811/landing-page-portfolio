@@ -254,20 +254,26 @@ a:hover { color: inherit; }
 @media (max-width: 900px) { .why__list { grid-template-columns: 1fr; } }
 
 /* ---------- 6 How we build (calendar) ---------- */
-/* The panel sticks while the runway scrolls past; see Timeline.jsx. */
-.cal-runway { position: relative; height: calc(100svh + var(--phases) * 75svh); margin-top: var(--space-7); }
+/* Wide screens pin the panel while the runway scrolls past; phones stack the
+   phases (see Timeline.jsx). */
+.cal-runway { position: relative; height: calc(100svh + var(--phases) * 80svh); margin-top: var(--space-7); }
 .cal-sticky { position: sticky; top: 0; height: 100svh; display: flex; align-items: center; }
-.cal-layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--grid-gap); align-items: center; }
+.cal-layout { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--grid-gap); align-items: center; }
+.cal-stack { display: none; }
+@media (max-width: 899px), (max-height: 640px) {
+  .cal-runway { display: none; }
+  .cal-stack { display: flex; flex-direction: column; gap: var(--space-9); margin-top: var(--space-8); }
+}
 
 .ph-1 { --ph: var(--mh-ash); }
 .ph-2 { --ph: var(--mh-brass-light); }
 .ph-3 { --ph: var(--mh-brass); }
 .ph-4 { --ph: var(--mh-moss); }
 
-.cal__phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--border-hairline); margin-bottom: 28px; }
+.cal__phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--border-hairline); margin-bottom: 22px; }
 .cal__phase {
   display: grid; grid-template-columns: 10px 1fr; column-gap: 10px; row-gap: 4px; align-items: center;
-  margin-top: -1px; padding: 14px 12px 14px 0; text-align: left; cursor: pointer;
+  margin-top: -1px; padding: 12px 12px 12px 0; text-align: left; cursor: pointer;
   background: none; border: 0; border-top: 2px solid transparent; color: var(--text-label);
   transition: color var(--dur-fast) var(--ease-quiet), border-color var(--dur-fast) var(--ease-quiet);
 }
@@ -276,52 +282,82 @@ a:hover { color: inherit; }
 .cal__phase[aria-current="step"] { border-top-color: var(--mh-forest); color: var(--text-strong); }
 .cal__swatch { width: 10px; height: 10px; background: var(--ph); }
 .cal__phase-name { font: var(--fw-regular) 15px/1.2 var(--font-sans); }
+.cal__note { margin-top: 14px; color: var(--text-muted); }
 
-.cal__label { margin-bottom: 12px; color: var(--text-label); }
-.cal__grid { display: grid; grid-template-columns: auto repeat(12, minmax(0, 1fr)); gap: 6px; align-items: center; }
-.cal__row { display: contents; }
-.cal__col { text-align: center; color: var(--text-muted); }
-.cal__year { padding-right: 10px; white-space: nowrap; color: var(--text-label); }
-.cal__month { display: flex; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--border-hairline); background: var(--surface-page); }
-.cal__month.is-now { outline: 1.5px solid var(--mh-forest); outline-offset: 1px; }
-.cal__seg { position: relative; flex-basis: 0; min-width: 0; background: color-mix(in srgb, var(--ph) 18%, transparent); }
-.cal__seg--none { background: none; }
-/* --cursor (months) is set on the grid; each segment knows its start and length. */
-.cal__fill { position: absolute; inset: 0 auto 0 0; background: var(--ph); width: clamp(0%, calc((var(--cursor) - var(--s)) / var(--l) * 100%), 100%); }
-.cal__note { margin-top: 18px; color: var(--text-muted); }
+/* Month header and grid */
+.mcal-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; animation: cal-turn 360ms var(--ease-quiet) both; }
+.mcal-head__month { font: var(--fw-regular) var(--fs-title-m)/1.1 var(--font-sans); letter-spacing: -0.02em; color: var(--text-strong); }
+.mcal-head__phase { color: var(--text-label); }
+.mcal-wrap { animation: cal-turn 360ms var(--ease-quiet) both; }
+@keyframes cal-turn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-.cal-card { border: 1px solid var(--border-hairline); background: var(--surface-page); animation: cal-card-in 420ms var(--ease-quiet) both; }
+.mcal {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top: 1px solid var(--border-hairline); border-left: 1px solid var(--border-hairline);
+}
+.mcal__dow { padding: 6px 8px; border-right: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline); color: var(--text-label); background: var(--surface-alt); }
+.mcal__day {
+  position: relative; display: flex; flex-direction: column; gap: 3px; min-width: 0;
+  min-height: clamp(62px, 10.4svh, 96px); padding: 5px 5px 6px;
+  border-right: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline);
+  background: var(--surface-page);
+}
+.mcal__day.is-out { background: color-mix(in srgb, var(--surface-alt) 55%, var(--surface-page)); }
+.mcal__day.is-out .mcal__num { color: var(--text-muted); opacity: .6; }
+.mcal__day.is-now { outline: 1.5px solid var(--mh-forest); outline-offset: -1.5px; z-index: 1; }
+.mcal__day.is-now .mcal__num { background: var(--mh-forest); color: var(--mh-linen); }
+.mcal__num { align-self: flex-start; min-width: 20px; padding: 1px 4px; font: var(--fw-regular) 12px/1.4 var(--font-sans); color: var(--text-strong); text-align: center; }
+.mcal__chip {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-width: 0; padding: 3px 5px;
+  border-left: 2px solid var(--ph); background: color-mix(in srgb, var(--ph) 22%, var(--surface-page));
+  font: var(--fw-regular) 10.5px/1.25 var(--font-sans); color: var(--text-strong); overflow-wrap: anywhere;
+  animation: chip-in 320ms var(--ease-quiet) both;
+}
+.mcal__time { margin-right: 4px; font-weight: var(--fw-medium); letter-spacing: .04em; color: var(--text-label); }
+.mcal__more { padding-left: 7px; font: var(--fw-medium) 10px/1.2 var(--font-sans); color: var(--text-label); }
+@keyframes chip-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* Compact grid (phones): dots for booked days */
+.mcal--compact .mcal__dow { padding: 4px 0; text-align: center; }
+.mcal--compact .mcal__day { min-height: 0; aspect-ratio: 1; align-items: center; justify-content: center; gap: 2px; padding: 2px; }
+.mcal--compact .mcal__num { padding: 0; min-width: 0; font-size: 12px; }
+.mcal--compact .mcal__day.is-now { outline: none; }
+.mcal--compact .mcal__day.is-now .mcal__num { background: none; color: var(--text-strong); }
+.mcal__dot { width: 6px; height: 6px; background: var(--ph); }
+.mcal--compact .has-booking { background: color-mix(in srgb, var(--ph) 16%, var(--surface-page)); }
+
+.agenda { display: flex; flex-direction: column; margin-top: 16px; border-top: 1px solid var(--border-hairline); }
+.agenda li { display: grid; grid-template-columns: minmax(0, 9.5em) minmax(0, 1fr); gap: 12px; padding: 10px 0 10px 10px; border-bottom: 1px solid var(--border-hairline); border-left: 2px solid var(--ph); }
+.agenda__when { color: var(--text-label); }
+.agenda__title { font: var(--fw-regular) 15px/1.35 var(--font-sans); color: var(--text-strong); }
+.cal-stack .cal-card { margin-top: 20px; animation: none; }
+
+/* What-to-expect card */
+.cal-card { border: 1px solid var(--border-hairline); background: var(--surface-page); }
+.cal-card-wrap { animation: cal-card-in 420ms var(--ease-quiet) both; }
 @keyframes cal-card-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.cal-card__media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-alt); }
+.cal-card__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-alt); }
 .cal-card__media img { width: 100%; height: 100%; object-fit: cover; }
-.cal-card__body { display: flex; flex-direction: column; gap: 12px; padding: 24px 28px 28px; }
+.cal-card__body { display: flex; flex-direction: column; gap: 12px; padding: 22px 26px 24px; }
 .cal-card__kicker { color: var(--text-label); }
 .cal-card__title { font: var(--fw-regular) var(--fs-title-l)/1.1 var(--font-sans); letter-spacing: -0.025em; color: var(--text-strong); }
-.cal-card__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin: 6px 0 0; padding-top: 16px; border-top: 1px solid var(--border-hairline); }
+.cal-card__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin: 4px 0 0; padding-top: 14px; border-top: 1px solid var(--border-hairline); }
 .cal-card__facts dt { margin-bottom: 4px; color: var(--text-label); }
 .cal-card__facts dd { margin: 0; font: var(--fw-regular) 15px/1.4 var(--font-sans); color: var(--text-strong); }
-
-@media (max-width: 900px) {
-  .cal-layout { grid-template-columns: 1fr; gap: 20px; }
-  .cal__phases { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 16px; }
-  .cal__phase { padding: 10px 8px 10px 0; }
-  .cal__grid { gap: 3px; }
-  .cal__col { font-size: 8px; letter-spacing: 0; }
-  .cal__year { padding-right: 6px; font-size: 9px; letter-spacing: .06em; }
-  .cal__note { margin-top: 10px; }
-  .cal-card__media { display: none; }
+.cal-card__booked { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-left: 2px solid var(--mh-forest); background: var(--surface-alt); font: var(--fw-regular) 14px/1.35 var(--font-sans); color: var(--text-strong); }
+.cal-card__booked .micro { color: var(--text-label); }
+@media (max-height: 820px) {
+  .cal-runway .cal-card__media { display: none; }
+}
+@media (max-width: 899px) {
   .cal-card__body { gap: 8px; padding: 18px 20px 20px; }
   .cal-card__title { font-size: 24px; }
   .cal-card__facts { gap: 12px 16px; padding-top: 12px; }
   .cal-card__facts dd { font-size: 14px; }
-}
-/* Too short to pin the panel: show it in the flow; the phase buttons switch the card. */
-@media (max-height: 600px) {
-  .cal-runway { height: auto; }
-  .cal-sticky { position: static; height: auto; }
+  .agenda li { grid-template-columns: 1fr; gap: 2px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cal-card { animation: none; }
+  .mcal-head, .mcal-wrap, .mcal__chip, .cal-card-wrap { animation: none; }
 }
 
 /* ---------- 7 How we price ---------- */

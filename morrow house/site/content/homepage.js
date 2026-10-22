@@ -63,62 +63,92 @@ export const process = {
   // Panel labels and stage answers from the copy deck's How we work stages.
   labels: { happens: 'What happens', decide: 'What you decide', cost: 'What it costs', long: 'How long' },
   calendar: {
-    label: 'Your build, month by month',
-    // Sample timeline: Stillwater House's 16-month build.
-    note: 'Sample timeline, based on Stillwater House’s 16-month build.',
-    months: 36,
+    note: 'Example schedule if you started next month. Real dates are set together in pre-construction.',
+    // Shown until the browser fills in the visitor's own dates.
+    fallbackStart: { year: 2027, month: 2 },
   },
+  // Bookings are placed in the phase's month: { nth, day } is the nth weekday
+  // (1 = first), { every } repeats each week, { workday } is the nth working
+  // day, { after: [id, days] } and { afterWorkdays: [id, n] } follow another
+  // booking, and { yearAfter: id } is 52 weeks on. `reveal` is the point
+  // (0–1) in the phase's scroll at which it appears.
   steps: [
     {
       title: 'Fit', time: 'Weeks 1–2',
       text: 'A conversation and a walk across your land. We make sure we’re right for each other.',
-      months: [0, 0.5],
+      monthOffset: 0,
       expect: {
         happens: 'A first conversation about your plans, then we walk your land together.',
         decide: 'You share a rough brief.',
         cost: 'Free',
         long: 'Weeks 1–2',
       },
+      bookings: [
+        { id: 'call', nth: 1, day: 'tue', time: '10:00', title: 'First conversation · video call', reveal: 0.08 },
+        { id: 'brief', after: ['call', 3], time: '', title: 'Brief shared', reveal: 0.38 },
+        { id: 'walk', after: ['call', 9], time: '09:30', title: 'Site walk with your project lead', reveal: 0.62 },
+      ],
       image: { src: 'assets/journal-homesite.jpg', alt: 'A meadow with scattered oaks and the Blue Ridge in morning haze', width: 822, height: 551 },
     },
     {
       title: 'Pre-construction', time: 'Weeks 3–14',
       text: 'Design, materials, cost and schedule, resolved together before anything is built.',
-      months: [0.5, 3.25],
+      monthOffset: 2,
       expect: {
         happens: 'Design, cost plan and schedule.',
         decide: 'You agree style, budget and finishes.',
         cost: 'Fixed fee of $18,500, credited to your build',
         long: 'Weeks 3–14',
       },
+      bookings: [
+        { id: 'workshop', every: 'wed', time: '14:00', title: 'Design workshop', reveal: 0.08 },
+        { id: 'materials', nth: 2, day: 'fri', time: '10:00', title: 'Materials day at the studio', reveal: 0.3 },
+        { id: 'cost', after: ['materials', 4], time: '11:00', title: 'Cost plan review', reveal: 0.5 },
+        { id: 'schedule', after: ['cost', 2], time: '15:00', title: 'Schedule agreed', reveal: 0.66 },
+        { id: 'signoff', after: ['schedule', 4], time: '10:00', title: 'Sign-off: design, budget and schedule', reveal: 0.82 },
+      ],
       image: { src: 'assets/journal-materials.jpg', alt: 'Samples of oak, rough limestone and dark steel laid on a plaster surface', width: 822, height: 551 },
     },
     {
       title: 'Build', time: '12–18 months',
       text: 'One project lead, weekly updates, and a site you’re always welcome on.',
-      months: [3.25, 19.25],
+      monthOffset: 9,
       expect: {
         happens: 'One project lead, weekly reports.',
         decide: 'You approve changes in the client portal.',
         cost: 'Monthly draws',
         long: '12–18 months',
       },
+      bookings: [
+        { id: 'draw', workday: 1, time: '', title: 'Monthly draw · open book', reveal: 0.08 },
+        { id: 'sitewalk', every: 'tue', time: '08:00', title: 'Weekly site walk', reveal: 0.26 },
+        { id: 'report', every: 'fri', time: '16:00', title: 'Weekly report', reveal: 0.44 },
+        { id: 'change', nth: 3, day: 'mon', time: '', title: 'Change order priced', reveal: 0.62 },
+        { id: 'approve', afterWorkdays: ['change', 2], time: '', title: 'You approve · client portal', reveal: 0.8 },
+      ],
       image: { src: 'assets/journal-collab.jpg', alt: 'A project lead and a homeowner reviewing drawings at a table inside a timber-framed house', width: 822, height: 551 },
     },
     {
       title: 'Aftercare', time: '12 months',
       text: 'A careful handover, a guide to your home, and a review a year on.',
-      months: [19.25, 31.25],
+      monthOffset: 19,
       expect: {
         happens: 'Handover, home guide and a 12-month review.',
         decide: 'You move in.',
         cost: 'Included',
         long: '12 months',
       },
+      bookings: [
+        { id: 'handover', nth: 2, day: 'tue', time: '10:00', title: 'Handover & keys', reveal: 0.1 },
+        { id: 'guide', after: ['handover', 2], time: '14:00', title: 'Home guide walkthrough', reveal: 0.36 },
+        { id: 'moving', after: ['handover', 4], time: '', title: 'Moving day', reveal: 0.58 },
+        { id: 'review', yearAfter: 'handover', time: '10:00', title: '12-month review', reveal: 0.8 },
+      ],
       image: { src: 'assets/craft-interior.jpg', alt: 'A finished garden room with limestone floors, oak beams and sliding doors open to a courtyard', width: 1152, height: 928 },
     },
   ],
 };
+
 
 export const pricing = {
   eyebrow: 'How we price',
