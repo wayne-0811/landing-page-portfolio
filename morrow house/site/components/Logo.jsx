@@ -12,7 +12,7 @@ export function HouseMark({ className }) {
   );
 }
 
-export function Logo({ mark = true, size = 'header', href = '#top' }) {
+export function Logo({ mark = true, size = 'header', href = 'index.html' }) {
   return (
     <a className={`logo logo--${size}`} href={href} aria-label="Morrow House, home">
       {mark && <HouseMark className="logo__mark" />}

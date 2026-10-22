@@ -1,142 +1,11 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
 import { Eyebrow } from '../components/Eyebrow';
 import { ArrowLink } from '../components/ArrowLink';
 import { AwardSeal } from '../components/AwardSeal';
+import { CompareSlider } from '../components/CompareSlider';
 import { compare } from '../content/homepage';
 
-const clamp = (v) => Math.min(100, Math.max(0, v));
-
-// Strips used to locate the visible screen when the page itself can't scroll
-// (shown at full height inside another page's frame, as some previews do).
-const BANDS = 80;
-const BAND_SPAN = 3000;
-
-// How much of the drawing scrolling alone shows, from where the frame's centre
-// sits on screen (f: 0 = top, 1 = bottom): all drawing at 85%, easing to all
-// photo by 25%.
-function sweep(f) {
-  const t = Math.min(1, Math.max(0, (0.85 - f) / 0.6));
-  return 100 - t * t * (3 - 2 * t) * 100;
-}
-
-// Rendering vs finished home in one frame; both images stay full-frame so they
-// line up. The rendering is a line drawing traced from the photo in the same
-// pixel space (scripts/draw-stillwater.mjs).
-//
-// Scrolling sweeps the handle from drawing to photo. Dragging or the keyboard
-// moves it too, and scrolling then carries on from wherever it was left.
+// Drawing to doorstep: the Stillwater rendering against the finished house.
 export function Compare() {
-  const frame = useRef(null);
-  const bands = useRef(null);
-  const [value, setValue] = useState(50);
-  const fromScroll = useRef(50);
-  const offset = useRef(0);
-  const dragging = useRef(false);
-
-  useEffect(() => {
-    const el = frame.current;
-    const column = bands.current;
-    const visible = new Set();
-    let raf = 0;
-
-    const apply = (f, onScreen) => {
-      // Once the frame is fully off screen, the next visit replays the sweep.
-      if (!onScreen) offset.current = 0;
-      fromScroll.current = sweep(f);
-      setValue(clamp(fromScroll.current + offset.current));
-    };
-
-    // A window taller than the screen means the page is drawn at (near) full
-    // height inside another page that does the scrolling.
-    const tallFrame = () => window.innerHeight > (window.screen.height || 1600) + 100;
-
-    // Normal case: read the frame's position in the window directly.
-    const fromViewport = () => {
-      const box = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      apply((box.top + box.height / 2) / vh, box.bottom > 0 && box.top < vh);
-    };
-
-    // Full-height case: intersection observers still report against what is
-    // actually on screen, so the strips in view give the screen's top and bottom.
-    const fromBands = () => {
-      el.dataset.stepped = '';
-      if (!visible.size) return apply(1, false);
-      const band = BAND_SPAN / BANDS;
-      const top = column.getBoundingClientRect().top;
-      const lo = Math.min(...visible);
-      const hi = Math.max(...visible);
-      const guess = Math.min(window.screen.height || 800, 1200);
-      let vTop = top + lo * band;
-      let vBottom = top + (hi + 1) * band;
-      if (lo === 0 && hi < BANDS - 1) vTop = vBottom - guess;
-      if (hi === BANDS - 1 && lo > 0) vBottom = vTop + guess;
-      const box = el.getBoundingClientRect();
-      const centre = box.top + box.height / 2;
-      apply((centre - vTop) / (vBottom - vTop), box.bottom > vTop && box.top < vBottom);
-    };
-
-    // Centre the strips on the frame.
-    const place = () => {
-      column.style.top = `${el.offsetTop + el.offsetHeight / 2 - BAND_SPAN / 2}px`;
-    };
-
-    const update = () => {
-      raf = 0;
-      place();
-      if (tallFrame()) fromBands();
-      else fromViewport();
-    };
-    const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        const i = Number(e.target.dataset.i);
-        if (e.isIntersecting) visible.add(i);
-        else visible.delete(i);
-      });
-      if (tallFrame()) schedule();
-    });
-    [...column.children].forEach((b) => io.observe(b));
-
-    place();
-    update();
-    // Capture catches scrolling on any element, not just the window.
-    document.addEventListener('scroll', schedule, { passive: true, capture: true });
-    window.addEventListener('resize', schedule);
-    return () => {
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      document.removeEventListener('scroll', schedule, { capture: true });
-      window.removeEventListener('resize', schedule);
-    };
-  }, []);
-
-  const setManual = (v) => {
-    const next = clamp(v);
-    offset.current = next - fromScroll.current;
-    setValue(next);
-  };
-
-  // Pointer drag on the whole frame (mouse and touch); the range input below
-  // handles the keyboard and assistive tech.
-  const moveTo = (e) => {
-    const box = e.currentTarget.getBoundingClientRect();
-    setManual(((e.clientX - box.left) / box.width) * 100);
-  };
-  const onPointerDown = (e) => {
-    dragging.current = true;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    moveTo(e);
-  };
-  const onPointerMove = (e) => dragging.current && moveTo(e);
-  const onPointerUp = () => { dragging.current = false; };
-  const shown = Math.round(value);
-
   return (
     <section className="section compare" aria-labelledby="compare-title">
       <div className="wrap">
@@ -151,48 +20,11 @@ export function Compare() {
           </div>
         </div>
 
-        <div className="compare__bands" ref={bands} aria-hidden="true">
-          {Array.from({ length: BANDS }, (_, i) => <span key={i} data-i={i} />)}
-        </div>
-        <div
-          ref={frame}
-          className="compare__frame"
-          style={{ '--pos': `${value}%` }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerCancel={onPointerUp}
-        >
-          <img
-            className="compare__img"
-            src="assets/stillwater-hero.jpg"
-            alt="Stillwater House as built: limestone, oak and glass beside a long reflecting pool"
-            width="1584"
-            height="672"
-            loading="lazy"
-          />
-          <div className="compare__render" aria-hidden="true">
-            <img className="compare__img" src="assets/stillwater-drawing.svg" alt="" width="1584" height="672" loading="lazy" />
-          </div>
-          <span className="compare__tag compare__tag--left micro">{compare.rendering}</span>
-          <span className="compare__tag compare__tag--right micro">{compare.built}</span>
-          <span className="compare__handle" aria-hidden="true"><span /></span>
-          <input
-            className="compare__range"
-            type="range"
-            min="0"
-            max="100"
-            value={shown}
-            onChange={(e) => setManual(Number(e.target.value))}
-            aria-label="Compare the rendering with the finished home"
-            aria-valuetext={`${shown}% rendering`}
-          />
-        </div>
-        <p className="compare__hint micro">{compare.hint}</p>
+        <CompareSlider rendering={compare.rendering} built={compare.built} hint={compare.hint} />
 
         <div className="compare__meta">
           <p className="body-s">{compare.meta}</p>
-          <ArrowLink href="#homes" variant="rule">{compare.link}</ArrowLink>
+          <ArrowLink href="stillwater-house.html" variant="rule">{compare.link}</ArrowLink>
         </div>
       </div>
     </section>

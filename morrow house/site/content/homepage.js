@@ -3,11 +3,11 @@
 
 export const nav = {
   links: [
-    { label: 'Homes', href: '#homes' },
-    { label: 'How we work', href: '#process' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Homes', href: 'homes.html' },
+    { label: 'How we work', href: 'how-we-work.html' },
+    { label: 'Pricing', href: 'pricing.html' },
   ],
-  cta: { label: 'Begin the conversation', href: '#next-chapter' },
+  cta: { label: 'Begin the conversation', href: 'index.html#next-chapter' },
 };
 
 export const hero = {
@@ -162,8 +162,8 @@ export const pricing = {
     { label: 'Handover', note: '5% retention, released at completion', share: 1 },
   ],
   links: [
-    { label: 'How we price', icon: 'right', href: '#pricing' },
-    { label: 'Sample cost report', icon: 'down', href: '#pricing' },
+    { label: 'How we price', icon: 'right', href: 'pricing.html' },
+    { label: 'Sample cost report', icon: 'down', href: 'pricing.html#cost-report' },
   ],
 };
 
@@ -265,10 +265,10 @@ export const footer = {
   tagline: 'Considered homes. Lasting relationships.\nAsheville & Western North Carolina.',
   signoff: 'Built for the life ahead.',
   links: [
-    { label: 'Homes', href: '#homes' },
-    { label: 'How we work', href: '#process' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'Begin the conversation', href: '#next-chapter' },
+    { label: 'Homes', href: 'homes.html' },
+    { label: 'How we work', href: 'how-we-work.html' },
+    { label: 'Pricing', href: 'pricing.html' },
+    { label: 'Begin the conversation', href: 'index.html#next-chapter' },
   ],
   contacts: [
     { label: 'hello@morrowhouse.com', href: 'mailto:hello@morrowhouse.com' },

@@ -2,7 +2,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { ArrowLink } from '../components/ArrowLink';
 import CarouselStacked from '@/components/ui/carousel-07';
 import { selectedHomes } from '../content/homepage';
-import { homes } from '../content/homes';
+import { homes, homeHref } from '../content/homes';
 
 // Stacked, draggable cards (components/ui/carousel-07) fed with the homes.
 const slides = homes.map((h) => ({
@@ -11,7 +11,7 @@ const slides = homes.map((h) => ({
   description: h.tagline,
   badge: h.type,
   meta: `${h.place} · ${h.year}`,
-  href: '#homes',
+  href: homeHref(h),
 }));
 
 export function HomesCarousel() {
@@ -22,7 +22,7 @@ export function HomesCarousel() {
           id="homes-title"
           eyebrow={selectedHomes.eyebrow}
           title={selectedHomes.title}
-          aside={<ArrowLink href="#homes" icon="right">{selectedHomes.link}</ArrowLink>}
+          aside={<ArrowLink href="homes.html" icon="right">{selectedHomes.link}</ArrowLink>}
         />
       </div>
       <div className="wrap homes__viewport">

@@ -165,7 +165,7 @@ export function Timeline() {
           id="process-title"
           eyebrow={process.eyebrow}
           title={process.title}
-          aside={<ArrowLink href="#process" icon="right">{process.link}</ArrowLink>}
+          aside={<ArrowLink href="how-we-work.html" icon="right">{process.link}</ArrowLink>}
         />
       </div>
 
