@@ -1,0 +1,9 @@
+:root{
+--radius-none:0;--radius-xs:2px;--radius-round:999px;
+--border-1:1px solid var(--border-hairline);
+--shadow-none:none; /* the brand does not use drop shadows */
+--ease-quiet:cubic-bezier(.2,.7,.2,1);/* @kind other */
+--ease-inout:cubic-bezier(.65,0,.35,1);/* @kind other */
+--dur-fast:180ms;/* @kind other */--dur-base:320ms;/* @kind other */--dur-slow:700ms;/* @kind other */--dur-image:1400ms;/* @kind other */
+--image-hover-scale:1.03;/* @kind other */
+}

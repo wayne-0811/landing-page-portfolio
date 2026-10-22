@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<title>Oak (illustrative material sample)</title>
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.004 0.16" numOctaves="4" seed="3" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1"/>
+  <feComponentTransfer>
+    <feFuncR type="table" tableValues="0.541 0.663 0.765 0.663 0.765 0.663 0.541 0.663 0.765"/>
+    <feFuncG type="table" tableValues="0.396 0.502 0.612 0.502 0.612 0.502 0.396 0.502 0.612"/>
+    <feFuncB type="table" tableValues="0.259 0.345 0.443 0.345 0.443 0.345 0.259 0.345 0.443"/>
+    <feFuncA type="linear" slope="0" intercept="1"/>
+  </feComponentTransfer>
+</filter>
+<filter id="fleck" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.02 0.6" numOctaves="2" seed="6" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1"/>
+  <feComponentTransfer>
+    <feFuncR type="table" tableValues="0.459 0.541 0.663 0.765"/>
+    <feFuncG type="table" tableValues="0.337 0.396 0.502 0.612"/>
+    <feFuncB type="table" tableValues="0.220 0.259 0.345 0.443"/>
+    <feFuncA type="linear" slope="0" intercept="0.18"/>
+  </feComponentTransfer>
+</filter>
+<filter id="sp" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.16 0.08"/>
+</filter></defs>
+<rect width="600" height="600" fill="#a98058"/>
+<rect width="600" height="600" filter="url(#grain)" />
+<rect width="600" height="600" filter="url(#fleck)" />
+
+<rect x="0" y="142.5" width="600" height="3" fill="#4c3824" opacity="0.35"/><rect x="0" y="145.5" width="600" height="1.5" fill="#fff" opacity="0.12249999999999998"/>
+<rect x="280.9" y="144" width="2" height="150" fill="#533d28" opacity="0.27999999999999997"/>
+<rect x="0" y="296.2" width="600" height="3" fill="#4c3824" opacity="0.35"/><rect x="0" y="299.2" width="600" height="1.5" fill="#fff" opacity="0.12249999999999998"/>
+<rect x="136.3" y="297.7" width="2" height="150" fill="#533d28" opacity="0.27999999999999997"/>
+<rect x="0" y="452.8" width="600" height="3" fill="#4c3824" opacity="0.35"/><rect x="0" y="455.8" width="600" height="1.5" fill="#fff" opacity="0.12249999999999998"/>
+<rect x="267.1" y="454.3" width="2" height="150" fill="#533d28" opacity="0.27999999999999997"/>
+<rect width="600" height="600" filter="url(#sp)" />
+</svg>

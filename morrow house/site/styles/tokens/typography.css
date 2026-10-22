@@ -1,0 +1,33 @@
+:root{
+--font-sans:"Archivo","Helvetica Neue",Arial,sans-serif;/* @kind font */
+--font-serif:"Instrument Serif","Times New Roman",serif;/* @kind font */
+
+/* Size scale (desktop px; display sizes clamp down on small viewports) */
+--fs-mega:clamp(56px,9vw,124px);/* @kind font */     /* footer sign-off */
+--fs-display:clamp(52px,8vw,112px);/* @kind font */  /* hero h1 */
+--fs-h1:clamp(44px,5.6vw,72px);/* @kind font */      /* enquiry headline */
+--fs-h2:clamp(36px,4.2vw,56px);/* @kind font */      /* section headlines */
+--fs-stat:clamp(40px,4vw,56px);/* @kind font */
+--fs-title-l:30px;/* @kind font */  /* service rows */
+--fs-quote:28px;/* @kind font */    /* serif testimonial */
+--fs-title-m:24px;/* @kind font */  /* journal titles, serif taglines, hero caption */
+--fs-title-s:20px;/* @kind font */  /* home card names (uppercase) */
+--fs-step:17px;/* @kind font */     /* process step titles (uppercase) */
+--fs-body-l:17px;/* @kind font */
+--fs-body:16px;/* @kind font */
+--fs-body-s:14px;/* @kind font */
+--fs-label:12px;/* @kind font */    /* nav, buttons, eyebrows */
+--fs-micro:11px;/* @kind font */    /* spec labels, placards, field labels */
+
+--fw-light:300;/* @kind font */--fw-regular:400;/* @kind font */--fw-medium:500;/* @kind font */--fw-semibold:600;/* @kind font */
+
+--lh-display:.95;/* @kind font */--lh-heading:1.04;/* @kind font */--lh-title:1.2;/* @kind font */--lh-quote:1.22;/* @kind font */--lh-body:1.62;/* @kind font */--lh-label:1.3;/* @kind font */
+
+--ls-display:-.048em;/* @kind font */--ls-heading:-.032em;/* @kind font */--ls-title:-.018em;/* @kind font */--ls-caps:.04em;/* @kind font */--ls-label:.12em;/* @kind font */--ls-micro:.1em;/* @kind font */
+
+/* Semantic roles */
+--type-display:var(--fw-regular) var(--fs-display)/var(--lh-display) var(--font-sans);/* @kind font */
+--type-h2:var(--fw-regular) var(--fs-h2)/var(--lh-heading) var(--font-sans);/* @kind font */
+--type-body:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-sans);/* @kind font */
+--type-quote:var(--fw-regular) var(--fs-quote)/var(--lh-quote) var(--font-serif);/* @kind font */
+}

@@ -1,0 +1,69 @@
+/* Tailwind + shadcn theme. Tailwind's preflight (base reset) is left out on
+   purpose: the page's own reset and styles live in styles/site.css, and
+   unlayered CSS there always wins over these layered utilities. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source "../components";
+@source "../sections";
+
+/* shadcn colour roles mapped onto the Morrow House tokens (styles/tokens).
+   shadcn's --accent is left out: --accent already means brass here. */
+:root {
+  --radius: 0rem;
+  --background: var(--mh-linen);
+  --foreground: var(--mh-forest);
+  --card: var(--mh-linen);
+  --card-foreground: var(--mh-forest);
+  --popover: var(--mh-linen);
+  --popover-foreground: var(--mh-forest);
+  --primary: var(--mh-forest);
+  --primary-foreground: var(--mh-linen);
+  --secondary: var(--mh-stone);
+  --secondary-foreground: var(--mh-forest);
+  --muted: var(--mh-stone);
+  --muted-foreground: var(--mh-slate);
+  --destructive: var(--mh-clay);
+  --destructive-foreground: var(--mh-linen);
+  --border: var(--mh-rule);
+  --input: var(--mh-moss);
+  --ring: var(--mh-forest);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  /* Brand palette as utilities: text-mh-forest, bg-mh-linen, border-mh-rule… */
+  --color-mh-linen: var(--mh-linen);
+  --color-mh-stone: var(--mh-stone);
+  --color-mh-forest: var(--mh-forest);
+  --color-mh-moss: var(--mh-moss);
+  --color-mh-slate: var(--mh-slate);
+  --color-mh-ash: var(--mh-ash);
+  --color-mh-brass: var(--mh-brass);
+  --color-mh-rule: var(--mh-rule);
+  --color-mh-mist: var(--mh-mist);
+  --color-mh-sand: var(--mh-sand);
+  --color-mh-brass-light: var(--mh-brass-light);
+  --ease-quiet: cubic-bezier(.2, .7, .2, 1);
+  --radius-sm: max(0px, calc(var(--radius) - 4px));
+  --radius-md: max(0px, calc(var(--radius) - 2px));
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
