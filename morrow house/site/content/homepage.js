@@ -60,25 +60,61 @@ export const process = {
   eyebrow: 'How we build',
   title: 'A clear path. A shared commitment.',
   link: 'The full process',
+  // Panel labels and stage answers from the copy deck's How we work stages.
+  labels: { happens: 'What happens', decide: 'What you decide', cost: 'What it costs', long: 'How long' },
+  calendar: {
+    label: 'Your build, month by month',
+    // Sample timeline: Stillwater House's 16-month build.
+    note: 'Sample timeline, based on Stillwater House’s 16-month build.',
+    months: 36,
+  },
   steps: [
     {
       title: 'Fit', time: 'Weeks 1–2',
       text: 'A conversation and a walk across your land. We make sure we’re right for each other.',
+      months: [0, 0.5],
+      expect: {
+        happens: 'A first conversation about your plans, then we walk your land together.',
+        decide: 'You share a rough brief.',
+        cost: 'Free',
+        long: 'Weeks 1–2',
+      },
       image: { src: 'assets/journal-homesite.jpg', alt: 'A meadow with scattered oaks and the Blue Ridge in morning haze', width: 822, height: 551 },
     },
     {
       title: 'Pre-construction', time: 'Weeks 3–14',
       text: 'Design, materials, cost and schedule, resolved together before anything is built.',
+      months: [0.5, 3.25],
+      expect: {
+        happens: 'Design, cost plan and schedule.',
+        decide: 'You agree style, budget and finishes.',
+        cost: 'Fixed fee of $18,500, credited to your build',
+        long: 'Weeks 3–14',
+      },
       image: { src: 'assets/journal-materials.jpg', alt: 'Samples of oak, rough limestone and dark steel laid on a plaster surface', width: 822, height: 551 },
     },
     {
       title: 'Build', time: '12–18 months',
       text: 'One project lead, weekly updates, and a site you’re always welcome on.',
+      months: [3.25, 19.25],
+      expect: {
+        happens: 'One project lead, weekly reports.',
+        decide: 'You approve changes in the client portal.',
+        cost: 'Monthly draws',
+        long: '12–18 months',
+      },
       image: { src: 'assets/journal-collab.jpg', alt: 'A project lead and a homeowner reviewing drawings at a table inside a timber-framed house', width: 822, height: 551 },
     },
     {
       title: 'Aftercare', time: '12 months',
       text: 'A careful handover, a guide to your home, and a review a year on.',
+      months: [19.25, 31.25],
+      expect: {
+        happens: 'Handover, home guide and a 12-month review.',
+        decide: 'You move in.',
+        cost: 'Included',
+        long: '12 months',
+      },
       image: { src: 'assets/craft-interior.jpg', alt: 'A finished garden room with limestone floors, oak beams and sliding doors open to a courtyard', width: 1152, height: 928 },
     },
   ],
