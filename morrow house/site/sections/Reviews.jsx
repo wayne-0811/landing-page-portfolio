@@ -1,7 +1,7 @@
 import { SectionHeading } from '../components/SectionHeading';
 import { ArrowLink } from '../components/ArrowLink';
 import { Icon } from '../components/Icon';
-import ScrollReelTestimonials from '@/components/ui/scroll-reel-testimonials';
+import TestimonialSlider from '@/components/ui/testimonial-slider-1';
 import { reviews } from '../content/homepage';
 
 function Stars({ label }) {
@@ -12,21 +12,24 @@ function Stars({ label }) {
   );
 }
 
-const testimonials = reviews.items.map((r) => ({
+const slides = reviews.items.map((r, i) => ({
+  id: i,
+  name: r.name,
+  affiliation: `Google review · ${r.when}`,
   quote: r.quote,
-  author: r.name,
-  detail: r.when,
   rating: 5,
-  image: r.image,
+  imageSrc: r.image,
+  imagePosition: r.imagePosition,
 }));
 
 // In production these come from the Google Business Profile.
 export function Reviews() {
   return (
-    <section className="section reviews" id="reviews" aria-labelledby="reviews-title">
+    <section className="section section--forest reviews" id="reviews" aria-labelledby="reviews-title">
       <div className="wrap">
         <SectionHeading
           id="reviews-title"
+          tone="dark"
           eyebrow={reviews.eyebrow}
           title={reviews.title}
           aside={
@@ -39,11 +42,11 @@ export function Reviews() {
             </div>
           }
         />
-        <div className="reviews__reel">
-          <ScrollReelTestimonials testimonials={testimonials} />
+        <div className="reviews__slider">
+          <TestimonialSlider reviews={slides} />
         </div>
         <div className="reviews__foot">
-          <ArrowLink href="#reviews" variant="rule">{reviews.link}</ArrowLink>
+          <ArrowLink href="#reviews" variant="rule" tone="dark">{reviews.link}</ArrowLink>
           <p className="micro reviews__note">{reviews.note}</p>
         </div>
       </div>

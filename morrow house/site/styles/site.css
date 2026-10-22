@@ -18,6 +18,9 @@ a:hover { color: inherit; }
 .section { padding-block: var(--section-y); }
 .section--stone { background: var(--surface-alt); }
 .section--sand { background: var(--surface-warm); }
+.section--forest { background: var(--surface-dark); color: var(--text-on-dark); }
+.section--forest .h2 { color: var(--text-on-dark); }
+.section--forest .micro { color: var(--text-on-dark-body); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
@@ -401,9 +404,12 @@ a:hover { color: inherit; }
 .reviews__rating { font: var(--fw-regular) var(--fs-stat)/1 var(--font-sans); letter-spacing: -0.035em; color: var(--text-strong); }
 .reviews__count { display: flex; flex-direction: column; gap: 6px; }
 .stars { display: inline-flex; gap: 2px; color: var(--accent); }
-.reviews__reel { margin-top: var(--space-9); }
+.reviews__slider { margin-top: var(--space-9); }
 .reviews__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; margin-top: var(--space-8); }
 .reviews__note { color: var(--text-muted); }
+.section--forest .reviews__rating { color: var(--text-on-dark); }
+.section--forest .stars { color: var(--accent-on-dark); }
+.section--forest .reviews__note { color: var(--mh-ash); }
 
 /* ---------- 10 Your next chapter ---------- */
 .chapter__grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px var(--grid-gap); align-items: start; }
