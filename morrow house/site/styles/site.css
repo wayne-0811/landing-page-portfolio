@@ -197,6 +197,13 @@ a:hover { color: inherit; }
 .award-tag .micro { max-width: 14ch; color: var(--text-strong); }
 .seal { flex: none; color: var(--accent); }
 
+.compare .wrap { position: relative; }
+/* Invisible strips centred on the frame; see Compare.jsx */
+.compare__bands {
+  position: absolute; top: 0; left: 0; width: 1px; height: 3000px; pointer-events: none;
+  display: flex; flex-direction: column;
+}
+.compare__bands span { flex: 1; }
 .compare__frame {
   --pos: 50%;
   position: relative; margin-top: var(--space-8); aspect-ratio: 1584 / 672; overflow: hidden;
@@ -210,6 +217,9 @@ a:hover { color: inherit; }
 }
 .compare__tag--left { left: 16px; }
 .compare__tag--right { right: 16px; }
+/* Strip readings move in small steps; smooth them over. */
+.compare__frame[data-stepped] .compare__render { transition: clip-path 160ms linear; }
+.compare__frame[data-stepped] .compare__handle { transition: left 160ms linear; }
 .compare__handle {
   position: absolute; top: 0; bottom: 0; left: var(--pos); z-index: 2; width: 1px;
   background: var(--mh-linen); pointer-events: none;
