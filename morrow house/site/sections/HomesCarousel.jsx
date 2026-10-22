@@ -8,8 +8,10 @@ import { homes } from '../content/homes';
 const slides = homes.map((h) => ({
   image: h.image.src,
   title: h.name,
-  description: `${h.tagline} · ${h.place}, ${h.year}`,
+  description: h.tagline,
   badge: h.type,
+  meta: `${h.place} · ${h.year}`,
+  href: '#homes',
 }));
 
 export function HomesCarousel() {
@@ -24,7 +26,7 @@ export function HomesCarousel() {
         />
       </div>
       <div className="wrap homes__viewport">
-        <CarouselStacked slides={slides} />
+        <CarouselStacked slides={slides} label="Selected homes" />
       </div>
     </section>
   );

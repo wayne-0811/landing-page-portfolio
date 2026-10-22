@@ -4,19 +4,31 @@ import * as React from "react";
 import {
   motion,
   useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
   useTransform,
   animate,
   type PanInfo,
   type MotionValue,
 } from "motion/react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+
+// Stacked, draggable cards in the Morrow House style: square corners, no
+// blur or shadow, quiet easing, and no text on the photographs. The front
+// card's name and details sit on a placard beneath the stack.
+// Text blocks are divs, not <p>: styles/site.css resets paragraph margins
+// outside any layer, which would beat Tailwind's margin utilities.
 
 export interface Slide {
   image: string;
   title: string;
   description: string;
   badge: string;
+  /** Small caps line under the title, e.g. "Fletcher · 2025". */
+  meta?: string;
+  href?: string;
 }
 
 const defaultSlides: Slide[] = [
@@ -33,22 +45,10 @@ const defaultSlides: Slide[] = [
     badge: "Extreme",
   },
   {
-    image: "https://cdn.21st.dev/assets/mirror/c1/c1e7bf149d430fd5bd5aa6dd3aaebb771fbc95b3a7cd303851ed585fd838a7b9.webp",
-    title: "Forest Walk",
-    description: "Deep dive into the silence of the ancient woods.",
-    badge: "Nature",
-  },
-  {
     image: "https://cdn.21st.dev/assets/mirror/b4/b49b413f935303df7e05362b3530028b05c913cc039b44e25e491f12f9ba0015.webp",
     title: "Azure Beach",
     description: "Unwind on the crystal clear shores of a tropical paradise.",
     badge: "Paradise",
-  },
-  {
-    image: "https://cdn.21st.dev/assets/mirror/84/84c0ff283758085418b1cd942706a764ffa0bf5a06312b415fc441fec23d22d6.webp",
-    title: "Spiritual Path",
-    description: "Discover inner peace through ancient wisdom.",
-    badge: "Serenity",
   },
 ];
 
@@ -62,16 +62,18 @@ interface CarouselConfig {
   scaleReduction: number;
 }
 
+// A gentler fan than the original: small tilt and drop, so the stack reads as
+// photographs laid on a table rather than a deck being thrown.
 const getCarouselConfig = (width: number): CarouselConfig => {
   if (width < 640) {
     return {
       distanceDivisor: 120,
       velocityDivisor: 500,
       sensitivity: 180,
-      xMultiplier: 90,
-      yMultiplier: 20,
-      rotationMultiplier: 8,
-      scaleReduction: 0.06,
+      xMultiplier: 92,
+      yMultiplier: 10,
+      rotationMultiplier: 3,
+      scaleReduction: 0.07,
     };
   }
   if (width < 1024) {
@@ -79,33 +81,44 @@ const getCarouselConfig = (width: number): CarouselConfig => {
       distanceDivisor: 160,
       velocityDivisor: 650,
       sensitivity: 220,
-      xMultiplier: 130,
-      yMultiplier: 30,
-      rotationMultiplier: 10,
-      scaleReduction: 0.09,
+      xMultiplier: 150,
+      yMultiplier: 14,
+      rotationMultiplier: 3.5,
+      scaleReduction: 0.08,
     };
   }
   return {
     distanceDivisor: 200,
     velocityDivisor: 800,
     sensitivity: 250,
-    xMultiplier: 170,
-    yMultiplier: 40,
-    rotationMultiplier: 12,
-    scaleReduction: 0.12,
+    xMultiplier: 210,
+    yMultiplier: 18,
+    rotationMultiplier: 4,
+    scaleReduction: 0.09,
   };
 };
 
+// --ease-quiet from the design tokens.
+const QUIET = [0.2, 0.7, 0.2, 1] as const;
+
+const wrap = (i: number, n: number) => ((i % n) + n) % n;
+const pad = (n: number) => String(n).padStart(2, "0");
+
 interface CarouselStackedProps {
   slides?: Slide[];
+  /** Accessible name for the carousel. */
+  label?: string;
 }
 
-const CarouselStacked = ({ slides = defaultSlides }: CarouselStackedProps) => {
+const CarouselStacked = ({ slides = defaultSlides, label = "Homes" }: CarouselStackedProps) => {
   const scrollProgress = useMotionValue(0);
   const startProgress = React.useRef(0);
   const [windowWidth, setWindowWidth] = React.useState(0);
+  const [active, setActive] = React.useState(0);
+  const reduceMotion = useReducedMotion();
 
   const total = slides.length;
+  const current = slides[active];
 
   React.useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -114,10 +127,22 @@ const CarouselStacked = ({ slides = defaultSlides }: CarouselStackedProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useMotionValueEvent(scrollProgress, "change", (v) => {
+    setActive(wrap(Math.round(v), total));
+  });
+
   const config = React.useMemo(
     () => getCarouselConfig(windowWidth),
     [windowWidth],
   );
+
+  const settle = (target: number) => {
+    animate(scrollProgress, target, reduceMotion
+      ? { duration: 0 }
+      : { duration: 0.7, ease: QUIET });
+  };
+
+  const go = (step: number) => settle(Math.round(scrollProgress.get()) + step);
 
   const handleDragStart = () => {
     startProgress.current = scrollProgress.get();
@@ -136,42 +161,116 @@ const CarouselStacked = ({ slides = defaultSlides }: CarouselStackedProps) => {
     let totalShift = Math.round(distanceShift + velocityShift);
     totalShift = Math.max(-3, Math.min(3, totalShift));
 
-    const target = Math.round(startProgress.current) + totalShift;
+    settle(Math.round(startProgress.current) + totalShift);
+  };
 
-    animate(scrollProgress, target, {
-      type: "spring",
-      stiffness: 200,
-      damping: 30,
-      mass: 1,
-    });
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full py-10 bg-background overflow-hidden select-none">
-      <div className="relative w-full max-w-7xl h-80 sm:h-112 lg:h-128 flex items-center justify-center">
-        {/* Transparent Drag Surface */}
-        <motion.div
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragStart={handleDragStart}
-          onDrag={(_, info) => {
-            const delta = -info.delta.x / config.sensitivity;
-            scrollProgress.set(scrollProgress.get() + delta);
-          }}
-          onDragEnd={handleDragEnd}
-          className="absolute inset-0 z-50 cursor-grab active:cursor-grabbing"
-        />
-
-        {slides.map((slide, i) => (
-          <Card
-            key={i}
-            slide={slide}
-            index={i}
-            total={total}
-            progress={scrollProgress}
-            config={config}
+    <div
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={label}
+      className="w-full"
+    >
+      <div className="w-full overflow-hidden select-none">
+        <div
+          className="relative mx-auto h-72 w-full max-w-7xl sm:h-96 lg:h-[27rem] flex items-center justify-center outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-mh-forest"
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          aria-label={`${label}: use the arrow keys to move between them`}
+        >
+          {/* Transparent Drag Surface */}
+          <motion.div
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.1}
+            onDragStart={handleDragStart}
+            onDrag={(_, info) => {
+              const delta = -info.delta.x / config.sensitivity;
+              scrollProgress.set(scrollProgress.get() + delta);
+            }}
+            onDragEnd={handleDragEnd}
+            className="absolute inset-0 z-[200] cursor-grab active:cursor-grabbing"
           />
-        ))}
+
+          {slides.map((slide, i) => (
+            <Card
+              key={i}
+              slide={slide}
+              index={i}
+              total={total}
+              progress={scrollProgress}
+              config={config}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Placard: the front card's details, beneath the stack */}
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-mh-rule pt-6">
+        <div className="min-w-0 basis-full sm:basis-0 sm:flex-1" aria-live="polite">
+          <motion.div
+            key={active}
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.32, ease: QUIET }}
+          >
+            <Badge
+              variant="outline"
+              className="rounded-[2px] border-mh-rule px-2 py-1 text-[11px] font-medium leading-none tracking-[0.1em] uppercase text-mh-moss"
+            >
+              {current.badge}
+            </Badge>
+            <a
+              href={current.href ?? "#"}
+              className="group mt-4 flex items-center gap-3 text-[20px] leading-[1.2] tracking-[0.04em] uppercase text-mh-forest"
+            >
+              {current.title}
+              <ArrowUpRight
+                aria-hidden="true"
+                size={16}
+                strokeWidth={1.5}
+                className="text-mh-brass transition-transform duration-[320ms] ease-quiet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+              />
+            </a>
+            {current.meta && (
+              <div className="mt-2 text-[11px] font-medium leading-[1.3] tracking-[0.1em] uppercase text-mh-moss">
+                {current.meta}
+              </div>
+            )}
+            <div className="mt-3 font-serif italic text-[22px] leading-[1.2] text-mh-slate">
+              {current.description}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="flex items-center gap-5">
+          <p className="text-[11px] font-medium tracking-[0.1em] text-mh-moss tabular-nums" aria-hidden="true">
+            {pad(active + 1)} — {pad(total)}
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous home"
+              className="grid size-11 place-items-center rounded-[2px] border border-mh-rule bg-transparent text-mh-forest transition-colors duration-[180ms] ease-quiet hover:border-mh-moss cursor-pointer"
+            >
+              <ChevronLeft size={18} strokeWidth={1.5} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next home"
+              className="grid size-11 place-items-center rounded-[2px] border border-mh-rule bg-transparent text-mh-forest transition-colors duration-[180ms] ease-quiet hover:border-mh-moss cursor-pointer"
+            >
+              <ChevronRight size={18} strokeWidth={1.5} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -216,9 +315,18 @@ const Card = ({ slide, index, total, progress, config }: CardProps) => {
   const zIndex = useTransform(offset, (o) =>
     Math.round(100 - Math.abs(o) * 10),
   );
+  // The front photograph drifts in slightly as it arrives (1.03 → 1).
+  const imageScale = useTransform(offset, [-1, 0, 1], [1.03, 1, 1.03]);
+  // Cards behind recede into a forest tint rather than grey.
+  const tint = useTransform(
+    offset,
+    [-2, -0.5, 0, 0.5, 2],
+    [0.42, 0.16, 0, 0.16, 0.42],
+  );
 
   return (
     <motion.div
+      aria-hidden="true"
       style={{
         x,
         rotate,
@@ -228,51 +336,21 @@ const Card = ({ slide, index, total, progress, config }: CardProps) => {
         zIndex,
       }}
       className={cn(
-        "absolute rounded-2xl overflow-hidden bg-muted group pointer-events-none",
-        "w-44 h-56 sm:w-56 sm:h-80 lg:w-64 lg:h-96",
+        "absolute overflow-hidden bg-mh-stone pointer-events-none",
+        "w-44 h-55 sm:w-60 sm:h-75 lg:w-72 lg:h-90",
       )}
     >
-      <img
+      <motion.img
         src={slide.image}
-        alt={slide.title}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-700 group-hover:scale-110"
+        alt=""
+        draggable={false}
+        style={{ scale: imageScale }}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
-
       <motion.div
-        style={{
-          opacity: useTransform(
-            offset,
-            [-2, -0.5, 0, 0.5, 2],
-            [0.5, 0.2, 0, 0.2, 0.5],
-          ),
-        }}
-        className="absolute inset-0 bg-black pointer-events-none"
+        style={{ opacity: tint }}
+        className="absolute inset-0 bg-mh-forest pointer-events-none"
       />
-
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-
-      <Badge className="absolute top-3 right-3 sm:top-5 sm:right-5 lg:top-6 lg:right-6 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-black">
-        {slide.badge}
-      </Badge>
-
-      <div className="absolute bottom-5 left-3 right-3 sm:bottom-8 sm:left-5 sm:right-5 lg:bottom-10 lg:left-6 lg:right-6 text-white text-center sm:text-left">
-        <motion.p
-          style={{
-            opacity: useTransform(offset, [-0.5, 0, 0.5], [0, 1, 0]),
-          }}
-          className="text-sm sm:text-lg lg:text-xl font-bold leading-tight mb-0.5 sm:mb-1 drop-shadow-md"
-        >
-          {slide.title}
-        </motion.p>
-        <motion.p
-          style={{
-            opacity: useTransform(offset, [-0.5, 0, 0.5], [0, 1, 0]),
-          }}
-          className="hidden sm:block text-xs text-white/70 line-clamp-2 italic font-medium"
-        >
-          {slide.description}
-        </motion.p>
-      </div>
     </motion.div>
   );
 };

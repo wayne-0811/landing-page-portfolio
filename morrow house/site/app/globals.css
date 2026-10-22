@@ -49,6 +49,16 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  /* Brand palette as utilities: text-mh-forest, bg-mh-linen, border-mh-rule… */
+  --color-mh-linen: var(--mh-linen);
+  --color-mh-stone: var(--mh-stone);
+  --color-mh-forest: var(--mh-forest);
+  --color-mh-moss: var(--mh-moss);
+  --color-mh-slate: var(--mh-slate);
+  --color-mh-ash: var(--mh-ash);
+  --color-mh-brass: var(--mh-brass);
+  --color-mh-rule: var(--mh-rule);
+  --ease-quiet: cubic-bezier(.2, .7, .2, 1);
   --radius-sm: max(0px, calc(var(--radius) - 4px));
   --radius-md: max(0px, calc(var(--radius) - 2px));
   --radius-lg: var(--radius);
