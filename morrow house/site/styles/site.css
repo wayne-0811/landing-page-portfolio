@@ -106,15 +106,6 @@ a:hover { color: inherit; }
 .alink--dark .alink__icon { color: var(--accent-on-dark); }
 .alink--dark.alink--rule { border-color: var(--border-on-dark); }
 
-.icon-btn {
-  display: grid; place-items: center; width: 44px; height: 44px;
-  background: none; border: 1px solid var(--border-hairline); border-radius: var(--radius-xs);
-  color: var(--text-strong); cursor: pointer;
-  transition: border-color var(--dur-fast) var(--ease-quiet);
-}
-.icon-btn:hover:not(:disabled) { border-color: var(--mh-moss); }
-.icon-btn:disabled { opacity: .35; cursor: default; }
-
 /* ---------- Section heading ---------- */
 .shead { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
 .shead__main { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
@@ -253,41 +244,7 @@ a:hover { color: inherit; }
 
 /* ---------- 4 Selected homes ---------- */
 .homes { overflow-x: clip; padding-top: 0; }
-.homes__controls { display: flex; align-items: center; gap: 10px; }
-.homes__controls .alink { margin-left: 22px; }
 .homes__viewport { margin-top: var(--space-8); }
-.homes__track {
-  --bleed: max(var(--gutter), (100vw - var(--container)) / 2);
-  display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2 * 24px) * .31); column-gap: 24px;
-  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
-  margin-right: calc(-1 * var(--bleed)); padding-right: var(--bleed); scroll-padding-left: 0;
-}
-.homes__track::-webkit-scrollbar { display: none; }
-.home-card { scroll-snap-align: start; min-width: 0; }
-.home-card__link { display: flex; flex-direction: column; gap: 6px; color: var(--text-strong); }
-.home-card__media { display: block; aspect-ratio: 3 / 4; overflow: hidden; margin-bottom: 14px; background: var(--surface-alt); }
-.home-card__media img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform var(--dur-image) var(--ease-quiet);
-}
-.home-card__link:hover img { transform: scale(var(--image-hover-scale)); }
-.home-card__name {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  font: var(--fw-regular) var(--fs-title-s)/var(--lh-title) var(--font-sans);
-  letter-spacing: var(--ls-caps); text-transform: uppercase;
-}
-.home-card__arrow { color: var(--accent); transition: transform var(--dur-base) var(--ease-quiet); }
-.home-card__link:hover .home-card__arrow { transform: translate(2px, -2px); }
-.home-card__tagline { font: italic var(--fw-regular) 22px/1.2 var(--font-serif); color: var(--text-body); }
-.homes__progress { position: relative; height: 2px; margin-top: var(--space-7); background: var(--border-hairline); }
-.homes__progress span { position: absolute; top: 0; height: 2px; background: var(--mh-forest); transition: left 120ms linear; }
-@media (max-width: 900px) {
-  .homes__track { grid-auto-columns: 46%; column-gap: 16px; }
-}
-@media (max-width: 560px) {
-  .homes__track { grid-auto-columns: 78%; }
-  .homes__controls .alink { margin-left: 8px; }
-}
 
 /* ---------- 5 Why Morrow ---------- */
 .why__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px var(--grid-gap); margin-top: var(--space-9); }
@@ -482,8 +439,6 @@ a:hover { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0s !important; }
-  .home-card__link:hover img,
-  .home-card__link:hover .home-card__arrow,
   .alink:hover .alink__icon,
   .btn:hover .btn__arrow { transform: none; }
 }
