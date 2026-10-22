@@ -5,9 +5,17 @@ import { AwardSeal } from '../components/AwardSeal';
 import { CompareSlider } from '../components/CompareSlider';
 import { ClosingCta } from '../components/ClosingCta';
 import { nav } from '../content/homepage';
-import { homeHref, neighbours, stillwater } from '../content/homes';
+import { caseStudies, homeHref, neighbours } from '../content/homes';
 
 const pad = (n) => String(n).padStart(2, '0');
+
+// An image, or a quiet frame until its picture exists.
+function Pic({ image, pending = 'Photograph to come', className = 'pic-ph' }) {
+  if (image?.src) {
+    return <img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} loading="lazy" />;
+  }
+  return <span className={`${className} micro`} role="img" aria-label={image?.alt}>{pending}</span>;
+}
 
 function Hero({ home }) {
   return (
@@ -57,10 +65,8 @@ function Overview({ home }) {
               </div>
             ))}
           </dl>
-          {!home.caseStudy && (
-            <p className="micro doverview__note">
-              {home.illustrative ? 'An illustrative home. Its full story isn’t written yet.' : 'The full case study is on its way.'}
-            </p>
+          {home.illustrative && (
+            <p className="micro doverview__note">An illustrative home. Its story shows the kind of work we do.</p>
           )}
         </div>
       </div>
@@ -68,8 +74,7 @@ function Overview({ home }) {
   );
 }
 
-function Drawing() {
-  const d = stillwater.drawing;
+function Drawing({ d }) {
   return (
     <section className="section compare ddrawing" aria-labelledby="ddrawing-title">
       <div className="wrap">
@@ -77,13 +82,22 @@ function Drawing() {
           <Eyebrow>{d.eyebrow}</Eyebrow>
           <h2 className="h2" id="ddrawing-title">{d.title}</h2>
         </div>
-        <CompareSlider rendering={d.rendering} built={d.built} hint="Drag to compare the rendering with the finished home." />
+        <CompareSlider
+          rendering={d.rendering}
+          built={d.built}
+          photo={d.photo}
+          drawing={d.drawing}
+          width={d.width}
+          height={d.height}
+          alt={d.alt}
+          hint={d.hint}
+        />
       </div>
     </section>
   );
 }
 
-function Rooms({ rooms, start }) {
+function Rooms({ rooms, start, pending }) {
   return (
     <section className="section drooms" aria-label="Rooms">
       <div className="wrap drooms__list">
@@ -92,11 +106,7 @@ function Rooms({ rooms, start }) {
           return (
             <figure key={r.title} className={`droom${n % 2 ? ' droom--flip' : ''}`}>
               <div className="droom__media">
-                {r.image ? (
-                  <img src={r.image.src} alt={r.image.alt} style={{ objectPosition: r.image.position }} loading="lazy" />
-                ) : (
-                  <span className="droom__placeholder micro">Photograph to come</span>
-                )}
+                <Pic image={r.image} pending={pending} className="droom__placeholder" />
               </div>
               <figcaption className="droom__caption">
                 <span className="droom__num">{pad(n + 1)}</span>
@@ -111,8 +121,7 @@ function Rooms({ rooms, start }) {
   );
 }
 
-function Challenges() {
-  const c = stillwater.challenges;
+function Challenges({ c }) {
   return (
     <section className="section section--stone dchallenges" aria-labelledby="dchallenges-title">
       <div className="wrap">
@@ -137,8 +146,8 @@ function Challenges() {
           </ul>
           <div className="dchallenges__photos">
             {c.photos.map((p) => (
-              <figure key={p.src} className="dphoto">
-                <img src={p.src} alt={p.alt} loading="lazy" />
+              <figure key={p.caption} className="dphoto">
+                <Pic image={p} />
                 <figcaption className="micro">{p.caption}</figcaption>
               </figure>
             ))}
@@ -149,18 +158,23 @@ function Challenges() {
   );
 }
 
-function Build() {
-  const b = stillwater.build;
+function Build({ b }) {
   return (
     <section className="section dbuild" aria-labelledby="dbuild-title">
       <div className="wrap">
         <Eyebrow>{b.eyebrow}</Eyebrow>
-        <h2 className="sr-only" id="dbuild-title">The build</h2>
+        <h2 className="sr-only" id="dbuild-title">{b.eyebrow.split(' · ')[0]}</h2>
         <ol className="dbuild__bar">
           {b.phases.map(([name, months], i) => (
-            <li key={name} className={`dbuild__phase ph-${i + 1}`} style={{ flexGrow: months }}>
+            <li
+              key={name}
+              className={`dbuild__phase ph-${i + 1}${b.now != null && i > b.now ? ' is-planned' : ''}`}
+              style={{ flexGrow: months }}
+              aria-current={b.now === i ? 'step' : undefined}
+            >
               <span className="dbuild__fill" aria-hidden="true" />
               <span className="micro dbuild__label">{name}</span>
+              {b.now === i && <span className="micro dbuild__now">Now</span>}
             </li>
           ))}
         </ol>
@@ -168,7 +182,7 @@ function Build() {
           {b.photos.map((p) => (
             <li key={p.caption}>
               <figure className="dphoto">
-                <img src={p.src} alt={p.alt} loading="lazy" />
+                <Pic image={p} />
                 <figcaption className="micro">{p.caption}</figcaption>
               </figure>
             </li>
@@ -180,13 +194,12 @@ function Build() {
   );
 }
 
-function OwnersReview() {
-  const r = stillwater.review;
+function OwnersReview({ r }) {
   return (
     <section className="section section--stone dreview" aria-label="The owners’ review">
       <div className="wrap dreview__grid">
         <div className="dreview__media">
-          <img src={r.image.src} alt={r.image.alt} style={{ objectPosition: r.image.position }} loading="lazy" />
+          <Pic image={r.image} />
         </div>
         <figure className="dreview__body">
           <blockquote className="dreview__quote">{r.quote}</blockquote>
@@ -252,27 +265,24 @@ function PrevNext({ home }) {
   );
 }
 
-// One home's page. Stillwater House carries the full case study; the other
-// homes show the parts their data supports.
+// One home's page: overview, then its case study (drawing, rooms, challenges,
+// build, the owners' words), materials and the way on to the next home.
 export function HomeDetail({ home }) {
-  const rooms = stillwater.rooms;
+  const cs = caseStudies[home.slug];
+  const pending = home.planned ? 'Rendering to come' : 'Photograph to come';
   return (
     <>
       <Hero home={home} />
       <Overview home={home} />
-      {home.caseStudy && (
-        <>
-          <Drawing />
-          <Rooms rooms={rooms.slice(0, 2)} start={0} />
-          <Challenges />
-          <Rooms rooms={rooms.slice(2)} start={2} />
-          <Build />
-          <OwnersReview />
-        </>
-      )}
+      {cs.drawing.photo && cs.drawing.drawing && <Drawing d={cs.drawing} />}
+      <Rooms rooms={cs.rooms.slice(0, 2)} start={0} pending={pending} />
+      <Challenges c={cs.challenges} />
+      <Rooms rooms={cs.rooms.slice(2)} start={2} pending={pending} />
+      <Build b={cs.build} />
+      <OwnersReview r={cs.review} />
       <Materials home={home} />
       <PrevNext home={home} />
-      <ClosingCta title={stillwater.closing.title} button={stillwater.closing.button} />
+      <ClosingCta title={cs.closing.title} button={cs.closing.button} />
     </>
   );
 }

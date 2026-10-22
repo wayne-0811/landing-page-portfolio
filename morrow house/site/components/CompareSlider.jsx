@@ -18,12 +18,17 @@ function sweep(f) {
 }
 
 // Rendering vs finished home in one frame; both images stay full-frame so they
-// line up. The rendering is a line drawing traced from the photo in the same
-// pixel space (scripts/draw-stillwater.mjs).
+// line up. Stillwater's rendering, the default, is a line drawing traced from
+// the photo in the same pixel space (scripts/draw-stillwater.mjs). A home page
+// passes its own pair: rendering or "before" on the left, photo on the right.
 //
 // Scrolling sweeps the handle from drawing to photo. Dragging or the keyboard
 // moves it too, and scrolling then carries on from wherever it was left.
-export function CompareSlider({ rendering, built, hint, alt = 'Stillwater House as built: limestone, oak and glass beside a long reflecting pool' }) {
+export function CompareSlider({
+  rendering, built, hint,
+  photo = 'assets/stillwater-hero.jpg', drawing = 'assets/stillwater-drawing.svg', width = 1584, height = 672,
+  alt = 'Stillwater House as built: limestone, oak and glass beside a long reflecting pool',
+}) {
   const frame = useRef(null);
   const bands = useRef(null);
   const [value, setValue] = useState(50);
@@ -147,9 +152,9 @@ export function CompareSlider({ rendering, built, hint, alt = 'Stillwater House 
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        <img className="compare__img" src="assets/stillwater-hero.jpg" alt={alt} width="1584" height="672" loading="lazy" />
+        <img className="compare__img" src={photo} alt={alt} width={width} height={height} loading="lazy" />
         <div className="compare__render" aria-hidden="true">
-          <img className="compare__img" src="assets/stillwater-drawing.svg" alt="" width="1584" height="672" loading="lazy" />
+          <img className="compare__img" src={drawing} alt="" width={width} height={height} loading="lazy" />
         </div>
         <span className="compare__tag compare__tag--left micro">{rendering}</span>
         <span className="compare__tag compare__tag--right micro">{built}</span>
@@ -161,8 +166,8 @@ export function CompareSlider({ rendering, built, hint, alt = 'Stillwater House 
           max="100"
           value={shown}
           onChange={(e) => setManual(Number(e.target.value))}
-          aria-label="Compare the rendering with the finished home"
-          aria-valuetext={`${shown}% rendering`}
+          aria-label={`Compare ${rendering} with ${built}`}
+          aria-valuetext={`${shown}% ${rendering}`}
         />
       </div>
       {hint && <p className="compare__hint micro">{hint}</p>}
