@@ -132,21 +132,112 @@ export const reviews = {
 export const nextChapter = {
   eyebrow: 'Your next chapter',
   title: 'Every great home starts with a hello.',
-  body: 'Five short questions, then a straight answer and a time to talk.',
-  question: 'Who are you enquiring as?',
-  options: ['Homeowner', 'Architect', 'Realtor', 'Attorney or advisor'],
-  formTitle: 'Where should we send your answer?',
-  fields: {
-    name: { label: 'Full name', placeholder: 'Your name' },
-    email: { label: 'Email', placeholder: 'you@example.com' },
-    phone: { label: 'Phone (optional)', placeholder: 'For a quicker reply' },
+  // Intro and questions from the Client Intake Brief. A field's `sum` is its
+  // label on the review screen when that differs from what the form shows.
+  body: 'Eight quick questions, about three minutes. Answer what you can. Anything you skip, we can cover when we meet.',
+  steps: [
+    {
+      title: 'About you',
+      intro: 'Let’s start with how to reach you.',
+      questions: [{
+        fields: [
+          { type: 'text', name: 'fullname', label: 'Full name', required: true, autoComplete: 'name' },
+          { type: 'email', name: 'email', label: 'Email', required: true, autoComplete: 'email' },
+          { type: 'tel', name: 'phone', label: 'Phone (optional)', sum: 'Phone', autoComplete: 'tel' },
+          { type: 'check', name: 'channels', label: 'Best way to reach you', options: ['Email', 'Phone call', 'Text message', 'Client portal'] },
+        ],
+      }],
+    },
+    {
+      title: 'The project',
+      intro: 'Where, when and roughly how much. Rough answers are fine.',
+      questions: [
+        {
+          title: 'Where is the property?',
+          fields: [
+            { type: 'text', name: 'address', label: 'Street address or neighborhood', autoComplete: 'street-address' },
+            { type: 'text', name: 'city', label: 'City and state or region', autoComplete: 'address-level2' },
+          ],
+        },
+        {
+          title: 'When would you like to begin?',
+          help: 'Tell us about any fixed date, such as a move-in or an event at the house.',
+          fields: [
+            { type: 'radio', name: 'start', options: ['Within 3 months', '3 to 6 months', '6 to 12 months', 'More than a year out', 'Flexible'] },
+            { type: 'text', name: 'deadline', label: 'Fixed date, if any', placeholder: 'e.g. a family wedding at the house in June' },
+          ],
+        },
+        {
+          title: 'What budget have you set aside?',
+          help: 'A realistic range lets us design to your vision without compromising it halfway through.',
+          fields: [
+            { type: 'radio', name: 'budget', label: 'Approximate range', sum: 'Range', options: ['Under $250,000', '$250,000 to $500,000', '$500,000 to $1 million', '$1 million to $2 million', 'More than $2 million', 'Not sure yet. I would like your guidance'] },
+            { type: 'radio', name: 'budgetFlex', label: 'How firm is it?', sum: 'Flexibility', options: ['The figure is firm', 'Some flexibility for the right decisions'] },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'The home',
+      intro: 'A little about the house, and the feeling you want.',
+      questions: [
+        {
+          title: 'Is this your home or an investment?',
+          fields: [{ type: 'radio', name: 'occupancy', options: ['Primary residence', 'Second or vacation home', 'Rental or investment', 'Bought to renovate and sell'] }],
+        },
+        {
+          title: 'What works in the space now, and what does not?',
+          help: 'There is no need to tidy before our visit. Seeing the home as you live in it shows us what to solve.',
+          fields: [{ type: 'area', name: 'works', label: 'In a few lines', sum: 'What works, and what does not', placeholder: 'e.g. we love the morning light in the kitchen, but the primary suite feels cut off from the rest of the house' }],
+        },
+        {
+          title: 'Which styles are you drawn to?',
+          help: 'Choose as many as you like.',
+          fields: [
+            { type: 'check', name: 'styles', options: ['Contemporary', 'Transitional', 'Traditional', 'Mid-century modern', 'Modern farmhouse', 'Coastal', 'Mediterranean', 'Japandi', 'Historic restoration', 'Eclectic'] },
+            { type: 'area', name: 'inspiration', label: 'A place you love, or links to images you have saved (optional)', sum: 'Inspiration', placeholder: 'A hotel, a garden, a restaurant, or paste a link' },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Working together',
+      intro: 'Last step. Two quick questions.',
+      questions: [
+        {
+          title: 'How would you like to work with us?',
+          help: 'Many of the best rooms begin outside the original brief. This tells us how far to push.',
+          fields: [{ type: 'radio', name: 'style', options: ['Guide me. Show me what is possible', 'Collaborate. I have ideas and welcome yours', 'Execute my vision. I know what I want'] }],
+        },
+        {
+          title: 'How did you find us?',
+          fields: [
+            { type: 'select', name: 'source', label: 'Choose one', sum: 'How you found us', options: ['Referral from a friend or colleague', 'Houzz', 'Instagram or Pinterest', 'Google search', 'Magazine or press', 'Showroom or event', 'Another professional', 'Other'] },
+            { type: 'text', name: 'sourceName', label: 'Name of the person or publication, if any', sum: 'Source name' },
+          ],
+        },
+      ],
+      note: 'Nothing is sent yet. You can review your answers on the next screen.',
+    },
+  ],
+  labels: {
+    step: (n, total) => `Step ${n} of ${total}`,
+    required: 'Required',
+    select: 'Select',
+    back: 'Back',
+    next: 'Continue',
+    review: 'Review my answers',
+    reviewEyebrow: 'Review',
+    reviewTitle: 'Your answers',
+    reviewIntro: 'Check everything looks right. You can edit any step before sending.',
+    edit: 'Edit',
+    empty: 'Not answered',
   },
   reassurance: 'Your answers stay with our team.',
-  submit: 'Begin the conversation',
+  submit: 'Send my answers',
   sending: 'Sending…',
-  change: 'change',
   errors: {
-    name: 'Please tell us your name.',
+    fullname: 'Please tell us your name.',
     email: 'Please enter a valid email address.',
     phone: 'That number looks incomplete.',
   },
