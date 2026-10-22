@@ -171,8 +171,8 @@ export const nextChapter = {
           title: 'What budget have you set aside?',
           help: 'A realistic range lets us design to your vision without compromising it halfway through.',
           fields: [
-            { type: 'radio', name: 'budget', label: 'Approximate range', sum: 'Range', options: ['Under $250,000', '$250,000 to $500,000', '$500,000 to $1 million', '$1 million to $2 million', 'More than $2 million', 'Not sure yet. I would like your guidance'] },
-            { type: 'radio', name: 'budgetFlex', label: 'How firm is it?', sum: 'Flexibility', options: ['The figure is firm', 'Some flexibility for the right decisions'] },
+            { type: 'radio', name: 'budget', label: 'Approximate range', sum: 'Range', options: ['Under $250,000', '$250,000 to $500,000', '$500,000 to $1 million', '$1 million to $2 million', 'More than $2 million'] },
+            { type: 'radio', name: 'budgetFlex', label: 'How firm is it?', sum: 'Flexibility', options: ['The figure is firm', 'Some flexibility for the right decisions', 'Not sure yet. I would like your guidance'] },
           ],
         },
       ],
