@@ -1,6 +1,6 @@
 # Landing Page Portfolio
 
-Hand-coded, responsive marketing landing pages built by Phua Wai Wai — no page builders, no bloated templates. Just clean semantic HTML, modern CSS, and a little vanilla JavaScript where it earns its place.
+Concept landing pages. Designed by Phua Wai Wai, built with AI assistance — no page builders, no bloated templates. Just clean semantic HTML, modern CSS, and a little vanilla JavaScript where it earns its place.
 If you need a fast, conversion-focused landing page — design and copy — I'm available for freelance work. Get in touch.
 
 ## What's inside
@@ -18,7 +18,7 @@ Each `concept/*` branch carries only that concept's folder, so one build can be 
 
 ## What I offer
 
-I design and build landing pages that are made to convert — and I write the copy that makes them work. Most cheap landing pages come back as a nice-looking shell with weak placeholder text. I deliver the page and the words.
+I design landing pages that are made to convert, build them with AI assistance, and write the copy that makes them work. Most cheap landing pages come back as a nice-looking shell with weak placeholder text. I deliver the page and the words.
 
 Single landing pages (product launches, lead capture, coaching/service offers)
 Conversion copywriting included
